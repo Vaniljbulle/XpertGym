@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const path = 'frontend'
+const path = '../frontend'
 const indexPaths = ['/', '/index', '/home', '/index.html'];
 
 // Index (Home page)
