@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
 const path = 'frontend'
+const indexPaths = ['/', '/index', '/home', '/index.html'];
 
 // Index (Home page)
-app.get('/', (req, res) => {
+app.get(indexPaths, (req, res) => {
     res.sendFile('index.html', {root : path});
 })
 
