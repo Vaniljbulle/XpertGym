@@ -1,12 +1,15 @@
 const express = require('express');
 const app = express();
+const path = 'frontend'
 
+// Index (Home page)
 app.get('/', (req, res) => {
-    res.send('Hello world');
+    res.sendFile('index.html', {root : path});
 })
 
-app.get('/test', (req, res) => {
-    res.send([1, 2, 3]);
+// Style sheet
+app.get('/style.css', (req, res) => {
+    res.sendFile('style.css', {root : path});
 })
 
 app.listen(3000, () => console.log('Listening on port 3000...'));
