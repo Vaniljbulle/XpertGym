@@ -12,21 +12,22 @@ app.get(indexPaths, async (req, res) => {
 })
 
 // Style sheet
-app.get('/style.css', (req, res) => {
+app.get('/style.css', async (req, res) => {
     console.log("Style sheet requested");
     res.sendFile('style.css', {root : path.join('frontend')});
 })
 
 // Register script (client side)
-app.get('/register.js', (req, res) => {
+app.get('/register.js', async (req, res) => {
     console.log("Register script requested");
     res.sendFile('register.js', {root : path.join('server')});
 })
 
 // Register post request
-app.post('/api/register', (req, res) => {
+app.post('/api/register', async(req, res) => {
     console.log("Register post request");
     console.log(req.body);
+    res.json({status: 'ok'});
     // Registration logic
 })
 
