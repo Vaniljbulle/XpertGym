@@ -1,16 +1,20 @@
 const express = require('express');
 const app = express();
-const path = '../frontend'
-const indexPaths = ['/', '/index', '/home', '/index.html'];
+const path = require('path');
 
 // Index (Home page)
-app.get(indexPaths, (req, res) => {
-    res.sendFile('index.html', {root : path});
+const indexPaths = ['/', '/index', '/home', '/index.html'];
+app.get(indexPaths, async (req, res) => {
+    console.log("Index page requested");
+    res.sendFile('index.html', {root : path.join('frontend')});
 })
 
 // Style sheet
 app.get('/style.css', (req, res) => {
-    res.sendFile('style.css', {root : path});
+    console.log("Style sheet requested");
+    res.sendFile('style.css', {root : path.join('frontend')});
 })
+
+
 
 app.listen(3000, () => console.log('Listening on port 3000...'));
