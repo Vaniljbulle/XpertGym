@@ -125,6 +125,119 @@ p2{
 
 
 
+/*************Log in **************/
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+.img{
+    min-height: 100vh; /*the minimum*/
+    width: 100%;
+    align-items: center ; /*center in main section*/
+    position: absolute; /*position for header mot moving*/
+    display: flex;
+    padding: 200px 750px; /* 10px top and bottom, 200px right and left*/
+    /*For back ground picture*/
+    background: url(images/login.jfif);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.img::after{
+    position: absolute;
+    content: ''; 
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    padding: 100px 100px;
+    width: 370px;
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
+    z-index: 9;
+    transform: translate(-50%, -50%);
+}
+
+.content h2{
+    color: white;
+    font-size: 45px;
+    margin: 0 0 35px 0;
+}
+
+.filed{
+    position: relative;
+    height: 45px;
+    width: 100%;
+    display: flex;
+    background: rgba(255, 255, 255, 0.94);
+}
+
+.filed input{
+    height: 100%;
+    width: 100%;
+    color: #222;
+    font-size: 16px ;
+    margin-right: 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.space{
+    margin-top: 16px;
+}
+
+.filed1 input{
+    background: rgb(84, 84, 165);
+    border: 8px ;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    margin-top: 30px;
+    font-size: 16px;
+
+}
+.filed1 input:hover{
+    background: blue;
+}
+
+
+.signup{
+    color:white;
+    margin-top: 20px;
+}
+
+.signup b{
+    color:rgb(84, 84, 165);
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+.signup b:hover {
+    text-decoration:underline ;
+}
+
+
+
+
+
+
+
 
 
 
