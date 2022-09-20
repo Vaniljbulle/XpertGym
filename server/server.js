@@ -1,11 +1,17 @@
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
 const User = require('./user');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken')
+
+const JWT_SECRET = 'sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk'
 
 const app = express();
 app.use(express.json());
+app.use(bodyParser.json());
+
 mongoose.connect('mongodb://127.0.0.1:27017/xpertdb', {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
     console.log("Connected to Database");
 }).catch((err) => {
@@ -45,6 +51,12 @@ app.get('/register.js', async (req, res) => {
     res.sendFile('register.js', {root: path.join('server')});
 })
 
+// Login script (client side)
+app.get('/login.js', async (req, res) => {
+    console.log("Login script requested");
+    res.sendFile('login.js', {root: path.join('server')});
+})
+
 // Register post request
 app.post('/api/register', async (req, res) => {
     console.log("Register post request");
@@ -82,6 +94,33 @@ app.post('/api/register', async (req, res) => {
     //res.json({status: 'ok', data: 'Data test'});
 
 
+})
+
+app.post('/api/login', async (req, res) => {
+    console.log(req.body);
+    const {username, password} = req.body
+    const user = await User.findOne({ username }).lean()
+    console.log(user);
+
+    // if (!user) {
+    //     return res.json({ status: 'error', error: 'Invalid username/password' })
+    // }
+    //
+    // if (await bcrypt.compare(entered.password, user.password)) {
+    //     // the username, password combination is successful
+    //
+    //     const token = jwt.sign(
+    //         {
+    //             id: user._id,
+    //             username: user.username
+    //         },
+    //         JWT_SECRET
+    //     )
+    //
+    //     return res.json({ status: 'ok', data: token })
+    // }
+
+    res.json({ status: 'error', error: 'Invalid username/password' })
 })
 
 
