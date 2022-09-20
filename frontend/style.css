@@ -12,7 +12,10 @@
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+    height: 100%;
+    position: relative;
 }
+
 .column.side {
     width: 25%;
     background-color: lightgray;
@@ -29,44 +32,97 @@
 /*End of Column*/
 
 
-.nav{
-    position: fixed;
+.navbar{
+    background-color:rgb(58, 51, 41);
     width: 100%;
+    position: fixed; /*position for header mot moving*/
+    display: flex;
+    z-index: 999;
+    justify-content: space-between; /*space between gym and navigation*/
+    align-items: center;
+    padding: 10px 200px; /* 10px top and bottom, 200px right and left*/
 }
 
-.menu{
-    position: sticky;
-    top: 0px;
-    background-color: black;
-    margin: 0px;
-    overflow: hidden;
-}
-.menu a{
-    float: left;
-    display: inline-block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 16px 24px;
-}
-
+/* the class for title GYM*/
 .logo{
     text-decoration: none;
-    color: black;
+    color: burlywood;
     font-weight: 700;
     font-size: 1.8em;
+    padding-right: 20px;
+
 }
 
 .navigation a{
-    text-decoration: none;
-    color: black;
+    text-decoration: initial;
+    color: burlywood;
     font-weight: 500;
     font-size: 1.1em;
-    padding-left: 30px ; /* space between*/
+    padding-left: 20px;
 }
 
-.navigation a:hover{
-    color: blue;
+.navigation a:hover{ /*to color when pointing*/
+    color: rgb(176, 120, 47);
+    text-decoration: underline;
 }
+
+footer {
+    background-color:rgb(58, 51, 41);
+    width: 100%;
+    bottom: 0; left: 0;right: 0;
+    position: fixed;
+    bottom: 0;
+    height: auto;
+}
+
+.contact{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+
+}
+
+h3{
+    color: burlywood;
+    font-weight: 60px;
+    font-size: 2.1em;
+    font-style: italic;
+}
+
+p2{
+    font-weight: 500;
+    font-size: 1.1em;
+    margin: 10px auto;
+    line-height: 28px;
+}
+
+.social-icons{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 3rem 0;
+}
+
+.social-icons a{
+    margin: 0 10px;
+}
+
+.social-icons i{
+    color: burlywood;
+    font-size: x-large;
+}
+
+.social-icons i:hover{ /*to color when pointing*/
+    color: rgb(176, 120, 47);
+    text-decoration: underline;
+}
+
+
+
+
 
 
 
