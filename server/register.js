@@ -17,6 +17,13 @@ form.addEventListener('submit', (e) => {
         },
         body: JSON.stringify(data)
     }).then(res => res.json())
-    //Catch error
-    .catch(error => console.error('Error:', error))
+        .then(res => {
+            console.log(res);
+            if (res.status === 'ok') {
+                alert('Registration successful! ' + res.data);
+                window.location.href = 'login.html';
+            } else {
+                alert('Registration failed!');
+            }
+        }).catch(err => console.log(err));
 });

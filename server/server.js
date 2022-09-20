@@ -17,6 +17,20 @@ app.get('/style.css', async (req, res) => {
     res.sendFile('style.css', {root : path.join('frontend')});
 })
 
+// Login page
+const loginPaths = ['/login', '/login.html'];
+app.get(loginPaths, async (req, res) => {
+    console.log("Login page requested");
+    res.sendFile('login.html', {root: path.join('frontend')});
+})
+
+// Register page
+const registerPaths = ['/register', '/register.html', '/signup', '/signup.html'];
+app.get(registerPaths, async (req, res) => {
+    console.log("Sign up page requested");
+    res.sendFile('signup.html', {root: path.join('frontend')});
+})
+
 // Register script (client side)
 app.get('/register.js', async (req, res) => {
     console.log("Register script requested");
@@ -27,8 +41,9 @@ app.get('/register.js', async (req, res) => {
 app.post('/api/register', async(req, res) => {
     console.log("Register post request");
     console.log(req.body);
-    res.json({status: 'ok'});
-    // Registration logic
+    // register user
+    res.json({status: 'ok', data: 'Data test'});
+
 })
 
 
