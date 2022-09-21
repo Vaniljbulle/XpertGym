@@ -14,9 +14,19 @@ app.use(bodyParser.json());
 
 mongoose.connect('mongodb://127.0.0.1:27017/xpertdb', {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
     console.log("Connected to Database");
-}).catch((err) => {
-    console.log("Connection error, check MongoDB server ", err);
+}).catch(() => {
+    fatalError(-1);
 });
+
+function fatalError(code){
+    switch (code) {
+        case -1:
+            console.log("Unable to connect to MongoDB");
+            break;
+    }
+
+    process.exit(code);
+}
 
 // Index (Home page)
 const indexPaths = ['/', '/index', '/home', '/index.html'];
