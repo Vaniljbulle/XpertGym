@@ -22,6 +22,7 @@ async function login(event) {
         console.log('Got the token: ', result.data)
         localStorage.setItem('token', result.data)
         alert('Success')
+        window.location.href = 'index.html';
     } else {
         alert(result.error)
     }
