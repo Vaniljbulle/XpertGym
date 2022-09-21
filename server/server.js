@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const User = require('./user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
+const Console = require("console");
 
 const JWT_SECRET = 'sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk'
 
@@ -12,21 +13,6 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://127.0.0.1:27017/xpertdb', {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
-    console.log("Connected to Database");
-}).catch(() => {
-    fatalError(-1);
-});
-
-function fatalError(code){
-    switch (code) {
-        case -1:
-            console.log("Unable to connect to MongoDB");
-            break;
-    }
-
-    process.exit(code);
-}
 
 // Index (Home page)
 const indexPaths = ['/', '/index', '/home', '/index.html'];
@@ -92,6 +78,7 @@ app.post('/api/register', async (req, res) => {
         }
     })
 */
+
     try {
         const user = await User.create({username, password: hashedPassword, id_number});
         console.log("User created successfully: ", user);
@@ -133,5 +120,28 @@ app.post('/api/login', async (req, res) => {
     res.json({ status: 'error', error: 'Invalid username/password' })
 })
 
+mongoose.connection.on('disconnected', function() {
+    fatalError(-2);
+})
 
-app.listen(3000, () => console.log('Listening on port 3000...'));
+Console.log("Connecting to MongoDB...");
+mongoose.connect('mongodb://127.0.0.1:27017/xpertdb', {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
+    console.log("Connected to MongoDB, starting server...");
+    app.listen(3000, () => console.log('Server started\nListening on port 3000...'));
+}).catch(() => {
+    fatalError(-1);
+});
+
+function fatalError(code){
+    switch (code) {
+        case -1:
+            console.log("Unable to connect to MongoDB");
+            break;
+        case -2:
+            console.log("Disconnected from MongoDB");
+            break;
+    }
+
+    process.exit(code);
+}
+
