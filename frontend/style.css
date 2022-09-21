@@ -14,6 +14,7 @@
     margin-right: auto;
     height: 100%;
     position: relative;
+    margin-top: 60px;
 }
 
 .column.side {
@@ -31,16 +32,16 @@
 }
 /*End of Column*/
 
-
 .navbar{
     background-color:rgb(58, 51, 41);
     width: 100%;
     position: fixed; /*position for header mot moving*/
     display: flex;
-    z-index: 999;
+    z-index: 1;
     justify-content: space-between; /*space between gym and navigation*/
     align-items: center;
     padding: 10px 200px; /* 10px top and bottom, 200px right and left*/
+    height: 60px;
 }
 
 /* the class for title GYM*/
@@ -70,7 +71,6 @@ footer {
     background-color:rgb(58, 51, 41);
     width: 100%;
     bottom: 0; left: 0;right: 0;
-    position: fixed;
     bottom: 0;
     height: auto;
 }
