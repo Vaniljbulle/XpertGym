@@ -54,30 +54,37 @@
     text-transform: uppercase;
     text-decoration: none;
     font-size: 18px;
-    border-radius: 5px;
-    color: rgb(255, 255, 255, 1);
-    background-color: rgba(89, 89, 89, 0.5);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition-duration: 0.3s;
-    left: 13px;
+    border: 2px solid #d3b083;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 0;
 }
-.btn:hover{
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    transform: scale(1.1);
+.btn span{
+    background: #d3b083;
+    height: 100%;
+    width: 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0.5s;
+}
+.btn:hover span{
+    width: 100%;
 }
 .about{
     position: absolute;
     top: 30%;
     left: 10%;
     color: white;
+    width: 330px;
 }
 .about .btn{
     margin-top: 1rem;
 }
-.about h2, p{
-    display: block;
-    width: 65%;
-}
+
 .about h2{
     text-transform: uppercase;
     letter-spacing: 2px;
