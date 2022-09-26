@@ -93,19 +93,18 @@
 /* end of banner content*/
 .navbar{
     width: 100%;
-    position: fixed; /*position for header mot moving*/
-    display: flex;
-    justify-content: space-between; /*space between gym and navigation*/
-    align-items: center;
-    padding: 10px 200px; /* 10px top and bottom, 200px right and left*/
     height: 80px;
+    background-color: rgb(89, 89, 90);
 }
-
-/* the class for title GYM*/
-.logo{
-    background: url(/img/wlogo.png) no-repeat center;
-    width: 100%;
-    height: 100%;
+ul{
+    width: auto;
+    float: right;
+    margin-top: 15px;
+    margin-right: 15px;
+}
+li{
+    display: inline-block;
+    padding: 15px 30px;
 }
 
 .navigation a{
@@ -113,28 +112,27 @@
     color: burlywood;
     font-weight: 500;
     font-size: 1.1em;
-    padding-left: 20px;
 }
 
-.navigation a:hover{ /*to color when pointing*/
+.navigation a:hover{
     color: rgb(176, 120, 47);
     text-decoration: underline;
 }
+.logo{
+    background: url(/img/wlogo.png) no-repeat;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 1%;
+    left: 3%;
+}
 
+/* end of navbar */
 footer {
     background-color: rgb(39, 39, 39);
     width: 100%;
     bottom: 0; left: 0;right: 0;
     height: auto;
-}
-
-.contact{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-
 }
 
 h3{
@@ -199,7 +197,7 @@ p2{
 
 .img::after{
     position: absolute;
-    content: ''; 
+    content: '';
     top: 0;
     left: 0;
     height: 100%;
