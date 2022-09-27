@@ -15,6 +15,7 @@
     height: 100%;
     position: relative;
 }
+
 .column{
     border: 3px solid #d5b183;
 }
@@ -24,12 +25,17 @@
 .row h2, p{
     text-align: center;
 }
-
+.column a{
+    color: #000000;
+    padding: 7px 20px;
+}
 .column.side {
     width: 25%;
+    text-align: center;
 }
 .column.center {
     width: 50%;
+    text-align: center;
 }
 .row:after {
     content: "";
@@ -91,6 +97,7 @@
     letter-spacing: 2px;
     font-size: 30px;
 }
+
 /* end of banner content*/
 .navbar{
     width: 100%;
