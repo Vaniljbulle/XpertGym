@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 const User = require('./user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
-const Console = require("console");
 
 const JWT_SECRET = 'sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk'
 
@@ -124,7 +123,7 @@ mongoose.connection.on('disconnected', function() {
     fatalError(-2);
 })
 
-Console.log("Connecting to MongoDB...");
+console.log("Connecting to MongoDB...");
 mongoose.connect('mongodb://127.0.0.1:27017/xpertdb', {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
     console.log("Connected to MongoDB, starting server...");
     app.listen(3000, () => console.log('Server started\nListening on port 3000...'));
