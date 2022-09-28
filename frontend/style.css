@@ -302,13 +302,13 @@ h5{
     margin-top: 20px;
 }
 
-.signup b{
+.signup a{
     color: rgb(176, 120, 47);
     margin-top: 20px;
     text-decoration: none;
 }
 
-.signup b:hover {
+.signup a:hover {
     text-decoration:underline ;
     color:burlywood;
 }
