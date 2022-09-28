@@ -104,6 +104,7 @@
     height: 80px;
     position: fixed;
     overflow: hidden;
+    z-index: 1;
 }
 ul{
     width: auto;
