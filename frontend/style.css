@@ -118,9 +118,10 @@ li{
 
 .navigation a{
     text-decoration: initial;
-    color: burlywood;
+    color: white;
     font-weight: 500;
     font-size: 1.1em;
+
 }
 
 .navigation a:hover{
@@ -153,15 +154,27 @@ footer {
 
 h3{
     color: burlywood;
+    font-weight: 60px;
     font-size: 2.1em;
+    font-style: italic;
 }
 
-p2{
+h4{
+    color: burlywood;
     font-weight: 500;
     font-size: 1.1em;
     margin: 10px auto;
     line-height: 28px;
 }
+
+h5{
+    color: burlywood;
+    font-weight: 500;
+    font-size: 1.1em;
+    margin: 10px auto;
+    line-height: 28px;
+}
+
 
 .social-icons{
     list-style: none;
@@ -205,7 +218,7 @@ p2{
     display: flex;
     padding: 200px 750px; /* 10px top and bottom, 200px right and left*/
     /*For back ground picture*/
-    /*background: url(img/login.jfif);*/
+    background: url(/img/login.jfif) no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -222,7 +235,7 @@ p2{
 }
 
 .content{
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     text-align: center;
@@ -246,6 +259,7 @@ p2{
     width: 100%;
     display: flex;
     background: rgba(255, 255, 255, 0.94);
+    border-radius: 8px;
 }
 
 .filed input{
@@ -264,7 +278,7 @@ p2{
 }
 
 .filed1 input{
-    background: rgb(84, 84, 165);
+    background:  rgb(176, 120, 47);
     border: 8px ;
     color: white;
     font-size: 18px;
@@ -273,12 +287,13 @@ p2{
     width: 100%;
     outline: none;
     border: none;
-    margin-top: 30px;
-    font-size: 16px;
+    margin-top: 40px;
+    padding: 10px 10px;
+    border-radius: 8px;
 
 }
 .filed1 input:hover{
-    background: blue;
+    background: burlywood;
 }
 
 
@@ -288,13 +303,14 @@ p2{
 }
 
 .signup b{
-    color:rgb(84, 84, 165);
+    color: rgb(176, 120, 47);
     margin-top: 20px;
     text-decoration: none;
 }
 
 .signup b:hover {
     text-decoration:underline ;
+    color:burlywood;
 }
 
 
