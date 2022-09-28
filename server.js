@@ -9,9 +9,13 @@ const jwt = require('jsonwebtoken')
 const JWT_SECRET = 'sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk'
 
 const app = express();
+
 app.use(express.json());
 app.use(bodyParser.json());
 
+app.use(registerRoute);
+app.use(loginRoute);
+app.use(htmlRoutes);
 
 // Index (Home page)
 const indexPaths = ['/', '/index', '/home', '/index.html'];
@@ -143,4 +147,3 @@ function fatalError(code){
 
     process.exit(code);
 }
-
