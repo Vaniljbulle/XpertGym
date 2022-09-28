@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="BMI.js" defer></script>
+    <title>BMI</title>
+</head>
+<body>
+    <!-- Navigation bar / Header -->
+<nav class="navbar">
+    <a href="index.html" class="logo"></a>
+    <nav class="navigation">
+        <ul>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</nav>
+
+<div class="img">
+    <div class="box">
+        <h2> Calculate BMI</h2>
+        
+        <a> Height (cm) :  <br></a>            
+        <div class="filed">
+            <input type="text" id="height"><br><span id="height_err"></span>
+        </div>
+        <br>
+        <a>  Weight (kg) :  </a>
+        <div class="filed space">
+            <input type="text" id="weight"><br><span id="weight_err"></span>
+        </div>
+                <button id="btn">Calculate</button>
+                <br><br><a id="output"></a>
+    </div>
+
+</div>
+
+
+
+</body>
+</html>
