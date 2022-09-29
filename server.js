@@ -12,6 +12,7 @@ app.use(express.json());
 app.use(registerRoute);
 app.use(loginRoute);
 app.use(htmlRoutes);
+app.use('/img', express.static('img'));
 
 
 mongoose.connection.on('disconnected', function() {
