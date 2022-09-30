@@ -21,9 +21,20 @@ async function login(event) {
         // everything went fine
         console.log('Got the token: ', result.data)
         localStorage.setItem('token', result.data)
-        alert('Success')
-        window.location.href = 'index.html';
-    } else {
+        //alert('Success')
+        // request index with new token
+        const t = fetch('/index.html', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+        })
+        // Redirect to index
+        console.log(t)
+        console.log(t.url)
+        }
+    else {
         alert(result.error)
     }
 }
