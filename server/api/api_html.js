@@ -1,31 +1,20 @@
 const path = require("path");
 const router = require('express').Router();
 const verifyToken = require('../auth/tokenValidation');
-const jwt = require("jsonwebtoken");
+
+// token test (private test page)
+const testPagePaths = ['/testpage_private.html', '/testpage_private'];
+router.get(testPagePaths, verifyToken, (req, res) => {
+    console.log("Private test page requested");
+    res.sendFile('testpage_private.html', {root: 'frontend'});
+})
 
 
 // Index (Home page)
 const indexPaths = ['/', '/index', '/home', '/index.html'];
 router.get(indexPaths, async (req, res) => {
     console.log("Index page requested");
-
-    if (verifyToken(req)) {
-        console.log("Token verified - sending logged in index page");
-        res.sendFile('index.html', {root: path.join('frontend')});
-    }
-    else {
-        console.log("Token not verified - sending standard index page");
-        res.sendFile('index.html', {root: path.join('frontend')});
-    }
-    /*
-    verifyToken(req, res, () => {
-        console.log("Token verified - sending logged in index page");
-        res.sendFile('index.html', {root: path.join('frontend')});
-    });
-    console.log("Token not verified - sending standard index page");
     res.sendFile('index.html', {root: path.join('frontend')});
-
-     */
 })
 
 // Style sheet
