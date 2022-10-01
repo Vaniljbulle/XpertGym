@@ -6,5 +6,37 @@
 </head>
 <body>
 <h1>Private page</h1>
+<!-- Logout button -->
+<form id="logout_form">
+    <input id="logout" type="submit" value="Logout">
+</form>
 </body>
+<script>
+    const form = document.getElementById('logout_form')
+    form.addEventListener('submit', logout)
+
+    async function logout(event) {
+        event.preventDefault();
+
+        try {
+            const result = await fetch('/api/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then((res) => res.json())
+
+            if (result.status === 'ok') {
+                alert(result.data)
+                // console.log(document.cookie);
+                window.location.href = 'index.html'
+            } else {
+                alert('Error logging out')
+            }
+        } catch (e) {
+            alert('Error logging out')
+        }
+
+    }
+</script>
 </html>
