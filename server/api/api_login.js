@@ -24,7 +24,8 @@ router.post('/api/login', async (req, res) => {
                 id: user._id,
                 username: user.username
             },
-            JWT_SECRET
+            JWT_SECRET,
+            { expiresIn: '1h' }
         )
 
         return res.json({ header: 'Authorization', status: 'ok', data: token })
