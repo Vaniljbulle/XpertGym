@@ -144,6 +144,8 @@ footer {
     width: 100%;
     bottom: 0; left: 0;right: 0;
     height: auto;
+
+
 }
 .contact{
     display: flex;
@@ -203,31 +205,35 @@ h5{
 /*************Log in **************/
 
 .img{
-    min-height: 100vh; /*the minimum*/
+
     width: 100%;
     align-items: center ; /*center in main section*/
-    position: absolute; /*position for header mot moving*/
+    /*  position: absolute; /*position for header mot moving*/
     display: flex;
-    padding: 200px 750px; /* 10px top and bottom, 200px right and left*/
+    padding: 200px 5px; /* 10px top and bottom, 200px right and left*/
     /*For back ground picture*/
+
     background: url(/img/login.jfif) no-repeat;
-    background-size: cover;
+    background-size:cover;
     background-position: center;
     background-attachment: fixed;
+    height: 50vh;
+
 }
 
 .img::after{
     position: absolute;
     content: '';
-    top: 0;
-    left: 0;
-    height: 100%;
+    top: 6px;
+    left: 6px;
+    height: 88%;
     width: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.5);
+    
 }
 
 .content{
-    position: fixed;
+    position:absolute;
     top: 50%;
     left: 50%;
     text-align: center;
@@ -306,19 +312,30 @@ h5{
 }
 
 /************ BMI **************/
+.img-BMI{
+    width: 100%;
+    align-items: center ; /*center in main section*/
+    /*  position: absolute; /*position for header mot moving*/
+    display: flex;
+    padding: 200px 750px; /* 10px top and bottom, 200px right and left*/
+    /*For back ground picture*/
+    background: url(/img/BMI-background.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 50vh;
+}
+
 
 .box{
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     text-align: center;
-    padding: 100px 30px;
+    padding: 100px 50px;
     width: 370px;
-    background: rgba(255, 255, 255, 0.04);
-    box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
-    z-index: 9;
     transform: translate(-50%, -50%);
-    
+    background-color: rgb(129, 87, 49);
 }
 
 .box h2{
