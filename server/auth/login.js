@@ -20,10 +20,12 @@ async function login(event) {
     if (result.status === 'ok') {
         // everything went fine
         console.log('Got the token: ', result.data)
-        localStorage.setItem('token', result.data)
-        alert('Success')
-        window.location.href = 'index.html';
-    } else {
+        //localStorage.setItem('token', result.data)
+        // Store as cookie
+        document.cookie = `token=${result.data}`
+        window.location.href = 'testpage_private.html'
+        }
+    else {
         alert(result.error)
     }
 }

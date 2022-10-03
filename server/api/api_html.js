@@ -1,5 +1,14 @@
 const path = require("path");
 const router = require('express').Router();
+const verifyToken = require('../auth/tokenValidation');
+
+// token test (private test page)
+const testPagePaths = ['/testpage_private.html', '/testpage_private'];
+router.get(testPagePaths, verifyToken, (req, res) => {
+    console.log("Private test page requested");
+    res.sendFile('testpage_private.html', {root: 'frontend'});
+})
+
 
 // Index (Home page)
 const indexPaths = ['/', '/index', '/home', '/index.html'];
