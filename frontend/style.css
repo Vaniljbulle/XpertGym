@@ -237,7 +237,7 @@ h5{
     top: 50%;
     left: 50%;
     text-align: center;
-    padding: 100px 100px;
+    padding: 200px 200px;
     width: 370px;
     background: rgba(255, 255, 255, 0.04);
     box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
@@ -253,7 +253,7 @@ h5{
 
 .filed{
     position: relative;
-    height: 45px;
+    height: 35px;
     width: 100%;
     display: flex;
     background: rgba(255, 255, 255, 0.94);
@@ -264,7 +264,7 @@ h5{
     height: 100%;
     width: 100%;
     color: #222;
-    font-size: 16px ;
+    font-size: 25px ;
     margin-right: 10px;
     background: transparent;
     border: none;
@@ -298,6 +298,7 @@ h5{
 .signup{
     color:white;
     margin-top: 20px;
+    font-size: 35px;
 }
 
 .signup a{
@@ -332,7 +333,7 @@ h5{
     top: 50%;
     left: 50%;
     text-align: center;
-    padding: 100px 50px;
+    padding: 100px 100px;
     width: 370px;
     transform: translate(-50%, -50%);
     background-color: rgb(129, 87, 49);
@@ -350,18 +351,18 @@ h5{
 
 }
 
-button{
+.but{
     background:  rgb(176, 120, 47);
     border: 8px ;
     color: white;
-    font-size: 18px;
+    font-size: 40px;
     cursor: pointer;
     height: 100%;
     width: 100%;
     outline: none;
     border: none;
     margin-top: 40px;
-    padding: 10px 10px;
+    padding: 10px 100px;
     border-radius: 8px;
 
 }
@@ -383,12 +384,15 @@ span{
     border-radius: 8px;
 }
 
+#output{
+    color:black;
+}
 /*********** Input ***************/
 input{
 
     padding-left: 12px;
     width: 250px;
-    font-weight: 900;
+    font-weight: 700;
     font-size: xx-large;
     font-family: Arial, Helvetica, sans-serif;
 
