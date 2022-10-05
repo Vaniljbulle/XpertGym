@@ -21,7 +21,7 @@
 <!-- Banner intro with text -->
 <div class="banner">
 </div>
-<!-- Center content -->
+<!-- Center content
 <div class="row">
   <div class="column center">
     <h2>Your profile</h2>
@@ -29,8 +29,38 @@
   <div class="column side">
     <h2>Personal achievements</h2>
   </div>
-</div>
+</div>-->
+<div class="container">
+  <header class="username">Username</header>
+  <div class="bar">
+    <button class="tabBtn" onclick="openTab('Profile')">Profile</button>
+    <button class="tabBtn" onclick="openTab('Schemes')">Schemes</button>
+    <button class="tabBtn" onclick="openTab('Achievements')">Achievements</button>
+    <button class="tabBtn" onclick="openTab('Settings')">Settings</button>
+  </div>
+  <div class="content">
+  <div id="Profile" class="cont tab" style="display:none">
+    <h2>Profile</h2>
+    <p>Here your profile will be shown</p>
+  </div>
 
+  <div id="Schemes" class="cont tab" style="display:none">
+    <h2>Schemes</h2>
+    <p>Here schedules will be shown with comments</p>
+  </div>
+
+  <div id="Achievements" class="cont tab" style="display:none">
+    <h2>Achievements</h2>
+    <p>Here your achievements will be shown</p>
+  </div>
+
+  <div id="Settings" class="cont tab" style="display:none">
+    <h2>Settings</h2>
+    <p>Here settings can be changed</p>
+  </div>
+
+  </div>
+</div>
 <!-- Footer -->
 <footer>
   <div class="contact">
@@ -52,3 +82,13 @@
 </div>
 </body>
 </html>
+<script>
+  function openTab(tabName) {
+    var i;
+    var x = document.getElementsByClassName("tab");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    document.getElementById(tabName).style.display = "block";
+  }
+</script>
