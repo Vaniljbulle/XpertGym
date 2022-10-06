@@ -32,7 +32,7 @@ button.addEventListener('click', ()=> {
         }
         
     } else {
-        alert('Error heee');
+        alert('Error');
         result.innerHTML = '';
     }
 

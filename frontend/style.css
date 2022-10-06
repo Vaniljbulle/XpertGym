@@ -210,9 +210,8 @@ h5{
     align-items: center ; /*center in main section*/
     /*  position: absolute; /*position for header mot moving*/
     display: flex;
-    padding: 200px 5px; /* 10px top and bottom, 200px right and left*/
+    padding: 200px 1px; /* 10px top and bottom, 200px right and left*/
     /*For back ground picture*/
-
     background: url(/img/login.jfif) no-repeat;
     background-size:cover;
     background-position: center;
@@ -225,7 +224,7 @@ h5{
     position: absolute;
     content: '';
     top: 6px;
-    left: 6px;
+    left: 1px;
     height: 88%;
     width: 100%;
     background: rgba(0, 0, 0, 0.5);
@@ -318,7 +317,7 @@ h5{
     align-items: center ; /*center in main section*/
     /*  position: absolute; /*position for header mot moving*/
     display: flex;
-    padding: 200px 750px; /* 10px top and bottom, 200px right and left*/
+    padding: 200px 1px; /* 10px top and bottom, 200px right and left*/
     /*For back ground picture*/
     background: url(/img/BMI-background.jpg) no-repeat;
     background-size: cover;
@@ -326,7 +325,6 @@ h5{
     background-attachment: fixed;
     height: 50vh;
 }
-
 
 .box{
     position: absolute;
@@ -367,6 +365,10 @@ h5{
 
 }
 
+.but:hover{
+    background: rgb(103, 11, 121);
+}
+
 span{
     color: rgb(170, 33, 33);
     height: 100%;
@@ -386,6 +388,11 @@ span{
 
 #output{
     color:black;
+    width: 250px;
+    font-weight: 700;
+    font-size: xx-large;
+    font-family:cursive;
+    
 }
 /*********** Input ***************/
 input{
