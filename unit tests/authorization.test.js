@@ -5,6 +5,7 @@ const registerRoute = require('../server/api/api_register.js');
 const logoutRoute = require('../server/api/api_logout.js');
 const mongoose = require('mongoose');
 const User = require("../server/database/user");
+const verifyToken = require('../server/auth/tokenValidation');
 
 const app = express();
 app.use(express.json());
@@ -12,21 +13,17 @@ app.use(loginRoute);
 app.use(registerRoute);
 app.use(logoutRoute);
 
-beforeAll(async () => await mongoose.connect('mongodb://127.0.0.1:27017/xpertdb', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}));
+
 
 describe('api_register.js', function () {
-    /*
-     *   Create a test user
-     *   Login with test user
-     *   Test token validation
-     *   Logout
-     *   Delete test user
-     */
+    beforeAll(async () => await mongoose.connect('mongodb://127.0.0.1:27017/xpertdb', {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }));
 
     const testUser = {username: "testUserRegistration", password: "testPassword", id_number: "48946548974"};
+    let token = "";
+
     describe('POST /api/register', () => {
         const falseUsers = [
             {username: "", password: "testPassword", id_number: "48946548974"},
@@ -62,7 +59,7 @@ describe('api_register.js', function () {
 
     });
 
-    describe('POST /api/login', function () {
+    describe('POST /api/login', () =>{
         test('Wrong password', async () => {
             const response = await request(app).post('/api/login').set('Content-Type', "application/json").send(JSON.stringify({
                 username: testUser.username,
@@ -82,29 +79,44 @@ describe('api_register.js', function () {
         })
 
         test('Login (token request)', async () => {
-            const res = await request(app).post('/api/login').set('Content-Type', "application/json").send(JSON.stringify({
+            const response = await request(app).post('/api/login').set('Content-Type', "application/json").send(JSON.stringify({
                 username: testUser.username,
                 password: testUser.password
             }));
 
-            expect(res.body.header).toBe('Authorization');
-            expect(res.body.token).not.toBe(null);
-            expect(res.body.status).toBe('ok');
+            token = response.body.data;
+            expect(response.body.header).toBe('Authorization');
+            expect(response.body.data).not.toBe(undefined);
+            expect(response.body.data).not.toBe(null);
+            expect(response.body.status).toBe('ok');
         });
     });
 
-});
+    describe('POST /api/logout', () => {
 
-afterAll(async () => {
-    /*
-        const users = await User.find({});
-        users.forEach(user => {
-            console.log(user.username);
+        test('Invalid token', async () => {
+            // Test logout post request by sending cookie
+            const response = await request(app).post('/api/logout').set('Cookie', `token=1`);
+            expect(response.status).toBe(403);
         });
-    */
 
-    await User.deleteMany({});
+        test('Valid token', async () => {
+            const response = await request(app).post('/api/logout').set('Cookie', `token=${token}`);
+            expect(response.body.status).toBe('ok');
+        });
+
+    });
 
 
-    await mongoose.connection.close();
+    afterAll(async () => {
+        /*
+            const users = await User.find({});
+            users.forEach(user => {
+                console.log(user.username);
+            });
+        */
+
+        await User.deleteMany({});
+        await mongoose.connection.close();
+    });
 });
