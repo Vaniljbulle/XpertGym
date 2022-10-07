@@ -9,11 +9,6 @@ const userExerciseSchema = new mongoose.Schema({
     id_user: {
         type: String,
         required: true
-    },
-    id_number: {
-        type: String,
-        required: true,
-        unique: true
     }
 },{collection: 'userExercises'});
 
