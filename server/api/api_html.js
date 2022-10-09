@@ -49,4 +49,10 @@ router.get('/login.js', async (req, res) => {
     res.sendFile('login.js', {root: path.join('server/auth')});
 })
 
+// add_exercise script (client side)
+router.get('/add_exercise.js', async (req, res) => {
+    console.log("add_exercise script requested");
+    res.sendFile('add_exercise.js', {root: path.join('server/auth')});
+})
+
 module.exports = router
