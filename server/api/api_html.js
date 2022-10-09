@@ -55,4 +55,16 @@ router.get('/add_exercise.js', async (req, res) => {
     res.sendFile('add_exercise.js', {root: path.join('server/auth')});
 })
 
+// remove_exercise script (client side)
+router.get('/remove_exercise.js', async (req, res) => {
+    console.log("remove_exercise script requested");
+    res.sendFile('remove_exercise.js', {root: path.join('server/auth')});
+})
+
+// fetch_exercise script (client side)
+router.get('/fetch_exercise.js', async (req, res) => {
+    console.log("fetch_exercise script requested");
+    res.sendFile('fetch_exercise.js', {root: path.join('server/auth')});
+})
+
 module.exports = router
