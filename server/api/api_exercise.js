@@ -1,7 +1,7 @@
 const Exercise = require("../database/exercise");
 const router = require('express').Router();
 
-// Register post request
+// Add exercise post request
 router.post('/api/exercise/add', async (req, res) => {
     console.log("Exercise add post request");
 
@@ -18,20 +18,7 @@ router.post('/api/exercise/add', async (req, res) => {
         return;
     }
 
-    //console.log(req.body);
     const {name, image, sets, reps, description, muscleGroup, duration, difficulty} = req.body;
-    //console.log(hashedPassword);
-    /*
-        await User.create({username, password: hashedPassword, id_number}, (err, user) => {
-            if (err) {
-                console.log(err);
-                res.status(500).json({status: 'error'});
-            } else {
-                console.log(user);
-                res.status(200).json({status: 'ok', data: user});
-            }
-        })
-    */
 
     try {
         const user = await Exercise.create({name, image, sets, reps, description, muscleGroup, duration, difficulty});
@@ -39,12 +26,49 @@ router.post('/api/exercise/add', async (req, res) => {
         res.status(200).json({status: 'ok', data: name});
     }
     catch (err) {
-        console.log("Encountered error during sign up: ", err);
+        console.log("Encountered error during adding exercise: ", err);
         res.status(500).json({status: 'error'});
     }
-    //res.json({status: 'ok', data: 'Data test'});
+})
 
+// Remove exercise post request
+router.post('/api/exercise/remove', async (req, res) => {
+    console.log("Exercise remove post request");
 
+    const filter = {};
+    const all = await Exercise.find(filter);
+
+    console.log(all);
+
+    // Check input for validity
+    if (req.body._id === undefined) {
+        res.status(400).json({status: 'error', data: 'Invalid input'});
+        return;
+    }
+
+    const {_id} = req.body;
+
+    try {
+        const user = await Exercise.findById(_id).deleteOne();
+        console.log("Exercise removed successfully: ", user);
+        res.status(200).json({status: 'ok'});
+    }
+    catch (err) {
+        console.log("Encountered error during exercise removal: ", err);
+        res.status(500).json({status: 'error'});
+    }
+})
+
+// All exercises get request
+router.post('/api/exercise/getAll', async (req, res) => {
+    console.log("Send all get request");
+
+    const filter = {};
+    const all = await Exercise.find(filter);
+
+    console.log(all);
+
+    res.status(200).json({status: 'ok', data: all});
 })
 
 module.exports = router;
