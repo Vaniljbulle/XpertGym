@@ -1,0 +1,22 @@
+function fetchAll() {
+
+    let exercises = [];
+
+    fetch('/api/exercise/getAll', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({})
+    }).then(res => res.json())
+        .then(res => {
+            if (res.status === 'ok') {
+                console.log('All exercises fetched successfully!');
+                exercises = JSON.parse(JSON.stringify(res.data));
+                console.log(exercises);
+            } else {
+                alert('All exercises failed to be fetched!');
+            }
+        }).catch(err => console.log(err));
+
+}
