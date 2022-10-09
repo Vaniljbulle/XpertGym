@@ -6,7 +6,7 @@ const scheduleSchema = new mongoose.Schema({
         required: true
     },
     id_user: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     }
 },{collection: 'schedules'});
