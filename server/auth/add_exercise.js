@@ -13,10 +13,10 @@ form.addEventListener('submit', (e) => {
     const difficulty = document.getElementById('difficulty').value;
     const data = {name, image, sets, reps, description, muscleGroup, duration, difficulty};
 
-    postExercise(data);
+    addExercise(data);
 });
 
-function postExercise(data) {
+function addExercise(data) {
     // JSON post request
     fetch('/api/exercise/add', {
         method: 'POST',
