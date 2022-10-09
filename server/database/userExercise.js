@@ -2,12 +2,11 @@ const mongoose = require('mongoose');
 
 const userExerciseSchema = new mongoose.Schema({
     id_exercise: {
-        type: String,
-        required: true,
-        unique: true
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
     },
     id_user: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     }
 },{collection: 'userExercises'});
