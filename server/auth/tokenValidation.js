@@ -15,7 +15,8 @@ function validateAccessToken(req, res, next) {
     if (accessToken) {
         jwt.verify(accessToken, ACCESS_TOKEN_SECRET, (err, user) => {
             if (err instanceof jwt.TokenExpiredError) {
-                return res.status(403).json({status: 'AccessTokenExpired'});
+                //return res.status(302).setHeader('Location', '/api/token').send();
+                return res.status(302).redirect('/api/token');
             }
 
             req.user = user;
@@ -63,6 +64,8 @@ function getToken(cookieHeader, tokenName) {
         for (let i = 0; i < items.length; i++) {
             if (items[i].startsWith(tokenName)) {
                 token = items[i].split('=')[1];
+                if (token.charAt(token.length - 1) === ';')
+                    token = token.substring(0, token.length - 1);
                 break;
             }
         }
