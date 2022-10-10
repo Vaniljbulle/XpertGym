@@ -21,6 +21,9 @@ router.post('/api/login', async (req, res) => {
         const accessToken = generateAccessToken(tokenUser);
         const refreshToken = generateRefreshToken(tokenUser);
 
+        // Store refresh token in database
+        await User.findOneAndUpdate({username}, {$push: {refreshTokens: refreshToken}});
+
         return res.json({
             header: 'Token',
             status: 'ok',
