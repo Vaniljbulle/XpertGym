@@ -24,13 +24,10 @@ router.post('/api/login', async (req, res) => {
         // Store refresh token in database
         await User.findOneAndUpdate({username}, {$push: {refreshTokens: refreshToken}});
 
-        return res.json({
-            header: 'Token',
-            status: 'ok',
-            data: {accessToken: accessToken, refreshToken: refreshToken}
-        })
+        res.cookie('accessToken', accessToken, {httpOnly: true});
+        res.cookie('refreshToken', refreshToken, {httpOnly: true});
+        return res.json({status: 'ok', data: 'Logged in'});
     }
-
     res.json({status: 'error', error: 'Invalid username/password'})
 })
 
