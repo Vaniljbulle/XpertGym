@@ -32,6 +32,10 @@ const exerciseSchema = new mongoose.Schema({
     difficulty: {
         type: Number,
         required: true
+    },
+    custom: {
+        type: Boolean,
+        required: true
     }
 },{collection: 'exercises'});
 
