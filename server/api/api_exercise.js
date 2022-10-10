@@ -13,15 +13,16 @@ router.post('/api/exercise/add', async (req, res) => {
         req.body.description === undefined ||
         req.body.muscleGroup === undefined ||
         req.body.duration === undefined ||
-        req.body.difficulty === undefined) {
+        req.body.difficulty === undefined ||
+        req.body.custom === undefined) {
         res.status(400).json({status: 'error', data: 'Invalid input'});
         return;
     }
 
-    const {name, image, sets, reps, description, muscleGroup, duration, difficulty} = req.body;
+    const {name, image, sets, reps, description, muscleGroup, duration, difficulty, custom} = req.body;
 
     try {
-        const user = await Exercise.create({name, image, sets, reps, description, muscleGroup, duration, difficulty});
+        const user = await Exercise.create({name, image, sets, reps, description, muscleGroup, duration, difficulty, custom});
         console.log("Exercise added successfully: ", user);
         res.status(200).json({status: 'ok', data: name});
     }
