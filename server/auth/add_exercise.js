@@ -11,7 +11,8 @@ form.addEventListener('submit', (e) => {
     const muscleGroup = document.getElementById('muscleGroup').value;
     const duration = document.getElementById('duration').value;
     const difficulty = document.getElementById('difficulty').value;
-    const data = {name, image, sets, reps, description, muscleGroup, duration, difficulty};
+    const custom = document.getElementById('custom').value;
+    const data = {name, image, sets, reps, description, muscleGroup, duration, difficulty, custom};
 
     addExercise(data);
 });
