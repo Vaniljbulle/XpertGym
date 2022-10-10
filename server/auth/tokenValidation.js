@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
-//const res = require("express/lib/response");
-const JWT_SECRET = 'sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk'
 
+const ACCESS_TOKEN_SECRET = 'sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk'
+const REFRESH_TOKEN_SECRET = 'qh987p3hg789ytg832qyt98@#*(&@*!^#&@347n347n34734n6w4tw908y5VFW978G9UWH2V3HYT9823TY'
 
 function validateToken(req, res, next) {
     const authHeader = req.get('cookie')
