@@ -512,6 +512,88 @@ input{
 }
 
 
+/**************Personal trainers*************/
+
+.banner-trainer{
+    background: url(/img/wp.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 50vh;
+}
+
+.about-trainer{
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    color: white;
+    width: 330px;
+}
+
+.about-trainer h2{
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+.about-trainer p{
+    font-size: 20px;
+}
+
+.content-trainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.title-trainer{
+    display: flex;
+    justify-content: center;
+    color: rgb(129, 87, 49);
+    font-size: 2.2em;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.card-trainer {
+    background-color: white;
+    width: 21.25em;
+    box-shadow: 0 5px 25px rgba(1, 1, 1, 15%);
+    border-radius: 10px;
+    padding: 25px;
+    margin: 15px;
+    transition: 0.7s ease; /*time for transition*/
+}
+
+.card-trainer:hover{
+    background-color: gray ;
+    transform: scale(1.1);
+}
+
+.icon{
+    color: purple;
+    font-size: 8em;
+    text-align: center;
+}
+
+.information{
+    text-align: center;
+}
+
+.information h3{
+    color: rgb(129, 87, 49);
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 10px;
+}
+
+img{
+    margin-top: 20px;
+    margin-left: 60px;
+
+}
+
 
 
 
