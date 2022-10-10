@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const verifyToken = require('../auth/tokenValidation');
+const {verifyAccessToken} = require('../auth/tokenValidation');
 
 // Logout post request
-router.post('/api/logout', verifyToken, async (req, res) => {
+router.post('/api/logout', verifyAccessToken, async (req, res) => {
     console.log("Logout post request");
 
     res.clearCookie('token');
