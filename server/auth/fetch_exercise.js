@@ -14,6 +14,11 @@ function fetchAll() {
                 console.log('All exercises fetched successfully!');
                 exercises = JSON.parse(JSON.stringify(res.data));
                 console.log(exercises);
+                for (let i = 0; i < exercises.length; i++) {
+                    document.getElementById('cardHolder').innerHTML += "<p>" + exercises[i].name + "</p>";
+                    document.getElementById('cardHolder').innerHTML += "<img" + " src='/img/" + exercises[i].image + "'>";
+
+                }
             } else {
                 alert('All exercises failed to be fetched!');
             }
