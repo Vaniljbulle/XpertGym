@@ -14,10 +14,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true
-    },
-    refreshTokens: {
-        type: Array,
-        required: false
     }
 },{collection: 'users'});
 
