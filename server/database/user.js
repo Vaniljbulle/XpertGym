@@ -9,11 +9,6 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    },
-    id_number: {
-        type: String,
-        required: true,
-        unique: true
     }
 },{collection: 'users'});
 
