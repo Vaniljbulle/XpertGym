@@ -5,7 +5,6 @@ const registerRoute = require('./server/api/api_register.js');
 const loginRoute = require('./server/api/api_login.js');
 const htmlRoutes = require('./server/api/api_html.js');
 const logoutRoute = require('./server/api/api_logout.js');
-const tokenRoute = require('./server/api/api_token.js');
 
 const app = express();
 
@@ -16,7 +15,6 @@ app.use(loginRoute);
 app.use(htmlRoutes);
 app.use('/img', express.static('img'));
 app.use(logoutRoute);
-app.use(tokenRoute);
 
 
 mongoose.connection.on('disconnected', function() {
