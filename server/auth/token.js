@@ -32,7 +32,6 @@ function validateRefreshToken(req, res, next) {
     const cookieHeader = req.get('cookie');
     const refreshToken = getToken(cookieHeader, 'refreshToken=');
 
-    console.log("GOT ALL THE WAY HERE");
     if (refreshToken) {
         jwt.verify(refreshToken, REFRESH_TOKEN_SECRET, async(err, username) => {
             if (err) {
