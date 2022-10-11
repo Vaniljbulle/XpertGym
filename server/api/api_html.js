@@ -1,6 +1,6 @@
 const path = require("path");
 const router = require('express').Router();
-const {verifyAccessToken} = require('../auth/tokenValidation');
+const {verifyAccessToken} = require('../auth/token');
 
 // token test (private test page)
 const testPagePaths = ['/testpage_private.html', '/testpage_private'];
