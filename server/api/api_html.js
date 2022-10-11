@@ -1,14 +1,35 @@
 const path = require("path");
 const router = require('express').Router();
 const verifyToken = require('../auth/tokenValidation');
+const User = require("../database/user");
+const Membership = require("../database/membership");
 
 // token test (private test page)
 const testPagePaths = ['/testpage_private.html', '/testpage_private'];
 router.get(testPagePaths, verifyToken, (req, res) => {
     console.log("Private test page requested");
+    console.log("Username: " + req.user.id);
     res.sendFile('testpage_private.html', {root: 'frontend'});
 })
 
+// Admin page
+router.get('/admin.html', verifyToken, async (req, res) => {
+    console.log("Private admin page requested");
+    console.log("Username: " + req.user.username);
+    const user = await User.findOne({username: req.user.username}).lean();
+    if (!user) {
+        console.log("Failed to find user: " + req.user.username);
+        return;
+    }
+    const membership = await Membership.findOne({user_id: user._id}).lean();
+    if (!membership) {
+        console.log("Failed to find membership of: " + user._id);
+        return;
+    }
+
+    console.log("Admin page was sent to " + req.user.username);
+    res.sendFile('admin.html', {root: 'frontend'});
+})
 
 // Index (Home page)
 const indexPaths = ['/', '/index', '/home', '/index.html'];
