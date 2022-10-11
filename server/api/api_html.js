@@ -1,10 +1,10 @@
 const path = require("path");
 const router = require('express').Router();
-const {verifyAccessToken} = require('../auth/token');
+const {verifyToken} = require('../auth/token');
 
 // token test (private test page)
 const testPagePaths = ['/testpage_private.html', '/testpage_private'];
-router.get(testPagePaths, verifyAccessToken, (req, res) => {
+router.get(testPagePaths, verifyToken, (req, res) => {
     console.log("Private test page requested");
     res.sendFile('testpage_private.html', {root: 'frontend'});
 })
