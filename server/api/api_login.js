@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const User = require("../database/user");
+const Membership = require("../database/membership");
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
 
@@ -28,7 +29,14 @@ router.post('/api/login', async (req, res) => {
             { expiresIn: '1h' }
         )
 
-        return res.json({ header: 'Authorization', status: 'ok', data: token })
+        let page = 'testpage_private.html';
+        let code = 301;
+        if (await Membership.findOne({user_id: user._id}).lean()){
+            page = 'admin.html'
+        }
+
+        res.status(code).json({header: 'Authorization', status: 'ok', data: token, redirect: page});
+
     }
 
     res.json({ status: 'error', error: 'Invalid username/password' })
