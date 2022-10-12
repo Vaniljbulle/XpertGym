@@ -2,9 +2,7 @@ const bcrypt = require("bcrypt");
 const User = require("../database/user");
 const Membership = require("../database/membership");
 const router = require('express').Router();
-const jwt = require('jsonwebtoken');
-
-const JWT_SECRET = 'sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk'
+const {generateAccessToken, generateRefreshToken} = require('../auth/token');
 
 // Login post request
 router.post('/api/login', async (req, res) => {
@@ -20,15 +18,16 @@ router.post('/api/login', async (req, res) => {
     if (await bcrypt.compare(password, user.password)) {
         // the username, password combination is successful
 
-        const token = jwt.sign(
-            {
-                id: user._id,
-                username: user.username
-            },
-            JWT_SECRET,
-            {expiresIn: '1h'}
-        )
+        const tokenUser = {id: user._id, username: user.username};
+        const accessToken = generateAccessToken(tokenUser);
+        const refreshToken = generateRefreshToken(tokenUser);
 
+        // Store refresh token in database
+        await User.findOneAndUpdate({username}, {$push: {refreshTokens: refreshToken}});
+
+        res.cookie('accessToken', accessToken, {httpOnly: true});
+        res.cookie('refreshToken', refreshToken, {httpOnly: true});
+        
         let page = 'testpage_private.html';
         let code = 301;
         const membership = await Membership.findOne({user_id: user._id}).lean();
@@ -39,13 +38,11 @@ router.post('/api/login', async (req, res) => {
             if (membership.user_level === 2) {
                 page = 'admin.html'
             }
-
-            res.status(code).json({header: 'Authorization', status: 'ok', data: token, redirect: page});
+        
+            return res.json({status: 'ok', data: 'Logged in', redirect: page});
         }
-
-    } else {
-        res.json({status: 'error', error: 'Invalid username/password'})
     }
+    res.json({status: 'error', error: 'Invalid username/password'})
 })
 
 module.exports = router

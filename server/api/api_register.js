@@ -8,7 +8,9 @@ router.post('/api/register', async (req, res) => {
     console.log("Register post request");
 
     // Check input for validity
-    if (req.body.username === undefined || req.body.password === undefined || req.body.membership_id === undefined) {
+    if (req.body.username === undefined || req.body.password === undefined || req.body.id_number === undefined ||
+        req.body.username === "" || req.body.password === "" || req.body.id_number === "") {
+        console.log(req.body);
         res.status(400).json({status: 'error', data: 'Invalid input'});
         return;
     }

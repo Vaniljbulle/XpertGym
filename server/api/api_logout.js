@@ -1,11 +1,15 @@
 const router = require('express').Router();
-const verifyToken = require('../auth/tokenValidation');
+const {verifyToken} = require('../auth/token');
+const mongoose = require('mongoose');
+const User = require('../database/user');
 
 // Logout post request
 router.post('/api/logout', verifyToken, async (req, res) => {
     console.log("Logout post request");
+    await User.findOneAndUpdate({username: req.user.username}, {refreshTokens: []});
 
-    res.clearCookie('token');
+    res.clearCookie('accessToken');
+    res.clearCookie('refreshToken');
     res.json({ status: 'ok', data: 'Logged out' });
     console.log("Logged out " + req.user.username);
 })

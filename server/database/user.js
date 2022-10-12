@@ -9,6 +9,10 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    refreshTokens: {
+        type: Array,
+        required: false
     }
 },{collection: 'users'});
 
