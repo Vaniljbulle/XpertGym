@@ -7,7 +7,9 @@ router.post('/api/register', async (req, res) => {
     console.log("Register post request");
 
     // Check input for validity
-    if (req.body.username === undefined || req.body.password === undefined || req.body.id_number === undefined) {
+    if (req.body.username === undefined || req.body.password === undefined || req.body.id_number === undefined ||
+        req.body.username === "" || req.body.password === "" || req.body.id_number === "") {
+        console.log(req.body);
         res.status(400).json({status: 'error', data: 'Invalid input'});
         return;
     }
@@ -32,8 +34,7 @@ router.post('/api/register', async (req, res) => {
         const user = await User.create({username, password: hashedPassword, id_number});
         console.log("User created successfully: ", user);
         res.status(200).json({status: 'ok', data: username});
-    }
-    catch (err) {
+    } catch (err) {
         console.log("Encountered error during sign up: ", err);
         res.status(500).json({status: 'error'});
     }

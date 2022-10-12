@@ -1,6 +1,6 @@
 const path = require("path");
 const router = require('express').Router();
-const verifyToken = require('../auth/tokenValidation');
+const {verifyToken} = require('../auth/token');
 
 // token test (private test page)
 const testPagePaths = ['/testpage_private.html', '/testpage_private'];
@@ -11,7 +11,7 @@ router.get(testPagePaths, verifyToken, (req, res) => {
 
 
 // Index (Home page)
-const indexPaths = ['/', '/index', '/home', '/index.html'];
+const indexPaths = ['/', '/index', '/home', '/index.html', '/home.html'];
 router.get(indexPaths, async (req, res) => {
     console.log("Index page requested");
     res.sendFile('index.html', {root: path.join('frontend')});
