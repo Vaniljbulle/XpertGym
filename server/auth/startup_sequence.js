@@ -3,38 +3,69 @@ const Membership = require('../database/membership');
 const Exercise = require('../database/exercise');
 const UserExercise = require('../database/userExercise');
 const Schedule = require('../database/schedule');
+const bcrypt = require("bcrypt");
 
-function adminMembership() {
-    const admin_id = "1111";
-    const membership = Membership.findOne({membership_id: admin_id}).lean();
+const admin_username = "Admin";
+const admin_password = "admin";
+const admin_id = "1111";
+
+async function setupAdmin() {
+    let membership = await Membership.findOne({membership_id: admin_id}).lean();
 
     if (!membership) {
-        const created = Membership.create({user_id: undefined, membership_id: admin_id, user_level: 2}); // 2 = admin level
-
-        console.log(created);
+        await Membership.create({user_id: null, membership_id: admin_id, user_level: 2}); // 2 = admin level
+        await Membership.create({user_id: null, membership_id: "2222", user_level: 0});
+        membership = await Membership.findOne({membership_id: admin_id}).lean();
+        console.log("Admin membership created");
+        console.log(membership);
+    } else {
+        console.log("Admin membership exists");
+        console.log(membership);
     }
 
-    const user = User.findOne({username: membership});
+    let user = await User.findOne({_id: membership.user_id}).lean();
+
+    console.log("user found: ");
     console.log(user);
+    if (!user) {
+        const hashedPassword = await bcrypt.hash(admin_password, 10);
+        await User.create({username: admin_username, password: hashedPassword});
+        user = await User.findOne({username: admin_username}).lean();
+
+        console.log("Admin user created");
+        console.log(user);
+
+        await Membership.updateOne({membership_id: admin_id}, {$set:{user_id: user._id}});
+        membership = await Membership.findOne({membership_id: admin_id}).lean();
+
+        console.log("Membership user_id was set to Admin's _id");
+        console.log(membership.user_id);
+        console.log(user._id);
+
+        console.log("Membership");
+        console.log(membership);
+    } else {
+        console.log("Admin user exists");
+        console.log(user);
+    }
 }
 
-function setupAdmin() {
-
-}
 
 async function run() {
-    User.create({username: "testName", password: "test"}).then(r => {
-        console.log("User created");
-    }).catch(err => {
-        console.log("Encountered error during sign up: ", err);
-    });
-    const users = User.find({}).lean();
-    console.log("All users: ");
-    for (let i = 0; i < users.size; i++) {
-        console.log(users[i]);
+    // Printing all existing memberships
+    let memberships = await Membership.find({}).lean();
+    console.log("All memberships");
+    for (const m of memberships) {
+        console.log(m);
     }
-    adminMembership();
-    setupAdmin();
+    // Printing all existing users
+    let users = await User.find({}).lean();
+    console.log("All users");
+    for (const user of users) {
+        console.log(user);
+    }
+
+    await setupAdmin();
 }
 
 module.exports = {run};
