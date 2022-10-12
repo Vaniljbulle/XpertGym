@@ -2,9 +2,7 @@ const mongoose = require('mongoose');
 
 const membershipSchema = new mongoose.Schema({
     user_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        unique: true
+        type: mongoose.Schema.Types.ObjectId
     },
     membership_id: {
         type: String,
