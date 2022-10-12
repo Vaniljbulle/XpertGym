@@ -10,11 +10,11 @@ const JWT_SECRET = 'sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhf
 router.post('/api/login', async (req, res) => {
     console.log(req.body);
     const {username, password} = req.body
-    const user = await User.findOne({ username }).lean()
+    const user = await User.findOne({username}).lean()
     console.log(user);
 
     if (!user) {
-        return res.json({ status: 'error', error: 'Invalid username/password' })
+        return res.json({status: 'error', error: 'Invalid username/password'})
     }
 
     if (await bcrypt.compare(password, user.password)) {
@@ -26,20 +26,26 @@ router.post('/api/login', async (req, res) => {
                 username: user.username
             },
             JWT_SECRET,
-            { expiresIn: '1h' }
+            {expiresIn: '1h'}
         )
 
         let page = 'testpage_private.html';
         let code = 301;
-        if (await Membership.findOne({user_id: user._id}).lean()){
-            page = 'admin.html'
+        const membership = await Membership.findOne({user_id: user._id}).lean();
+        if (!membership) {
+            res.json({status: 'error', error: 'No membership found'});
+        } else {
+            console.log("Membership level: " + membership.user_level);
+            if (membership.user_level === 2) {
+                page = 'admin.html'
+            }
+
+            res.status(code).json({header: 'Authorization', status: 'ok', data: token, redirect: page});
         }
 
-        res.status(code).json({header: 'Authorization', status: 'ok', data: token, redirect: page});
-
+    } else {
+        res.json({status: 'error', error: 'Invalid username/password'})
     }
-
-    res.json({ status: 'error', error: 'Invalid username/password' })
 })
 
 module.exports = router
