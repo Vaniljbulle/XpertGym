@@ -3,6 +3,7 @@ const Membership = require('../database/membership');
 const Exercise = require('../database/exercise');
 const UserExercise = require('../database/userExercise');
 const Schedule = require('../database/schedule');
+const ScheduleLink = require('../database/scheduleLink');
 const bcrypt = require("bcrypt");
 
 const admin_username = "Admin";
@@ -50,20 +51,34 @@ async function setupAdmin() {
     }
 }
 
+async function printAll(db, name) {
+    let all = await db.find({}).lean();
+    console.log("All " + name);
+    for (const a of all) {
+        console.log(a);
+    }
+}
 
 async function run() {
     // Printing all existing memberships
-    let memberships = await Membership.find({}).lean();
-    console.log("All memberships");
-    for (const m of memberships) {
-        console.log(m);
-    }
-    // Printing all existing users
-    let users = await User.find({}).lean();
-    console.log("All users");
-    for (const user of users) {
-        console.log(user);
-    }
+    // let memberships = await Membership.find({}).lean();
+    // console.log("All memberships");
+    // for (const m of memberships) {
+    //     console.log(m);
+    // }
+    // // Printing all existing users
+    // let users = await User.find({}).lean();
+    // console.log("All users");
+    // for (const user of users) {
+    //     console.log(user);
+    // }
+
+    await printAll(Membership, "Membership");
+    await printAll(User, "User");
+    await printAll(Exercise, "Exercise");
+    await printAll(UserExercise, "UserExercise");
+    await printAll(Schedule, "Schedule");
+    await printAll(ScheduleLink, "ScheduleLink");
 
     await setupAdmin();
 }
