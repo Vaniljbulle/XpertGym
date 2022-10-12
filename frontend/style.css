@@ -47,7 +47,7 @@
 
 /* start of banner content*/
 .banner{
-    background: url(/img/wp.webp);
+    background: url(/img/2bg.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -84,10 +84,14 @@
 }
 .about{
     position: absolute;
-    top: 30%;
-    left: 10%;
     color: white;
-    width: 330px;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
 }
 .about .btn{
     margin-top: 1rem;
@@ -97,10 +101,7 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 30px;
-}
-.about p{
-    float: left;
-}
+    }
 /* end of banner content*/
 .navbar{
     width: 100%;
@@ -160,7 +161,6 @@ footer {
 
 h3{
     color: burlywood;
-    font-weight: 60px;
     font-size: 2.1em;
     font-style: italic;
 }
@@ -222,7 +222,7 @@ h5{
 }
 .tabBtn {
     align-items: center;
-    background-image: linear-gradient(135deg, #cdaa7f 40%, #000000);
+    background-image: linear-gradient(#464d55, #25292e);
     border: 0;
     border-radius: 10px;
     box-sizing: border-box;
@@ -248,8 +248,28 @@ h5{
     margin-bottom: 3px;
 }
 
-/*************Log in **************/
+.tabBtn:hover{
+    box-shadow: 0 0 12px rgb(53, 56, 59) inset;
+    border: 1px solid rgba(255,255,255,1);
+    color: rgba(255,255,255,1);
+}
+/************* Schedules **************/
+.scheme{
+    width: 100%;
+    height: 100px;
+    background-color: #bdbdbd;
+    margin-top: 1rem;
+}
 
+.schemeInputText{
+    width: 100%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/*************Log in **************/
 .img{
     min-height: 100vh; /*the minimum*/
     width: 100%;
