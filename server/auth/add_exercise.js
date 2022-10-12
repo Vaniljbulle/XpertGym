@@ -30,7 +30,6 @@ function addExercise(data) {
             console.log(res);
             if (res.status === 'ok') {
                 alert('Exercise added successfully! ' + res.data);
-                window.location.href = 'login.html';
             } else {
                 alert('Exercise failed to be added!');
             }

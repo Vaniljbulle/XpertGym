@@ -21,7 +21,6 @@ function removeExercise(_id) {
             console.log(res);
             if (res.status === 'ok') {
                 alert('Exercise removed successfully! ' + res.data);
-                window.location.href = 'login.html';
             } else {
                 alert('Exercise failed to be removed!');
             }
