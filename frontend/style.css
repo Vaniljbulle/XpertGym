@@ -1,10 +1,9 @@
-* {
+/** {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
     overflow: auto;
-    font-family: 'Poppins', sans-serif;
-}
+}*/
 /*Start of Column*/
 .row {
     width: 100vw;
@@ -47,7 +46,7 @@
 
 /* start of banner content*/
 .banner{
-    background: url(/img/2bg.jpg);
+    background: url(/img/wp.webp);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -84,14 +83,10 @@
 }
 .about{
     position: absolute;
+    top: 30%;
+    left: 10%;
     color: white;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin: 0;
-    align-content: center;
-    justify-content: center;
-    text-align: center;
+    width: 330px;
 }
 .about .btn{
     margin-top: 1rem;
@@ -101,7 +96,8 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 30px;
-    }
+}
+
 /* end of banner content*/
 .navbar{
     width: 100%;
@@ -143,8 +139,6 @@ li{
 }
 
 /* end of navbar */
-
-/* Start of footer */
 footer {
     background-color: rgb(53, 56, 58);
     width: 100%;
@@ -163,6 +157,7 @@ footer {
 
 h3{
     color: burlywood;
+    font-weight: 60px;
     font-size: 2.1em;
     font-style: italic;
 }
@@ -205,73 +200,10 @@ h5{
     color: rgb(176, 120, 47);
     text-decoration: underline;
 }
-/************* Profile **************/
-.username{
-    font-size: 30px;
-    font-weight: 500;
-    margin-bottom: 10px;
-    text-decoration: underline;
-}
-.container{
-    max-width: 1250px;
-    width: 100%;
-    margin: auto;
-    padding: 10px 30px 30px 30px;
-    border-radius: 5px;
-    box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
-}
-.bar{
-}
-.tabBtn {
-    align-items: center;
-    background-image: linear-gradient(#464d55, #25292e);
-    border: 0;
-    border-radius: 10px;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    font-size: 16px;
-    font-weight: 700;
-    height: 54px;
-    justify-content: center;
-    letter-spacing: 0.5px;
-    line-height: 1;
-    max-width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 3px;
-    text-decoration: none;
-    text-transform: uppercase;
-    touch-action: manipulation;
-    width: 100%;
-    margin-top: 3px;
-    margin-bottom: 3px;
-}
 
-.tabBtn:hover{
-    box-shadow: 0 0 12px rgb(53, 56, 59) inset;
-    border: 1px solid rgba(255,255,255,1);
-    color: rgba(255,255,255,1);
-}
-/************* Schedules **************/
-.scheme{
-    width: 100%;
-    height: 100px;
-    background-color: #bdbdbd;
-    margin-top: 1rem;
-}
-
-.schemeInputText{
-    width: 100%;
-    padding: 12px 20px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
 
 /*************Log in **************/
+
 .img{
 
     width: 100%;
@@ -386,7 +318,7 @@ h5{
     align-items: center ; /*center in main section*/
     /*  position: absolute; /*position for header mot moving*/
     display: flex;
-    padding: 200px 1px; /* 10px top and bottom, 200px right and left*/
+    padding: 200px 750px; /* 10px top and bottom, 200px right and left*/
     /*For back ground picture*/
     background: url(/img/BMI-background.jpg) no-repeat;
     background-size: cover;
@@ -394,6 +326,7 @@ h5{
     background-attachment: fixed;
     height: 50vh;
 }
+
 
 .box{
     position: absolute;
@@ -434,10 +367,6 @@ h5{
 
 }
 
-.but:hover{
-    background: rgb(103, 11, 121);
-}
-
 span{
     color: rgb(170, 33, 33);
     height: 100%;
@@ -457,11 +386,6 @@ span{
 
 #output{
     color:black;
-    width: 250px;
-    font-weight: 700;
-    font-size: xx-large;
-    font-family:cursive;
-    
 }
 /*********** Input ***************/
 input{
@@ -473,8 +397,6 @@ input{
     font-family: Arial, Helvetica, sans-serif;
 
 }
-
-
 
 
 

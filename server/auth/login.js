@@ -23,7 +23,7 @@ async function login(event) {
         // localStorage.setItem('token', result.data)
         // Store as cookie
         // document.cookie = `accessToken=${result.data.accessToken} refreshToken=${result.data.refreshToken}`
-        window.location.href = result.redirect;
+        window.location.href = 'testpage_private.html'
     } else {
         alert(result.error)
     }

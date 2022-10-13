@@ -10,6 +10,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    id_number: {
+        type: String,
+        required: true,
+        unique: true
+    },
     refreshTokens: {
         type: Array,
         required: false
