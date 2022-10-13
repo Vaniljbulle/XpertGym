@@ -4,6 +4,11 @@ const User = require("../database/user");
 const Membership = require("../database/membership");
 const {verifyToken} = require('../auth/token');
 
+// GET request for client side gym pop data change js
+router.get('/gym_pop_client.js', async (req, res) => {
+    res.sendFile('gym_pop_client.js', {root: 'server/auth'});
+});
+
 // token test (private test page)
 const testPagePaths = ['/testpage_private.html', '/testpage_private'];
 router.get(testPagePaths, verifyToken, (req, res) => {
