@@ -3,7 +3,7 @@ const xlsx = require('xlsx');
 
 // GET request for gym pop data
 router.get('/api/gympopulationdata', async (req, res) => {
-    getGymPopData();
+    res.json({currentPop: getGymPopData()});
 });
 
 
