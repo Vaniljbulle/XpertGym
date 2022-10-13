@@ -6,8 +6,8 @@ form.addEventListener('submit', (e) => {
     const username = document.getElementById('username').value;
     // TODO: Hash password / authenticate client
     const password = document.getElementById('password').value;
-    const id_number = document.getElementById('id_number').value;
-    const data = {username, password, id_number};
+    const membership_id = document.getElementById('id_number').value;
+    const data = {username, password, membership_id};
 
     // JSON post request
     fetch('/api/register', {
