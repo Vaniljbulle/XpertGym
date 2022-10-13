@@ -150,6 +150,8 @@ footer {
     width: 100%;
     bottom: 0; left: 0;right: 0;
     height: auto;
+
+
 }
 .contact{
     display: flex;
@@ -271,35 +273,38 @@ h5{
 
 /*************Log in **************/
 .img{
-    min-height: 100vh; /*the minimum*/
+
     width: 100%;
     align-items: center ; /*center in main section*/
-    position: absolute; /*position for header mot moving*/
+    /*  position: absolute; /*position for header mot moving*/
     display: flex;
-    padding: 200px 750px; /* 10px top and bottom, 200px right and left*/
+    padding: 200px 1px; /* 10px top and bottom, 200px right and left*/
     /*For back ground picture*/
     background: url(/img/login.jfif) no-repeat;
-    background-size: cover;
+    background-size:cover;
     background-position: center;
     background-attachment: fixed;
+    height: 50vh;
+
 }
 
 .img::after{
     position: absolute;
     content: '';
-    top: 0;
-    left: 0;
-    height: 100%;
+    top: 6px;
+    left: 1px;
+    height: 88%;
     width: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.5);
+    
 }
 
 .content{
-    position: fixed;
+    position:absolute;
     top: 50%;
     left: 50%;
     text-align: center;
-    padding: 100px 100px;
+    padding: 200px 200px;
     width: 370px;
     background: rgba(255, 255, 255, 0.04);
     box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
@@ -315,7 +320,7 @@ h5{
 
 .filed{
     position: relative;
-    height: 45px;
+    height: 35px;
     width: 100%;
     display: flex;
     background: rgba(255, 255, 255, 0.94);
@@ -326,7 +331,7 @@ h5{
     height: 100%;
     width: 100%;
     color: #222;
-    font-size: 16px ;
+    font-size: 25px ;
     margin-right: 10px;
     background: transparent;
     border: none;
@@ -360,6 +365,7 @@ h5{
 .signup{
     color:white;
     margin-top: 20px;
+    font-size: 35px;
 }
 
 .signup a{
@@ -371,4 +377,183 @@ h5{
 .signup a:hover {
     text-decoration:underline ;
     color:burlywood;
+
+}
+
+/************ BMI **************/
+.img-BMI{
+    width: 100%;
+    align-items: center ; /*center in main section*/
+    /*  position: absolute; /*position for header mot moving*/
+    display: flex;
+    padding: 200px 1px; /* 10px top and bottom, 200px right and left*/
+    /*For back ground picture*/
+    background: url(/img/BMI-background.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 50vh;
+}
+
+.box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    padding: 100px 100px;
+    width: 370px;
+    transform: translate(-50%, -50%);
+    background-color: rgb(129, 87, 49);
+}
+
+.box h2{
+    color: white;
+    font-size: 40px;
+    margin: 0 0 50px 0;
+}
+
+.box a{
+    color: burlywood;
+    font-size: 35px;
+
+}
+
+.but{
+    background:  rgb(176, 120, 47);
+    border: 8px ;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    margin-top: 40px;
+    padding: 10px 100px;
+    border-radius: 8px;
+
+}
+
+.but:hover{
+    background: rgb(103, 11, 121);
+}
+
+span{
+    color: rgb(170, 33, 33);
+    height: 100%;
+    width: 50%;
+    font-size: 16px ;
+    margin-top: 10px;
+}
+
+.filed{
+    position: relative;
+    height: 45px;
+    width: 100%;
+    display: flex;
+    background: rgba(255, 255, 255, 0.94);
+    border-radius: 8px;
+}
+
+#output{
+    color:black;
+    width: 250px;
+    font-weight: 700;
+    font-size: xx-large;
+    font-family:cursive;
+    
+}
+/*********** Input ***************/
+input{
+
+    padding-left: 12px;
+    width: 250px;
+    font-weight: 700;
+    font-size: xx-large;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+
+/**************Personal trainers*************/
+
+.banner-trainer{
+    background: url(/img/wp.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 50vh;
+}
+
+.about-trainer{
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    color: white;
+    width: 330px;
+}
+
+.about-trainer h2{
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+.about-trainer p{
+    font-size: 20px;
+}
+
+.content-trainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.title-trainer{
+    display: flex;
+    justify-content: center;
+    color: rgb(129, 87, 49);
+    font-size: 2.2em;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.card-trainer {
+    background-color: white;
+    width: 21.25em;
+    box-shadow: 0 5px 25px rgba(1, 1, 1, 15%);
+    border-radius: 10px;
+    padding: 25px;
+    margin: 15px;
+    transition: 0.7s ease; /*time for transition*/
+}
+
+.card-trainer:hover{
+    background-color: gray ;
+    transform: scale(1.1);
+}
+
+.icon{
+    color: purple;
+    font-size: 8em;
+    text-align: center;
+}
+
+.information{
+    text-align: center;
+}
+
+.information h3{
+    color: rgb(129, 87, 49);
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 10px;
+}
+
+img{
+    margin-top: 20px;
+    margin-left: 60px;
+
 }
