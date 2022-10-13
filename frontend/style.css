@@ -557,3 +557,36 @@ img{
     margin-left: 60px;
 
 }
+
+/* Center the div, move it all the way to the left on the navbar
+   but not to overlap the logo and make it look pretty  */
+.population_navbar {
+    max-width: 200px;
+    /* background-color: rgb(129, 87, 49); */
+    color: #ce4005;
+    font-size: 1em;
+    font-weight: 700;
+    margin: 7px;
+    height: auto;
+    position: absolute;
+    top: 10%;
+    left: 9%;
+}
+
+/* MAKE THE TEXT GLOW IN PRETTY PINK */
+.glow {
+    color: #fff;
+    text-align: center;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 13px #fff, 0 0 16px #e60073, 0 0 19px #e60073, 0 0 22px #e60073, 0 0 25px #e60073, 0 0 28px #e60073;
+    }
+    to {
+        text-shadow: 0 0 13px #fff, 0 0 16px #ff4da6, 0 0 19px #ff4da6, 0 0 22px #ff4da6, 0 0 25px #ff4da6, 0 0 28px #ff4da6, 0 0 31px #ff4da6;
+    }
+}
