@@ -34,7 +34,7 @@ const exerciseSchema = new mongoose.Schema({
         required: true
     },
     custom: {
-        type: Boolean,
+        type: Number,
         required: true
     }
 },{collection: 'exercises'});
