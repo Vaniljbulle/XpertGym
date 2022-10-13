@@ -464,14 +464,12 @@ span{
     
 }
 /*********** Input ***************/
-input{
-
+.bmiInput{
     padding-left: 12px;
     width: 250px;
     font-weight: 700;
     font-size: xx-large;
     font-family: Arial, Helvetica, sans-serif;
-
 }
 
 
@@ -509,6 +507,7 @@ input{
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
+    overflow: hidden;
 }
 
 .title-trainer{
