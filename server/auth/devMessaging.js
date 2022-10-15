@@ -29,3 +29,40 @@ document.getElementById("fetch_users").addEventListener("click", function () {
             });
         });
 })
+
+// Add membership to database
+document.getElementById("membershipIDSubmit").addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const data = {MEMBERSHIP_ID: document.getElementById("membershipID").value};
+
+    fetch('/api/membership/add', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(res => res.json())
+        .then(res => {
+            console.log(res);
+            if (res.status === 'ok') {
+                alert('Membership added!');
+            } else {
+                alert('Membership not added!');
+            }
+        });
+})
+
+// Clear all database
+document.getElementById("clearAll").addEventListener("click", function () {
+    fetch("/api/dev/clear")
+        .then(response => response.json())
+        .then(result => {
+            console.log(result);
+            if (result.status === 'ok') {
+                alert('Database cleared!');
+            } else {
+                alert('Database not cleared!');
+            }
+        });
+});
