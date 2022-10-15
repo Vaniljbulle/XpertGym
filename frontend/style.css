@@ -612,15 +612,15 @@ img{
 
 /* Button style */
 .devChatFrame button {
-    width: 150px;
-    margin-top: 3px;
-    padding: 0;
     display: block;
 }
 
 /* Button stand out style */
 .devChatFrame .fetch {
-    height: 30px;
+    width: 300px;
+    margin-top: 3px;
+    margin-bottom: 15px;
+    height: 50px;
     color: #e00b0b;
     font-size: 1.5em;
     font-weight: 700;
@@ -648,4 +648,31 @@ img{
     /* stack items vertically */
     display: flex;
     flex-direction: column;
+}
+
+.devChatFrame .devListContainer {
+    min-width: 300px;
+    max-width: 500px;
+}
+.devChatFrame .devListContainer p {
+    margin: 5px;
+}
+.devChatFrame .devListItem{
+    margin: 2px;
+    padding: 0;
+    border: 1px solid #e00b0b;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.devChatFrame .devListItem:hover{
+    background-color: #e00b0b;
+    color: white;
+    transform: scale(1.01);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.devChatFrame .devListItem:active {
+    background-color: #e00b0b;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }
