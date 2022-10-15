@@ -4,6 +4,11 @@ const User = require("../database/user");
 const Membership = require("../database/membership");
 const {verifyToken} = require('../auth/token');
 
+// GET devMessaging.js
+router.get('/devMessaging.js', verifyToken, async (req, res) => {
+    res.sendFile('devMessaging.js', {root: 'server/auth'});
+});
+
 // GET request for client side gym pop data change js
 router.get('/gym_pop_client.js', async (req, res) => {
     res.sendFile('gym_pop_client.js', {root: 'server/auth'});
