@@ -10,16 +10,22 @@
 <!-- Add membership ID to database -->
 <div class="devBox">
     <div class="devAdders">
-
         <!-- Membership ID -->
-        <form id="addMembershipID">
+        <h2>Memberships</h2>
+        <form id="devMembershipID">
             <label for="membershipID">Membership ID:</label>
             <input id="membershipID" type="text" name="membershipID">
             <input id="membershipIDSubmit" type="submit" value="Add">
             <input id="membershipIDRemove" type="submit" value="Remove">
             <input id="membershipIDClear" type="submit" value="Clear all">
         </form>
+        <h2>Database</h2>
+        <button id="clearAll" type="submit" value="Clear all">Clear All</button>
+        <button id="clearUsers" type="submit" value="Clear users">Clear Users</button>
+        <button id="clearWorkouts" type="submit" value="Clear workouts">Clear Workouts</button>
+        <button id="clearMessages" type="submit" value="Clear messages">Clear Messages</button>
     </div>
+
     <!-- List of users -->
     <div class="devChatFrame">
         <div class="devListContainer">
