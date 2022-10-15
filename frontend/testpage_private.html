@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -10,6 +11,55 @@
 <form id="logout_form">
     <input id="logout" type="submit" value="Logout">
 </form>
+
+<div class="devChatFrame">
+    <div>
+        <h2>Workouts</h2>
+        <button>Workout</button>
+        <button>Workout</button>
+        <button>Workout</button>
+        <button>Workout</button>
+        <button>Workout</button>
+    </div>
+    <div>
+        <h2>Chat for selected workout</h2>
+        <form>
+            <fieldset class="postedMessage">
+                <legend>Admin @ 12:53 15/10/2022</legend>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab animi asperiores atque autem debitis
+                    dignissimos dolores eaque eligendi facere hic ipsa ipsum iusto modi molestias mollitia, nam neque
+                    nostrum praesentium, quasi qui quis quisquam quos repellendus reprehenderit sint tenetur voluptate?
+                    Aliquid culpa debitis exercitationem ipsa nam neque rerum voluptate.</p>
+            </fieldset>
+
+            <fieldset class="postedMessage">
+                <legend>User @ 13:24 15/10/2022</legend>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque commodi dignissimos dolorem est,
+                    eveniet expedita fugiat illo incidunt itaque laboriosam molestias odio perspiciatis provident quae
+                    qui quia quis quo repellat repudiandae sequi sint sit ullam veniam voluptatibus. Aspernatur
+                    consequuntur distinctio earum, ipsum magnam natus optio sed ullam unde voluptate? Harum ullam,
+                    voluptates. Accusamus deserunt dignissimos ea impedit itaque modi quis repellat reprehenderit. Ab
+                    deleniti dolorum expedita harum illum ipsam itaque odio quisquam sapiente similique! Deleniti
+                    dolorum impedit ipsa laborum magni maxime nesciunt placeat porro quos ut? Ab asperiores assumenda
+                    autem dolorem dolorum earum magnam, maiores nisi quos rem similique!</p>
+            </fieldset>
+
+            <fieldset class="postedMessage">
+                <legend>Admin @ 14:53 15/10/2022</legend>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius harum minima odit? Ea quo, vel?</p>
+            </fieldset>
+
+            <form>
+                <label for="messageSubmit"></label>
+                <textarea id="messageSubmit" name="messageSubmit"
+                          placeholder="Write a message. Press submit to send"></textarea>
+                <p><input type="submit" value="Submit"></p>
+            </form>
+
+        </form>
+    </div>
+</div>
+
 </body>
 <script>
     const form = document.getElementById('logout_form')
@@ -39,7 +89,4 @@
 
     }
 </script>
-<script src="add_schedule.js"></script>
-<script src="remove_schedule.js"></script>
-<script src="fetch_schedule.js"></script>
 </html>

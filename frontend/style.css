@@ -590,3 +590,62 @@ img{
         text-shadow: 0 0 13px #fff, 0 0 16px #ff4da6, 0 0 19px #ff4da6, 0 0 22px #ff4da6, 0 0 25px #ff4da6, 0 0 28px #ff4da6, 0 0 31px #ff4da6;
     }
 }
+
+
+/* Dev/Admin/User Test page */
+
+.devChatFrame {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 10px;
+    border: 2px solid #e00b0b;
+}
+
+.devChatFrame div {
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #e00b0b;
+    overflow: auto;
+}
+
+/* Button style */
+.devChatFrame button {
+    width: 150px;
+    margin-top: 3px;
+    padding: 0;
+    display: block;
+}
+
+/* Button stand out style */
+.devChatFrame .fetch {
+    height: 30px;
+    color: #e00b0b;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.devChatFrame fieldset {
+    margin: 10px;
+    border: 1px solid #e00b0b;
+    max-width: 500px;
+}
+.devChatFrame fieldset p{
+    text-align: left;
+}
+
+.devChatFrame textarea {
+    width: 100%;
+    max-width: 500px;
+    height: 100px;
+    margin: 10px 10px 0 10px;
+    padding: 10px;
+    border: 2px solid #0735ce;
+}
+
+.devChatFrame .postMessage {
+    /* stack items vertically */
+    display: flex;
+    flex-direction: column;
+}
