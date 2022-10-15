@@ -7,9 +7,7 @@ const isAdmin = require("../auth/isAdmin");
 router.post('/api/membership/add', verifyToken, async (req, res) => {
     // Check if user is admin
 
-    if (await isAdmin(req.user) === false) {
-        res.status(403).json({status: 'error', data: 'Not authorized'});
-    } else {
+    if (await isAdmin(req.user)) {
         // Add membership to database
         console.log("Adding membership " + req.body.MEMBERSHIP_ID + " to database");
         try {
@@ -18,7 +16,8 @@ router.post('/api/membership/add', verifyToken, async (req, res) => {
         } catch (err) {
             res.status(500).json({status: 'error', data: err});
         }
-
+    } else {
+        res.status(403).json({status: 'error', data: 'Not authorized'});
     }
 });
 
