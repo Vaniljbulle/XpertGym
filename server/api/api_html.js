@@ -3,6 +3,7 @@ const router = require('express').Router();
 const User = require("../database/user");
 const Membership = require("../database/membership");
 const {verifyToken} = require('../auth/token');
+const isAdmin = require('../auth/isAdmin');
 
 // GET devMessaging.js
 router.get('/devMessaging.js', verifyToken, async (req, res) => {
@@ -37,8 +38,14 @@ router.get('/admin.html', verifyToken, async (req, res) => {
         return;
     }
 
-    console.log("Admin page was sent to " + req.user.username);
-    res.sendFile('admin.html', {root: 'frontend'});
+    if (await isAdmin(req.user)) {
+        console.log("Admin page was sent to " + req.user.username + " with membership id " + membership.user_level);
+        res.sendFile('admin.html', {root: 'frontend'});
+    }
+    else {
+        console.log("Non-admin user attempted to access admin page");
+        return res.status(403).send('Forbidden - ' + req.user.username + ' with user level ' + membership.user_level);
+    }
 })
 
 // Index (Home page)
