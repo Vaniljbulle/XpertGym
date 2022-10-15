@@ -30,8 +30,8 @@ router.get('/api/dev/clear', verifyToken, async (req, res) => {
     // Clear all databases
     if (await isAdmin(req.user)) {
         console.log("Clearing all databases");
-        await User.deleteMany({});
-        await Membership.deleteMany({});
+        await User.deleteMany({username: {$nin:["Admin"]}}); // Delete all accounts except Admin
+        await Membership.deleteMany({user_level: {$nin:[2]}}); // Delete all memberships except Admin
         await Exercise.deleteMany({});
         await UserExercise.deleteMany({});
         await Schedule.deleteMany({});
