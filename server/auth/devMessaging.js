@@ -7,14 +7,60 @@ function addUserToList(user) {
     userDiv.id = user._id;
     userP.innerText = user.username;
     userDiv.appendChild(userP);
-    document.getElementsByClassName("devListContainer")[0].appendChild(userDiv);
+    document.getElementById("devUserList").appendChild(userDiv);
+
+    userDiv.addEventListener("click", userListListener);
+}
+
+// Add new workout to list
+function addWorkoutToList(workout) {
+    let workoutDiv = document.createElement("div");
+    let workoutP = document.createElement("p");
+
+    workoutDiv.classList.add("devListItem");
+    workoutDiv.id = workout._id;
+    workoutP.innerText = workout.name;
+    workoutDiv.appendChild(workoutP);
+    document.getElementById("devWorkoutList").appendChild(workoutDiv);
+
+    //workoutDiv.addEventListener("click", workoutListListener);
+}
+
+// Event listener for user list
+function userListListener(e) {
+    e.preventDefault();
+
+    const data = {user_id: e.currentTarget.id};
+
+    fetch("/api/dev/schedule/get", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(res => res.json())
+        .then(res => {
+            if (res.status === "ok") {
+                clearList("devWorkoutList");
+
+                res.data.forEach(workout => {
+                    addWorkoutToList(workout);
+                });
+            } else {
+                console.log("Error getting schedules");
+            }
+        });
+
+
 }
 
 // Remove all divs from list
-function clearUserList() {
-    let userDivs = document.getElementsByClassName("devListItem");
-    while (userDivs.length > 0) {
-        userDivs[0].parentNode.removeChild(userDivs[0]);
+function clearList(id) {
+    // Get element by class name and ID
+
+    let divs = document.getElementById(id).getElementsByClassName("devListItem");
+    while (divs.length > 0) {
+        divs[0].parentNode.removeChild(divs[0]);
     }
 }
 
@@ -23,7 +69,7 @@ document.getElementById("fetch_users").addEventListener("click", function () {
     fetch("/api/dev/users")
         .then(response => response.json())
         .then(result => {
-            clearUserList();
+            clearList("devUserList");
             result.data.forEach(user => {
                 addUserToList(user);
             });
