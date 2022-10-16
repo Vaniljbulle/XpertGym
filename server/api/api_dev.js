@@ -42,5 +42,22 @@ router.get('/api/dev/clear', verifyToken, async (req, res) => {
     }
 })
 
+// Get all schedules for specific user
+router.post('/api/dev/schedule/get', verifyToken, async (req, res) => {
+    console.log("Get schedule for specific user ID");
+    console.log(req.body);
+
+    try {
+        const schedules = await Schedule.find({id_user: req.body.user_id}).lean();
+
+        console.log("Schedules fetched successfully: ", schedules);
+        res.status(200).json({status: 'ok', data: schedules});
+    }
+    catch (err) {
+        console.log("Encountered error during fetching schedules: ", err);
+        res.status(500).json({status: 'error'});
+    }
+})
+
 
 module.exports = router;
