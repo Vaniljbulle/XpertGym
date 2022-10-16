@@ -12,15 +12,19 @@
     <input id="logout" type="submit" value="Logout">
 </form>
 
+<div>
+    <h2>Workout planner schedule mock</h2>
+    <form id="devWorkout_planner">
+        <label for="devWorkout_name">Schedule name:</label>
+        <input id="devWorkout_name" type="text" name="workout_name">
+        <input id="devWorkout_name_submit" type="submit" value="Submit">
+    </form>
+</div>
+
 <div class="devChatFrame">
     <div class="devListContainer">
         <h2>Workouts</h2>
-        <div class="devListItem">
-            <p>Workout name</p>
-        </div>
-        <div class="devListItem">
-            <p>Workout name</p>
-        </div>
+        <button id="fetch_workouts" class="fetch">Fetch workouts</button>
         <div class="devListItem">
             <p>Workout name</p>
         </div>
@@ -90,7 +94,30 @@
         } catch (e) {
             alert('Error logging out')
         }
-
     }
+
+    // Submit mock schedule
+    document.getElementById("devWorkout_name_submit").addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const data = {name: document.getElementById("devWorkout_name").value,
+        exercises: null};
+
+        fetch('/api/schedule/mock/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(res => res.json())
+            .then(res => {
+                console.log(res);
+                if (res.status === 'ok') {
+                    alert('Schedule added!');
+                } else {
+                    alert('Schedule not added!');
+                }
+            });
+    })
 </script>
 </html>
