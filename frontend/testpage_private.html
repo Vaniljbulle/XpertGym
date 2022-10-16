@@ -119,5 +119,47 @@
                 }
             });
     })
+
+    // Fetch workouts
+    document.getElementById("fetch_workouts").addEventListener("click", function (e) {
+        e.preventDefault();
+
+        fetch('/api/schedule/get', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+            .then(res => {
+                console.log(res);
+                if (res.status === 'ok') {
+                    clearWorkoutList();
+                    res.data.forEach(workout => {
+                        addWorkoutToList(workout);
+                    })
+                } else {
+                    alert('Workouts not fetched!');
+                }
+            });
+    })
+
+    // Remove all divs from list
+    function clearWorkoutList() {
+        let workoutDivs = document.getElementsByClassName("devListItem");
+        while (workoutDivs.length > 0) {
+            workoutDivs[0].parentNode.removeChild(workoutDivs[0]);
+        }
+    }
+
+    function addWorkoutToList(workout) {
+        let workoutDiv = document.createElement("div");
+        let workoutP = document.createElement("p");
+
+        workoutDiv.classList.add("devListItem");
+        workoutDiv.id = workout._id;
+        workoutP.innerText = workout.name;
+        workoutDiv.appendChild(workoutP);
+        document.getElementsByClassName("devListContainer")[0].appendChild(workoutDiv);
+    }
 </script>
 </html>
