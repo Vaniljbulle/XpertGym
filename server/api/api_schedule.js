@@ -66,6 +66,21 @@ router.post('/api/schedule/mock/add', verifyToken, async (req, res) => {
     }
 })
 
+// Get all schedules for user
+router.get('/api/schedule/get', verifyToken, async (req, res) => {
+    console.log("Get schedules get request");
+    try {
+        const user = await User.findOne({username: req.user.username}).lean();
+        const schedules = await Schedule.find({id_user: user._id}).lean();
+
+        console.log("Schedules fetched successfully: ", schedules);
+        res.status(200).json({status: 'ok', data: schedules});
+    }
+    catch (err) {
+        console.log("Encountered error during fetching schedules: ", err);
+        res.status(500).json({status: 'error'});
+    }
+})
 
 // Remove schedule post request
 router.post('/api/schedule/remove', async (req, res) => {
