@@ -1,29 +1,21 @@
 // Add new user to list
-function addUserToList(user) {
-    let userDiv = document.createElement("div");
-    let userP = document.createElement("p");
+function addToList(data, id) {
+    let divElement = document.createElement("div");
+    let paragraphElement = document.createElement("p");
 
-    userDiv.classList.add("devListItem");
-    userDiv.id = user._id;
-    userP.innerText = user.username;
-    userDiv.appendChild(userP);
-    document.getElementById("devUserList").appendChild(userDiv);
+    divElement.classList.add("devListItem");
+    divElement.id = data._id;
+    data.username === undefined ? paragraphElement.innerText = data.name : paragraphElement.innerText = data.username;
+    divElement.appendChild(paragraphElement);
+    document.getElementById(id).appendChild(divElement);
 
-    userDiv.addEventListener("click", userListListener);
+    id === "devUserList" ? divElement.addEventListener("click", userListListener) :
+        divElement.addEventListener("click", workoutListListener);
 }
 
-// Add new workout to list
-function addWorkoutToList(workout) {
-    let workoutDiv = document.createElement("div");
-    let workoutP = document.createElement("p");
-
-    workoutDiv.classList.add("devListItem");
-    workoutDiv.id = workout._id;
-    workoutP.innerText = workout.name;
-    workoutDiv.appendChild(workoutP);
-    document.getElementById("devWorkoutList").appendChild(workoutDiv);
-
-    //workoutDiv.addEventListener("click", workoutListListener);
+function workoutListListener(e) {
+    e.preventDefault();
+    console.log("Workout clicked");
 }
 
 // Event listener for user list
@@ -44,7 +36,7 @@ function userListListener(e) {
                 clearList("devWorkoutList");
 
                 res.data.forEach(workout => {
-                    addWorkoutToList(workout);
+                    addToList(workout, "devWorkoutList");
                 });
             } else {
                 console.log("Error getting schedules");
@@ -71,7 +63,7 @@ document.getElementById("fetch_users").addEventListener("click", function () {
         .then(result => {
             clearList("devUserList");
             result.data.forEach(user => {
-                addUserToList(user);
+                addToList(user, "devUserList");
             });
         });
 })
