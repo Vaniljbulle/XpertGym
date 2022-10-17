@@ -68,6 +68,17 @@ document.getElementById("fetch_users").addEventListener("click", function () {
         });
 })
 
+// Fetch schedules
+document.getElementById("fetch_schedules").addEventListener("click", function () {
+    fetch("/api/schedule/all")
+        .then(response => response.json())
+        .then(result => {
+            result.data.forEach(schedule => {
+                console.log(schedule);
+            });
+        });
+})
+
 // Add membership to database
 document.getElementById("membershipIDSubmit").addEventListener("click", function (e) {
     e.preventDefault();
