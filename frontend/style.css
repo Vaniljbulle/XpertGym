@@ -1,10 +1,10 @@
-/** {*/
-/*    box-sizing: border-box;*/
-/*    padding: 0;*/
-/*    margin: 0;*/
-/*    overflow: auto;*/
-/*    font-family: 'Poppins', sans-serif;*/
-/*}*/
+* {
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+    font-family: 'Poppins', sans-serif;
+}
+
 /*Start of Column*/
 .row {
     width: 100vw;
@@ -150,8 +150,6 @@ footer {
     width: 100%;
     bottom: 0; left: 0;right: 0;
     height: auto;
-
-
 }
 .contact{
     display: flex;
@@ -219,8 +217,10 @@ h5{
     padding: 10px 30px 30px 30px;
     border-radius: 5px;
     box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+    box-sizing: border-box;
 }
-.bar{
+.profilePage .column.center{
+    width: 100%;
 }
 .tabBtn {
     align-items: center;
@@ -232,15 +232,13 @@ h5{
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    font-size: 16px;
     font-weight: 700;
     height: 54px;
+    font-size: 16px;
     justify-content: center;
     letter-spacing: 0.5px;
     line-height: 1;
     max-width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
     padding-top: 3px;
     text-decoration: none;
     text-transform: uppercase;
@@ -248,6 +246,7 @@ h5{
     width: 100%;
     margin-top: 3px;
     margin-bottom: 3px;
+    overflow: hidden;
 }
 
 .tabBtn:hover{
@@ -271,32 +270,41 @@ h5{
     box-sizing: border-box;
 }
 
+/************* Schedules **************/
+.scheme{
+    width: 100%;
+    height: 100px;
+    background-color: #bdbdbd;
+    margin-top: 1rem;
+}
+
+.schemeInputText{
+    width: 100%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
 /*************Log in **************/
 .img{
-
-    width: 100%;
+    overflow: hidden;
     align-items: center ; /*center in main section*/
     /*  position: absolute; /*position for header mot moving*/
     display: flex;
-    padding: 200px 1px; /* 10px top and bottom, 200px right and left*/
+    padding: 250px 1px; /* 10px top and bottom, 200px right and left*/
     /*For back ground picture*/
     background: url(/img/login.jfif) no-repeat;
     background-size:cover;
     background-position: center;
     background-attachment: fixed;
     height: 50vh;
-
 }
 
 .img::after{
-    position: absolute;
-    content: '';
-    top: 6px;
-    left: 1px;
-    height: 88%;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .content{
@@ -464,20 +472,15 @@ span{
     
 }
 /*********** Input ***************/
-input{
-
+bmiInput{
     padding-left: 12px;
     width: 250px;
     font-weight: 700;
     font-size: xx-large;
     font-family: Arial, Helvetica, sans-serif;
-
 }
 
-
-
 /**************Personal trainers*************/
-
 .banner-trainer{
     background: url(/img/wp.webp);
     background-size: cover;
@@ -509,6 +512,7 @@ input{
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
+    overflow: hidden;
 }
 
 .title-trainer{
@@ -557,7 +561,6 @@ img{
     margin-left: 60px;
 
 }
-
 /* Center the div, move it all the way to the left on the navbar
    but not to overlap the logo and make it look pretty  */
 .population_navbar {
@@ -588,5 +591,13 @@ img{
     }
     to {
         text-shadow: 0 0 13px #fff, 0 0 16px #ff4da6, 0 0 19px #ff4da6, 0 0 22px #ff4da6, 0 0 25px #ff4da6, 0 0 28px #ff4da6, 0 0 31px #ff4da6;
+    }
+}
+
+/***** Media *****/
+@media screen and (max-width: 770px){
+    .tabBtn{
+        font-size: 2.4vw;
+        letter-spacing: 0px;
     }
 }
