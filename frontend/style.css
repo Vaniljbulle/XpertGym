@@ -464,7 +464,7 @@ span{
     
 }
 /*********** Input ***************/
-bmiInput{
+.bmiInput{
     padding-left: 12px;
     width: 250px;
     font-weight: 700;
