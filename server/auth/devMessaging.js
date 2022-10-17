@@ -16,6 +16,23 @@ function addToList(data, id) {
 function workoutListListener(e) {
     e.preventDefault();
     console.log("Workout clicked");
+
+    const data = {schedule_id: e.currentTarget.id};
+
+    fetch("/api/dev/schedule/log", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(res => res.json())
+        .then(res => {
+            if (res.status === "ok") {
+                console.log(res.data);
+            } else {
+                console.log("Error getting message log");
+            }
+        });
 }
 
 // Event listener for user list

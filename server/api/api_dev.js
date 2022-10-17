@@ -59,5 +59,25 @@ router.post('/api/dev/schedule/get', verifyToken, async (req, res) => {
     }
 })
 
+// Get message log for specific schedule (for debugging)
+router.post('/api/dev/schedule/log', verifyToken, async (req, res) => {
+    console.log("Get message log for specific schedule ID");
+    console.log(req.body);
+
+    if (await isAdmin(req.user)) {
+        try {
+            const schedule = await Schedule.findOne({id_schedule: req.body.schedule_id}).lean();
+
+            console.log("Schedule fetched successfully: ", schedule);
+            res.status(200).json({status: 'ok', data: {message_log: schedule.message_log}});
+        } catch (err) {
+            console.log("Encountered error during fetching schedules: ", err);
+            res.status(500).json({status: 'error'});
+        }
+    } else {
+        res.status(403).json({status: 'error', data: 'Not authorized'});
+    }
+});
+
 
 module.exports = router;
