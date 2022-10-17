@@ -9,6 +9,10 @@ const scheduleLinkSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true
     },
+    day: {
+        type: Number,
+        required: true
+    },
     order: {
         type: Number,
         required: true
