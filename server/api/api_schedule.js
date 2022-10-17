@@ -71,7 +71,7 @@ router.post('/api/schedule/mock/add', verifyToken, async (req, res) => {
 })
 
 // Get all schedules for user
-router.get('/api/schedule/get', verifyToken, async (req, res) => {
+router.get('/api/schedule/getAll', verifyToken, async (req, res) => {
     console.log("Get schedules get request");
     try {
         const user = await User.findOne({username: req.user.username}).lean();
@@ -112,7 +112,7 @@ router.post('/api/schedule/remove', verifyToken, async (req, res) => {
 })
 
 // All exercises from schedule get request
-router.post('/api/schedule/get', verifyToken, async (req, res) => {
+router.post('/api/schedule/getExercises', verifyToken, async (req, res) => {
     console.log("Send all exercises from schedule get request");
 
     // Check input for validity
