@@ -706,3 +706,111 @@ img{
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }
+
+
+
+/************ workout planner ***********/
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+.grid-container > div {
+    background-color: rgba(155, 149, 149, 0.8);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+}
+
+.collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    margin-top: 1px;
+    padding-bottom: 28px;
+    height: 10%;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+
+.active, .collapsible:hover {
+    background-color: #555;
+}
+
+.collapsible:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2212";
+}
+
+.Collaps_content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+}
+
+.workout-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+.workout-container > div {
+    background-color: rgba(155, 149, 149, 0.8);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+}
+
+
+
+/************************* Tester i workout med cards ***********************/
+.content-workout {
+    display: flex;
+    justify-content: left;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
+.card-workout {
+    background-color: white;
+    width: 0.75em;
+    height: 0.75em;
+    box-shadow: 0 5px 25px rgba(1, 1, 1, 15%);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 5px;
+    transition: 0.7s ease; /*time for transition*/
+}
+
+.card-workout:hover{
+    background-color: gray ;
+    transform: scale(1.2);
+}
+
+.card-workout > img{
+    border-radius: 10px;
+    margin-top: -0.91em;
+    margin-left: -0.91em;
+
+}

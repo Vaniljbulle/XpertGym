@@ -6,8 +6,187 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
 </head>
 <body>
-    <p>Here you will generate your workout scheme!</p>
+<!-- Navigation bar / Header -->
+<nav class="navbar">
+    <a href="index.html" class="logo"></a>
+    <nav class="navigation">
+        <ul>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</nav>
+
+<!-- Banner intro with text -->
+<div class="banner">
+    <div class="about">
+        <h2>Xpert Gym</h2>
+        <p>Log in to get started with your fitness journey!</p>
+        <a href="login.html" class="btn"><span></span>Log In</a>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="column side">
+        <p>hur många i gymmet, calories o sånt</p>
+    </div>
+    <div class="column center">
+        <div class="grid-container">
+            <div class="item1">1</div>
+            <div class="item2">2</div>
+            <div class="item3">3</div>
+            <div class="item4">4</div>
+            <div class="item5">5</div>
+            <div class="item6">6</div>
+            <div class="item7">7</div>
+            <div class="item8">8</div>
+            <div class="item9">9</div>
+            <div class="item10">10</div>
+            <div class="item11">11</div>
+            <div class="item12">12</div>
+            <div class="item13">13</div>
+            <div class="item14">14</div>
+            <div class="item15">15</div>
+            <div class="item16">16</div>
+            <div class="item17">17</div>
+            <div class="item18">18</div>
+            <div class="item19">19</div>
+            <div class="item20">20</div>
+            <div class="item21">21</div>
+            <div class="item22">22</div>
+            <div class="item23">23</div>
+            <div class="workouts" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="item24">24</div>
+            <div class="item25">25</div>
+            <div class="item26">26</div>
+            <div class="item27">27</div>
+            <div class="item28">28</div>
+            <div class="item29">29</div>
+            <div class="item30">30</div>
+            <div class="item31">31</div>
+        </div>
+    </div>
+    <div class="column side">
+        <p>här ska själva workoutsen vara som ska draggas till kalendern?</p>
+        <button class="collapsible">Chest</button>
+        <div class="Collaps_content">
+            <div class="workout-container">
+                <div class="item1">1</div>
+            </div>
+        </div>
+        <button class="collapsible">Arms</button>
+        <div class="Collaps_content">
+            <div class="workout-container">
+                <div class="item1">1</div>
+            </div>
+        </div>
+        <button class="collapsible">Legs</button>
+        <div class="Collaps_content">
+            <div class="workout-container">
+                <div class="item1">1</div>
+            </div>
+        </div>
+        <button class="collapsible">Back</button>
+        <div class="Collaps_content">
+            <div class="workout-container">
+                <div class="item1">1</div>
+                <div class="item1">1</div>
+                <div class="item1">1</div>
+                <div class="item1">1</div>
+                <div class="item1">1</div>
+
+            </div>
+        </div>
+        <button class="collapsible">Abs</button>
+        <div class="Collaps_content">
+            <div class="workout-container">
+                <section class="cards" >
+                    <div class="content-workout">
+                        <div class="card-workout">
+                            <img src="img/blogo.png" width="100%" />
+                            <div class="information">
+                                <br><br><h3>first trainer</h3><br><br>
+                                <h3>-------------------------------------</h3>
+                                <div class="social-icons">
+                                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                                    <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card-workout">
+                            <p>hej</p>
+                            <div class="information">
+                                <br><br><h3 >second trainer</h3><br><br>
+
+                            </div>
+                        </div>
+                        <div class="card-workout">
+                            <img src="https://www.w3schools.com/images/w3schools_green.jpg" draggable="true" ondragstart="drag(event)" id="drag1" width="42" height="42">
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Footer -->
+<footer>
+    <div class="contact">
+        <h3>Contact information</h3>
+        <h4>.....Info.....</h4>
+        <!-- <img src="#" alt="logo2"/>  -->
+        <h5>Follow Us</h5>
+        <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+            <a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        </div>
+
+
+    </div>
+</footer>
+<script>
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
+
+    var acc = document.querySelectorAll(".collapsible");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+
+            // Loop over all the panels and close each one
+            document.querySelectorAll(".Collaps_content").forEach(function(Collaps_content){
+                Collaps_content.style.maxHeight = "0";
+                Collaps_content.previousElementSibling.classList.remove("active");
+            });
+
+            // Then show the clicked panel
+            this.classList.toggle("active");
+            var Collaps_content = this.nextElementSibling;
+            Collaps_content.style.maxHeight = Collaps_content.scrollHeight + "px";
+
+        });
+    }
+</script>
 </body>
 </html>
