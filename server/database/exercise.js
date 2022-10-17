@@ -33,7 +33,7 @@ const exerciseSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    custom: {
+    type: {
         type: Number,
         required: true
     }
