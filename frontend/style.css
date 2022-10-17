@@ -482,6 +482,24 @@ span{
     height: 50vh;
 }
 
+.images1{
+    background: url(/img/trainer1.jpg);
+    height: 27vh;
+    width:"200px";
+}
+
+.images2{
+    background: url(/img/trainer2.jpg);
+    height: 27vh;
+    width:"200px";
+}
+
+.images3{
+    background: url(/img/trainer3.jpg);
+    height: 27vh;
+    width:"200px";
+}
+
 .about-trainer{
     position: absolute;
     top: 20%;
