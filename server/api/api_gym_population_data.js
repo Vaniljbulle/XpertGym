@@ -23,6 +23,7 @@ function getGymPopData() {
 }
 
 function fetchSingular(dayInteger, dataSheet, hour){
+    if (hour < 6 || hour > 23) return undefined;
     hour -= 6;
     switch (dayInteger) {
         case 0:
