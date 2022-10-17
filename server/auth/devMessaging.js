@@ -24,7 +24,7 @@ function userListListener(e) {
 
     const data = {user_id: e.currentTarget.id};
 
-    fetch("/api/dev/schedule/get", {
+    fetch("/api/dev/schedule/getAll", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
