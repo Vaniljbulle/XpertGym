@@ -8,6 +8,10 @@ const scheduleSchema = new mongoose.Schema({
     id_user: {
         type: mongoose.Schema.Types.ObjectId,
         required: true
+    },
+    type: {
+        type: Number,
+        required: true
     }
 },{collection: 'schedules'});
 
