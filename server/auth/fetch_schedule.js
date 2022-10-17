@@ -10,9 +10,9 @@ function fetchSchedule(_id) {
         .then(res => {
             console.log(res);
             if (res.status === 'ok') {
-                alert('Schedule fetched successfully! ' + res.data);
+                return res.data;
             } else {
-                alert('Schedule failed to be fetched!');
+                console.log('Schedule failed to be fetched!');
             }
         }).catch(err => console.log(err));
 }
