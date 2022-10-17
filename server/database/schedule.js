@@ -12,6 +12,10 @@ const scheduleSchema = new mongoose.Schema({
     type: {
         type: Number,
         required: true
+    },
+    message_log: {
+        type: Array,
+        required: false
     }
 },{collection: 'schedules'});
 
