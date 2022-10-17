@@ -24,7 +24,7 @@ function userListListener(e) {
 
     const data = {user_id: e.currentTarget.id};
 
-    fetch("/api/dev/schedule/getAll", {
+    fetch("/api/dev/schedule/get", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -64,17 +64,6 @@ document.getElementById("fetch_users").addEventListener("click", function () {
             clearList("devUserList");
             result.data.forEach(user => {
                 addToList(user, "devUserList");
-            });
-        });
-})
-
-// Fetch schedules
-document.getElementById("fetch_schedules").addEventListener("click", function () {
-    fetch("/api/schedule/all")
-        .then(response => response.json())
-        .then(result => {
-            result.data.forEach(schedule => {
-                console.log(schedule);
             });
         });
 })
