@@ -149,8 +149,6 @@ footer {
     width: 100%;
     bottom: 0; left: 0;right: 0;
     height: auto;
-
-
 }
 .contact{
     display: flex;
@@ -289,30 +287,23 @@ h5{
 
 /*************Log in **************/
 .img{
-
-    width: 100%;
+    overflow: hidden;
     align-items: center ; /*center in main section*/
     /*  position: absolute; /*position for header mot moving*/
     display: flex;
-    padding: 200px 1px; /* 10px top and bottom, 200px right and left*/
+    padding: 250px 1px; /* 10px top and bottom, 200px right and left*/
     /*For back ground picture*/
     background: url(/img/login.jfif) no-repeat;
     background-size:cover;
     background-position: center;
     background-attachment: fixed;
     height: 50vh;
-
 }
 
 .img::after{
-    position: absolute;
-    content: '';
-    top: 6px;
-    left: 1px;
-    height: 88%;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .content{
