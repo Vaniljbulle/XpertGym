@@ -674,10 +674,17 @@ img{
     border: 2px solid #0735ce;
 }
 
-.devChatFrame .postMessage {
+.devChatFrame .postedMessage {
     /* stack items vertically */
     display: flex;
     flex-direction: column;
+    width: 550px;
+}
+
+.devChatFrame .devMessageLogBoard {
+    border: none;
+    margin : 0;
+    padding: 0;
 }
 
 .devChatFrame .devListContainer {

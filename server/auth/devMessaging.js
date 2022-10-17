@@ -13,6 +13,22 @@ function addToList(data, id) {
         divElement.addEventListener("click", workoutListListener);
 }
 
+// Append message to message log
+function appendMessage(message) {
+    let fieldsetElement = document.createElement("fieldset");
+    let legendElement = document.createElement("legend");
+    let paragraphElement = document.createElement("p");
+
+    fieldsetElement.classList.add("postedMessage");
+    legendElement.innerText = message.username + " @ " + message.timestamp + " - " + message.date;
+    paragraphElement.innerText = message.message;
+
+    fieldsetElement.appendChild(legendElement);
+    fieldsetElement.appendChild(paragraphElement);
+    document.getElementsByClassName("devMessageLogBoard")[0].appendChild(fieldsetElement);
+}
+
+
 function workoutListListener(e) {
     e.preventDefault();
     console.log("Workout clicked");
@@ -28,7 +44,14 @@ function workoutListListener(e) {
     }).then(res => res.json())
         .then(res => {
             if (res.status === "ok") {
-                console.log(res.data);
+                if (res.data.length === undefined) {
+                    appendMessage({
+                        username: "System message",
+                        timestamp: "00:00:00",
+                        date: "00/00/0000",
+                        message: "There are no messages, be the first one to post!"
+                    });
+                }
             } else {
                 console.log("Error getting message log");
             }
