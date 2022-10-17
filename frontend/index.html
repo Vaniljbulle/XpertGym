@@ -9,64 +9,69 @@
 </head>
 <body>
 <!-- Navigation bar / Header -->
-    <nav class="navbar">
-        <a href="index.html" class="logo"></a>
-        <nav class="navigation">
-            <ul>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+<nav class="navbar">
+    <a href="index.html" class="logo"></a>
+
+    <!-- Gym population text -->
+    <div class="population_navbar">
+        <p id="population_data_ID" class="glow"></p>
+        <script src="gym_pop_client.js"></script>
+    </div>
+
+    <nav class="navigation">
+        <ul>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
     </nav>
+</nav>
 
 <!-- Banner intro with text -->
-    <div class="banner">
-        <div class="about">
-            <h2>Xpert Gym</h2>
-            <p>Log in to get started with your fitness journey!</p>
-            <a href="login.html" class="btn"><span></span>Log In</a>
-        </div>
+<div class="banner">
+    <div class="about">
+        <h2>Xpert Gym</h2>
+        <p>Log in to get started with your fitness journey!</p>
+        <a href="login.html" class="btn"><span></span>Log In</a>
     </div>
+</div>
 
 <!-- Center content -->
-    <div class="row">
-        <div class="column side">
-            <h2>BMI & Nutrition</h2>
-            <p>Here you can calculate your BMI and how many calories your body requires in order to lose or gain weight. Nutritinous facts are also provided!</p>
-            <a class="btn" href="calcBMI.html">Calculate BMI<span></span></a>
-        </div>
-        <div class="column center">
-            <h2>Workout planner</h2>
-            <p>In the workout planner you can select between multiple premade workout schemes and even plan your own customised workout!</p>
-            <a href="workout_planner.html" class="btn">Generate workout<span></span></a>
-        </div>
-        <div class="column side">
-            <h2>Personal Trainers</h2>
-            <p>There are plently of personal trainers here at Xpert gym!</p>
-            <a class="btn" href="trainers.html">Personal Trainer<span></span></a>
-        </div>
+<div class="row">
+    <div class="column side">
+        <h2>BMI & Nutrition</h2>
+        <p>Here you can calculate your BMI and how many calories your body requires in order to lose or gain weight.
+            Nutritinous facts are also provided!</p>
+        <a class="btn" href="calcBMI.html">Calculate BMI<span></span></a>
     </div>
+    <div class="column center">
+        <h2>Workout planner</h2>
+        <p>In the workout planner you can select between multiple premade workout schemes and even plan your own
+            customised workout!</p>
+        <a href="workout_planner.html" class="btn">Generate workout<span></span></a>
+    </div>
+    <div class="column side">
+        <h2>Personal Trainers</h2>
+        <p>There are plently of personal trainers here at Xpert gym!</p>
+        <a class="btn" href="trainers.html">Personal Trainer<span></span></a>
+    </div>
+</div>
 
 <!-- Footer -->
-    <footer>
-        <div class="contact">
-            <h3>Contact information</h3>
-            <h4>.....Info.....</h4>
-            <!-- <img src="#" alt="logo2"/>  -->
-            <h5>Follow Us</h5>
-            <div class="social-icons">
-                <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                <a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-            </div>
-
-
+<footer>
+    <div class="contact">
+        <h3>Contact information</h3>
+        <h4>.....Info.....</h4>
+        <!-- <img src="#" alt="logo2"/>  -->
+        <h5>Follow Us</h5>
+        <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+            <a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
         </div>
-    </footer>
 
-</div>
-<script src="add_exercise.js"></script>
-<script src="remove_exercise.js"></script>
-<script src="fetch_exercise.js"></script>
+
+    </div>
+</footer>
+
 </body>
 </html>
