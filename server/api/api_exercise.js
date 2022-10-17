@@ -27,7 +27,11 @@ router.post('/api/exercise/add', verifyToken, async (req, res) => {
     const {name, image, sets, reps, description, muscleGroup, duration, difficulty, type} = req.body;
 
     try {
-        const user = await Exercise.create({
+        const isUserExercise = type === 0 || type === 1;
+        if (!await isAdmin(req.user))
+            if (!isUserExercise) throw "User not allowed";
+
+        const exercise = await Exercise.create({
             name,
             image,
             sets,
@@ -38,7 +42,12 @@ router.post('/api/exercise/add', verifyToken, async (req, res) => {
             difficulty,
             type
         });
-        console.log("Exercise added successfully: ", user);
+
+        if (isUserExercise) {
+            await UserExercise.create({id_exercise: exercise._id, id_user: req.user._id});
+        }
+
+        console.log("Exercise added successfully: ", exercise);
         res.status(200).json({status: 'ok', data: name});
     } catch (err) {
         console.log("Encountered error during adding exercise: ", err);
@@ -50,11 +59,6 @@ router.post('/api/exercise/add', verifyToken, async (req, res) => {
 router.post('/api/exercise/remove', verifyToken, async (req, res) => {
     console.log("Exercise remove post request");
 
-    const filter = {};
-    const all = await Exercise.find(filter);
-
-    console.log(all);
-
     // Check input for validity
     if (req.body._id === undefined) {
         res.status(400).json({status: 'error', data: 'Invalid input'});
@@ -64,9 +68,19 @@ router.post('/api/exercise/remove', verifyToken, async (req, res) => {
     const {_id} = req.body;
 
     try {
-        const user = await Exercise.findById(_id).deleteOne();
-        console.log("Exercise removed successfully: ", user);
-        res.status(200).json({status: 'ok'});
+        if (await isAdmin(req.user)){
+            const exercise = await Exercise.findById(_id).deleteOne();
+            await UserExercise.find({id_exercise: _id}).deleteOne();
+            console.log("Exercise removed successfully: ", exercise);
+            res.status(200).json({status: 'ok'});
+        }
+        else {
+            await UserExercise.find({id_exercise: _id, id_user: req.user._id}).deleteOne();
+            const exercise = await Exercise.findById(_id).deleteOne();
+            console.log("Exercise removed successfully: ", exercise);
+            res.status(200).json({status: 'ok'});
+        }
+
     } catch (err) {
         console.log("Encountered error during exercise removal: ", err);
         res.status(500).json({status: 'error'});
