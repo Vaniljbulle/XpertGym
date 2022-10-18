@@ -45,6 +45,7 @@ function workoutListListener(e) {
         .then(res => {
             if (res.status === "ok") {
                 if (res.data.length === undefined) {
+                    clearMessageLog();
                     appendMessage({
                         username: "System message",
                         timestamp: "00:00:00",
@@ -89,11 +90,16 @@ function userListListener(e) {
 // Remove all divs from list
 function clearList(id) {
     // Get element by class name and ID
-
     let divs = document.getElementById(id).getElementsByClassName("devListItem");
-    while (divs.length > 0) {
+    while (divs.length > 0)
         divs[0].parentNode.removeChild(divs[0]);
-    }
+}
+
+// Remove all fieldsets from list
+function clearMessageLog() {
+    let fieldsets = document.getElementById("devMessageLog").getElementsByTagName("fieldset");
+    while (fieldsets.length > 0)
+        fieldsets[0].parentNode.removeChild(fieldsets[0]);
 }
 
 // Fetch users
