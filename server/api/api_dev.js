@@ -67,13 +67,19 @@ router.post('/api/dev/schedule/log', verifyToken, async (req, res) => {
         try {
             const schedule = await Schedule.findOne({_id: req.body.schedule_id}).lean();
 
-            res.status(200).json({status: 'ok', data: {message_log: schedule.message_log}});
+            return res.status(200).json({status: 'ok', data: {message_log: schedule.message_log}});
         } catch (err) {
             console.log("Encountered error during fetching schedules: ", err);
-            res.status(500).json({status: 'error'});
+            return res.status(500).json({status: 'error'});
         }
     } else {
-        res.status(403).json({status: 'error', data: 'Not authorized'});
+        try {
+            const schedule = await Schedule.findOne({_id: req.body.schedule_id, id_user: req.user.id}).lean();
+
+            return res.status(200).json({status: 'ok', data: {message_log: schedule.message_log}});
+        } catch (err) {
+            return res.status(500).json({status: 'error', data: 'Not authorized'});
+        }
     }
 });
 

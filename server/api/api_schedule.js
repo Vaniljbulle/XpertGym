@@ -145,12 +145,19 @@ router.get('/api/schedule/all', verifyToken, async (req, res) => {
             const schedules = await Schedule.find({}).lean();
 
             console.log("All schedules fetched successfully");
-            res.status(200).json({status: 'ok', data: schedules});
+            return res.status(200).json({status: 'ok', data: schedules});
         } catch (err) {
-            res.status(500).json({status: 'error', data: err});
+            return res.status(500).json({status: 'error', data: err});
         }
     } else {
-        res.status(403).json({status: 'error', data: 'Not authorized'});
+        try {
+            const schedules = await Schedule.find({id_user: req.user.id}).lean();
+
+            console.log("Schedules fetched successfully: ", schedules);
+            return res.status(200).json({status: 'ok', data: schedules});
+        } catch (err) {
+            return res.status(500).json({status: 'error', data: err});
+        }
     }
 })
 
