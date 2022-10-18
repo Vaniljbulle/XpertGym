@@ -21,4 +21,27 @@ router.post('/api/membership/add', verifyToken, async (req, res) => {
     }
 });
 
+/*
+* Returns all memberships IDs if the requesting user is an admin
+* Returns the membership ID of the requesting user if the requesting user is not an admin
+*/
+router.get('/api/membership/get', verifyToken, async (req, res) => {
+    if (await isAdmin(req.user)) {
+        try {
+            const memberships = await Membership.find({}).lean();
+            res.status(200).json({status: 'ok', data: memberships});
+        } catch (err) {
+            res.status(500).json({status: 'error', data: err});
+        }
+    }
+    else {
+        try {
+            const memberships = await Membership.find({user_id: req.user.id}).lean();
+            res.status(200).json({status: 'ok', data: memberships});
+        } catch (err) {
+            res.status(500).json({status: 'error', data: err});
+        }
+    }
+});
+
 module.exports = router;
