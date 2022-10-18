@@ -40,6 +40,7 @@ document.getElementById("devMessageSubmit").addEventListener("click", function (
         .then(res => {
             if (res.status === "ok") {
                 console.log("Message sent");
+                document.getElementById("devMessageBox").value = "";
                 appendMessage({
                     username: res.data.username,
                     timestamp: res.data.timestamp,
@@ -84,12 +85,13 @@ function workoutListListener(e) {
         .then(res => {
             if (res.status === "ok") {
                 // Set message board div id
-                divElement = document.getElementsByClassName("devMessageLogBoard");
+                let divElement = document.getElementsByClassName("devMessageLogBoard");
                 divElement[0].id = data.schedule_id;
 
+                clearMessageLog();
+
                 console.log(res.data.message_log);
-                if (res.data.message_log.length === undefined) {
-                    clearMessageLog();
+                if (res.data.message_log === undefined) {
                     appendMessage({
                         username: "System message",
                         timestamp: "00:00:00",
@@ -97,7 +99,6 @@ function workoutListListener(e) {
                         message: "There are no messages, be the first one to post!"
                     });
                 } else {
-                    clearMessageLog();
                     res.data.message_log.forEach(message => {
                         appendMessage({
                             username: message.username,
