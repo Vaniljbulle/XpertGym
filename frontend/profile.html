@@ -30,7 +30,7 @@
 <div class="banner">
   <div class="about">
     <h2 class="username">username</h2>
-    <p>Wellcome to your personal page!</p>
+    <p>Welcome to your personal page!</p>
     <p>Here you can see and modify your schedules and change other settings concerning your profile</p>
   </div>
 </div>
@@ -40,7 +40,6 @@
       <div class="bar">
         <button class="tabBtn" onclick="openTab('Profile')">Profile</button>
         <button class="tabBtn" onclick="openTab('Schemes')">Schemes</button>
-        <button class="tabBtn" onclick="openTab('Achievements')">Achievements</button>
         <button class="tabBtn" onclick="openTab('Settings')">Settings</button>
       </div>
     </div>
@@ -48,12 +47,27 @@
       <div class="container">
         <div class="p">
           <div id="Profile" class="cont tab" style="display:none">
-                <p id="GymDays_data_ID" class="glow">placeholder text</p>
+            <div class="profile-section">
+              <div class="profile-section-row">
+                <div class="profile-section-col">
+                  <div class="profile-about">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut blanditiis eius harum iure nam nemo nihil quo sit vel veritatis.</p>
+                  </div>
+                </div>
+                <div class="profile-section-col">
+                  <div class="profile-achievements">
+                    <p>Your personal achievements:</p>
+                    <p id="GymDays_data_ID" class="glow">You have worked out "x" times!</p>
+                    <p id="Schedules_data_ID" class="glow">You have created "x" schedules!</p>
+                    <p id="BMI_data_ID" class="glow">your latest BMI calculated: </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-
           <div id="Schemes" class="cont tab" style="display:none">
             <h2>Schemes</h2>
-            <p>Here schedules will be shown with comments from your personal trainer</p>
+            <p>Here are your previously saved workout schedules</p>
             <div class="scheme">
               <img src="/img/wp.webp" alt="">
               <div class="scheme-s">
@@ -73,10 +87,6 @@
               </div>
             </div>
           </div>
-          <div id="Achievements" class="cont tab" style="display:none">
-            <h2>Achievements</h2>
-            <p>Here your achievements will be shown</p>
-          </div>
 
           <div id="Settings" class="cont tab" style="display:none">
             <h2>Settings</h2>
@@ -85,11 +95,13 @@
             <div id="changeUsernameID" style="display:none">
               <h4>change username</h4>
               <input class="profileInputText" type="text" placeholder="enter username...">
+              <input class="tabBtn" type="submit" value="Change username">
             </div>
             <div id="changePasswordID" style="display:none">
               <h4>change password</h4>
-              <input class="profileInputText" type="text" placeholder="enter old password...">
-              <input class="profileInputText" type="text" placeholder="enter new password...">
+              <input class="profileInputText" type="password" placeholder="enter old password...">
+              <input class="profileInputText" type="password" placeholder="enter new password...">
+              <input class="tabBtn" type="submit" value="Change password">
             </div>
           </div>
 

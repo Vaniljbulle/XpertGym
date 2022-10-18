@@ -203,7 +203,7 @@ h5{
     color: rgb(176, 120, 47);
     text-decoration: underline;
 }
-/************* Profile **************/
+/************* Personal Page **************/
 .username{
     font-size: 30px;
     font-weight: 500;
@@ -269,7 +269,30 @@ h5{
     box-sizing: border-box;
 }
 /************* Profile **************/
+.profile-section{
+    width: 100%;
+    background: #f1f1f1;
+    padding: 40px 0px;
+    overflow: hidden;
+    margin: auto;
+}
+.profile-section-row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.profile-section-col{
+    flex: 50%;
+}
 
+.profile-about{
+    padding-right: 30px;
+}
+.profile-achievements{
+    padding-left: 30px;
+}
+.profile-achievements .glow{
+    padding: 10px;
+}
 /************* Schedules **************/
 .scheme{
     position: relative;
