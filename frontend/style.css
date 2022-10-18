@@ -594,7 +594,7 @@ img{
 
 /* Dev/Admin/User Test page */
 .devBox div {
-    margin: 10px 0 0 0;
+    margin: 2px;
     padding: 2px;
     border: 1px solid black;
     border-radius: 5px;
@@ -621,15 +621,32 @@ img{
     width: fit-content;
     height: fit-content;
     padding: 10px;
+    /* stack horizontally */
+    display: flex;
+    flex-direction: column;
+}
+
+.devBox .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: fit-content;
+}
+
+.devBox .noBorder {
+    border: none;
+}
+
+.devBox button {
+    margin-top: 5px;
 }
 
 .devChatFrame {
-
-    position: absolute;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     border: 2px solid #e00b0b;
+    width: fit-content;
 }
 
 .devChatFrame div {
@@ -641,7 +658,7 @@ img{
 }
 
 /* Button style */
-.devChatFrame button {
+.devBox button {
     display: block;
 }
 
@@ -687,33 +704,37 @@ img{
     padding: 0;
 }
 
-.devChatFrame .devListContainer {
+.devBox .devListContainer {
     min-width: 300px;
     max-width: 500px;
 }
-.devChatFrame .devListContainer p {
+.devBox .devListContainer p {
     margin: 5px;
 }
-.devChatFrame .devListItem{
+.devBox .devListItem{
     margin: 2px;
     padding: 0;
     border: 1px solid #e00b0b;
     transition: 0.3s;
     cursor: pointer;
 }
-.devChatFrame .devListItem:hover{
+.devBox .devListItem:hover{
     background-color: #e00b0b;
     color: white;
     transform: scale(1.01);
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-.devChatFrame .devListItem:active {
+.devBox .devListItem:active {
     background-color: #e00b0b;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }
 
+.devBox .maxHeight {
+    max-height: 300px;
+    overflow: auto;
+}
 
 
 /************ workout planner ***********/
