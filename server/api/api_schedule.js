@@ -59,7 +59,7 @@ router.post('/api/schedule/mock/add', verifyToken, async (req, res) => {
 
     try {
         const user = await User.findOne({username}).lean();
-        await Schedule.create({name, id_user: user._id});
+        await Schedule.create({name, id_user: user._id, type: 0});
 
         console.log("Mocked schedule added successfully: ", user);
         res.status(200).json({status: 'ok', data: username});
