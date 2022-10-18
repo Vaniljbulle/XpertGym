@@ -44,4 +44,22 @@ router.get('/api/membership/get', verifyToken, async (req, res) => {
     }
 });
 
+/*
+ * Removes a membership from the database if the requesting user is an admin
+ */
+router.post('/api/membership/remove', verifyToken, async (req, res) => {
+   if (await isAdmin(req.user)) {
+       try {
+           let membership = await Membership.findOne({membership_id: req.body.MEMBERSHIP_ID}).lean();
+           if (membership.user_id === null) {
+               await Membership.deleteOne({membership_id: req.body.MEMBERSHIP_ID});
+               return res.status(200).json({status: 'ok', data: 'Membership removed'});
+           }
+           return res.status(400).json({status: 'error', data: 'Membership is in use'});
+       } catch (err) {
+           res.status(500).json({status: 'error', data: err});
+       }
+   }
+});
+
 module.exports = router;

@@ -24,8 +24,7 @@ document.getElementById("devMessageSubmit").addEventListener("click", function (
     if (data.schedule_id === "" || data.message === null || data.message === undefined) {
         alert("Please select a schedule");
         return;
-    }
-    else if (data.message === "" || data.message === null || data.message === undefined) {
+    } else if (data.message === "" || data.message === null || data.message === undefined) {
         console.log("Message is empty");
         return;
     }
@@ -189,8 +188,33 @@ document.getElementById("membershipIDSubmit").addEventListener("click", function
             } else {
                 alert('Membership not added!');
             }
+            location.reload();
         });
 })
+
+// Remove membership from database
+document.getElementById("membershipIDRemove").addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const data = {MEMBERSHIP_ID: document.getElementById("membershipID").value};
+
+    fetch('/api/membership/remove', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(res => res.json())
+        .then(res => {
+            console.log(res);
+            if (res.status === 'ok') {
+                alert('Membership removed!');
+            } else {
+                alert('Membership not removed!');
+            }
+            location.reload();
+        });
+});
 
 // Clear all database
 document.getElementById("clearAll").addEventListener("click", function () {
