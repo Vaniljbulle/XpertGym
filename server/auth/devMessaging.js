@@ -13,6 +13,45 @@ function addToList(data, id) {
         divElement.addEventListener("click", workoutListListener);
 }
 
+// Submit message
+document.getElementById("devMessageSubmit").addEventListener("click", function (e) {
+    e.preventDefault();
+
+    let data = {
+        schedule_id: document.getElementsByClassName("devMessageLogBoard")[0].id,
+        message: document.getElementById("devMessageBox").value
+    };
+    if (data.schedule_id === "" || data.message === null || data.message === undefined) {
+        alert("Please select a schedule");
+        return;
+    }
+    else if (data.message === "" || data.message === null || data.message === undefined) {
+        console.log("Message is empty");
+        return;
+    }
+
+    fetch("/api/dev/message/submit", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(res => res.json())
+        .then(res => {
+            if (res.status === "ok") {
+                console.log("Message sent");
+                appendMessage({
+                    username: res.data.username,
+                    timestamp: res.data.timestamp,
+                    date: res.data.date,
+                    message: res.data.message
+                });
+            } else {
+                console.log("Error sending message");
+            }
+        });
+});
+
 // Append message to message log
 function appendMessage(message) {
     let fieldsetElement = document.createElement("fieldset");
@@ -44,13 +83,28 @@ function workoutListListener(e) {
     }).then(res => res.json())
         .then(res => {
             if (res.status === "ok") {
-                if (res.data.length === undefined) {
+                // Set message board div id
+                divElement = document.getElementsByClassName("devMessageLogBoard");
+                divElement[0].id = data.schedule_id;
+
+                console.log(res.data.message_log);
+                if (res.data.message_log.length === undefined) {
                     clearMessageLog();
                     appendMessage({
                         username: "System message",
                         timestamp: "00:00:00",
                         date: "00/00/0000",
                         message: "There are no messages, be the first one to post!"
+                    });
+                } else {
+                    clearMessageLog();
+                    res.data.message_log.forEach(message => {
+                        appendMessage({
+                            username: message.username,
+                            timestamp: message.timestamp,
+                            date: message.date,
+                            message: message.message
+                        });
                     });
                 }
             } else {

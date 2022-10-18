@@ -79,5 +79,36 @@ router.post('/api/dev/schedule/log', verifyToken, async (req, res) => {
     }
 });
 
+// Post request for submitting a message
+router.post('/api/dev/message/submit', verifyToken, async (req, res) => {
+console.log("Submit message for specific schedule ID");
+    console.log(req.body);
+
+    const schedule_id = req.body.schedule_id;
+    const message = req.body.message;
+
+    const dateO = new Date();
+    const date = dateO.getDate() + "/" + (dateO.getMonth() + 1) + "/" + dateO.getFullYear();
+    const time = dateO.toLocaleTimeString();
+
+    const data = {
+        username: req.user.username,
+        timestamp: time,
+        date: date,
+        message: message
+    }
+
+    console.log("Data: ", data);
+
+    try {
+        await Schedule.updateOne({id_schedule: schedule_id}, {$push: {message_log: data}});
+        res.status(200).json({status: 'ok', data: data});
+    } catch (err) {
+        console.log("Encountered error during submitting message: ", err);
+        res.status(500).json({status: 'error'});
+    }
+
+});
+
 
 module.exports = router;
