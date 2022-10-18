@@ -158,7 +158,9 @@ footer {
     justify-content: center;
     flex-direction: column;
     text-align: center;
+    margin-top:30px;
 }
+
 
 h3{
     color: burlywood;
@@ -172,6 +174,7 @@ h4{
     font-size: 1.1em;
     margin: 10px auto;
     line-height: 28px;
+    font-style: italic;
 }
 
 h5{
@@ -180,6 +183,7 @@ h5{
     font-size: 1.1em;
     margin: 10px auto;
     line-height: 28px;
+    font-style: italic;
 }
 
 
@@ -293,7 +297,7 @@ h5{
     content: '';
     top: 6px;
     left: 1px;
-    height: 88%;
+    height: 92%;
     width: 100%;
     background: rgba(0, 0, 0, 0.5);
     
@@ -304,7 +308,7 @@ h5{
     top: 50%;
     left: 50%;
     text-align: center;
-    padding: 200px 200px;
+    padding: 150px 200px;
     width: 370px;
     background: rgba(255, 255, 255, 0.04);
     box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
@@ -325,6 +329,7 @@ h5{
     display: flex;
     background: rgba(255, 255, 255, 0.94);
     border-radius: 8px;
+    overflow: hidden;
 }
 
 .filed input{
@@ -366,6 +371,7 @@ h5{
     color:white;
     margin-top: 20px;
     font-size: 35px;
+    font-style: italic;
 }
 
 .signup a{
@@ -410,11 +416,13 @@ h5{
     color: white;
     font-size: 40px;
     margin: 0 0 50px 0;
+    font-style: italic;
 }
 
 .box a{
     color: burlywood;
     font-size: 35px;
+    font-style: italic;
 
 }
 
@@ -431,11 +439,12 @@ h5{
     margin-top: 40px;
     padding: 10px 100px;
     border-radius: 8px;
+    font-style: italic;
 
 }
 
 .but:hover{
-    background: rgb(103, 11, 121);
+    border: 3px solid #d3b083;
 }
 
 span{
@@ -460,7 +469,7 @@ span{
     width: 250px;
     font-weight: 700;
     font-size: xx-large;
-    font-family:cursive;
+    font-style: italic;
     
 }
 /*********** Input ***************/
@@ -469,7 +478,7 @@ span{
     width: 250px;
     font-weight: 700;
     font-size: xx-large;
-    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
 }
 
 /**************Personal trainers*************/
@@ -532,6 +541,11 @@ span{
     font-size: 2.2em;
     font-weight: 800;
     margin-bottom: 30px;
+}
+
+.cards h2{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-style:italic;
 }
 
 .card-trainer {
