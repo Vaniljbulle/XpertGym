@@ -60,14 +60,12 @@
                 <a class="cardTitle">GymSchedule #1</a>
                 <img src="/img/wp.webp">
               </card>
-              <input class="schemeInputText" type="text" placeholder="insert comment...">
             </div>
             <div class="jsSchedule">
               <card class="scheme">
                 <a class="cardTitle">GymSchedule #2</a>
                 <img src="/img/contact.jpg">
               </card>
-              <input class="schemeInputText" type="text" placeholder="insert comment...">
             </div>
 
           </div>
@@ -78,8 +76,17 @@
 
           <div id="Settings" class="cont tab" style="display:none">
             <h2>Settings</h2>
-            <p>Here can settings be changed</p>
-            <button>change password</button>
+            <button class="tabBtn" onclick="toggleBtn('changeUsernameID')">change username</button>
+            <button class="tabBtn" onclick="toggleBtn('changePasswordID')">change Password</button>
+            <div id="changeUsernameID" style="display:none">
+              <h4>change username</h4>
+              <input class="profileInputText" type="text" placeholder="enter username...">
+            </div>
+            <div id="changePasswordID" style="display:none">
+              <h4>change password</h4>
+              <input class="profileInputText" type="text" placeholder="enter old password...">
+              <input class="profileInputText" type="text" placeholder="enter new password...">
+            </div>
           </div>
 
         </div>
@@ -116,5 +123,13 @@
       x[i].style.display = "none";
     }
     document.getElementById(tabName).style.display = "block";
+  }
+  function toggleBtn(btnName){
+    var x = document.getElementById(btnName);
+    if(x.style.display === "none"){
+      x.style.display = "block";
+    }else{
+      x.style.display = "none";
+    }
   }
 </script>
