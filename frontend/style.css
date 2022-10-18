@@ -254,21 +254,6 @@ h5{
     border: 1px solid rgba(255,255,255,1);
     color: rgba(255,255,255,1);
 }
-/************* Schedules **************/
-.scheme{
-    width: 100%;
-    height: 100px;
-    background-color: #bdbdbd;
-    margin-top: 1rem;
-}
-
-.schemeInputText{
-    width: 100%;
-    padding: 12px 20px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
 
 /************* Schedules **************/
 .scheme{
@@ -276,6 +261,31 @@ h5{
     height: 100px;
     background-color: #bdbdbd;
     margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+.scheme a{
+    z-index: 1;
+    font-size: 16px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    line-height: 1;
+    color: white;
+    position: absolute;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.scheme img{
+    min-width: 100%;
+    height: auto;
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    z-index: 0;
+}
+.scheme img:hover{
+
 }
 
 .schemeInputText{
@@ -450,7 +460,7 @@ span{
     color: rgb(170, 33, 33);
     height: 100%;
     width: 50%;
-    font-size: 16px ;
+    font-size: 16px;
     margin-top: 10px;
 }
 
@@ -556,7 +566,7 @@ bmiInput{
     margin: 10px;
 }
 
-img{
+.card-trainer img{
     margin-top: 20px;
     margin-left: 60px;
 
