@@ -28,69 +28,6 @@
         </div>
         <div class="devListContainer maxHeight" id="membershipList">
             <!-- List of memberships -->
-            <div class="devListItem">
-                <p>Membership ID</p>
-            </div>
-            <div class="devListItem">
-                <p>Membership ID</p>
-            </div>
-            <div class="devListItem">
-                <p>Membership ID</p>
-            </div>
-            <div class="devListItem">
-                <p>Membership ID</p>
-            </div>
-            <div class="devListItem">
-                <p>Membership ID</p>
-            </div>
-            <div class="devListItem">
-                <p>Membership ID</p>
-            </div>
-            <div class="devListItem">
-                <p>Membership ID</p>
-            </div>
-            <div class="devListItem">
-                <p>Membership ID</p>
-            </div>
-            <div class="devListItem">
-                <p>Membership ID</p>
-            </div>
-            <div class="devListItem">
-                <p>Membership ID</p>
-            </div>
-            <div class="devListItem">
-                <p>Membership ID</p>
-            </div>
-            <div class="devListItem">
-                <p>Membership ID</p>
-            </div>
-            <div class="devListItem">
-                <p>Membership ID</p>
-            </div>
-            <div class="devListItem">
-                <p>Membership ID</p>
-            </div>
-            <div class="devListItem">
-                <p>Membership ID</p>
-            </div>
-            <div class="devListItem">
-                <p>Membership ID</p>
-            </div>
-            <div class="devListItem">
-                <p>Membership ID</p>
-            </div>
-            <div class="devListItem">
-                <p>Membership ID</p>
-            </div>
-            <div class="devListItem">
-                <p>Membership ID</p>
-            </div>
-            <div class="devListItem">
-                <p>Membership ID</p>
-            </div>
-            <div class="devListItem">
-                <p>Membership ID</p>
-            </div>
         </div>
     </div>
 
@@ -125,4 +62,37 @@
 <script src="devMessaging.js"></script>
 <script src="fetch_schedule.js"></script>
 <script src="fetch_exercise.js"></script>
+
+<script>
+    window.onload = function () {
+        // Fetch all membership IDs
+        fetch('/api/membership/get')
+            .then(response => response.json())
+            .then(res => {
+                console.log(res.data)
+                if (res.data[0] !== undefined) {
+                    let membershipList = document.getElementById("membershipList");
+                    for (let i = 0; i < res.data.length; i++) {
+                        let divElement = document.createElement("div");
+                        let paragraphElement = document.createElement("p");
+                        divElement.classList.add("devListItem");
+
+                        paragraphElement.innerText = res.data[i].membership_id;
+
+                        divElement.addEventListener("click", membershipIdListener)
+                        divElement.appendChild(paragraphElement);
+                        membershipList.appendChild(divElement);
+
+                    }
+                }
+
+            })
+            .catch(error => console.error(error));
+    }
+
+    // Membership id listener
+    function membershipIdListener(){
+        document.getElementById("membershipID").value = this.innerText;
+    }
+</script>
 </html>
