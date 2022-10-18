@@ -218,7 +218,7 @@ document.getElementById("membershipIDRemove").addEventListener("click", function
 
 // Clear all database
 document.getElementById("clearAll").addEventListener("click", function () {
-    fetch("/api/dev/clear")
+    fetch("/api/database/clear/all")
         .then(response => response.json())
         .then(result => {
             console.log(result);
@@ -228,4 +228,52 @@ document.getElementById("clearAll").addEventListener("click", function () {
                 alert('Database not cleared!');
             }
         });
+});
+
+// Clear all users
+document.getElementById("clearUsers").addEventListener("click", function () {
+   fetch("/api/database/clear/users").then(response => response.json()).then(result => {
+         if (result.status === 'ok') {
+              alert('Users cleared!');
+         } else {
+              alert('Users not cleared!');
+         }
+         location.reload();
+   })
+});
+
+// Clear all schedules
+document.getElementById("clearSchedules").addEventListener("click", function () {
+    fetch("/api/database/clear/schedules").then(response => response.json()).then(result => {
+        if (result.status === 'ok') {
+            alert('Schedules cleared!');
+        } else {
+            alert('Schedules not cleared!');
+        }
+        location.reload();
+    })
+});
+
+// Clear all messages
+document.getElementById("clearMessages").addEventListener("click", function () {
+    fetch("/api/database/clear/messages").then(response => response.json()).then(result => {
+        if (result.status === 'ok') {
+            alert('Messages cleared!');
+        } else {
+            alert('Messages not cleared!');
+        }
+        location.reload();
+    })
+});
+
+// Clear all memberships
+document.getElementById("clearMemberships").addEventListener("click", function () {
+    fetch("/api/database/clear/memberships").then(response => response.json()).then(result => {
+        if (result.status === 'ok') {
+            alert('Memberships cleared!');
+        } else {
+            alert('Memberships not cleared!');
+        }
+        location.reload();
+    })
 });
