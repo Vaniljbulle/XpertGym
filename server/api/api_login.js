@@ -45,4 +45,14 @@ router.post('/api/login', async (req, res) => {
     res.json({status: 'error', error: 'Invalid username/password'})
 })
 
+// Get for status if user is logged in or not, returns username if logged in
+router.get('/api/login/status', async (req, res) => {
+    console.log("Login status get request");
+    if (req.user) {
+        res.json({status: 'ok', data: req.user.username});
+    } else {
+        res.json({status: 'error', data: 'Not logged in'});
+    }
+});
+
 module.exports = router
