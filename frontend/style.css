@@ -1,10 +1,10 @@
-/** {*/
-/*    box-sizing: border-box;*/
-/*    padding: 0;*/
-/*    margin: 0;*/
-/*    overflow: auto;*/
-/*    font-family: 'Poppins', sans-serif;*/
-/*}*/
+* {
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+    font-family: 'Poppins', sans-serif;
+}
+
 /*Start of Column*/
 .row {
     width: 100vw;
@@ -19,6 +19,7 @@
 
 .column {
     border: 3px solid #d5b183;
+    text-align: center;
 }
 
 .row h2 {
@@ -36,12 +37,11 @@
 
 .column.side {
     width: 25%;
-    text-align: center;
 }
 
 .column.center {
     width: 50%;
-    text-align: center;
+
 }
 
 .row:after {
@@ -167,8 +167,6 @@ footer {
     left: 0;
     right: 0;
     height: auto;
-
-
 }
 
 .contact {
@@ -224,8 +222,8 @@ h5 {
     text-decoration: underline;
 }
 
-/************* Profile **************/
-.username {
+/************* Personal Page **************/
+.username{
     font-size: 30px;
     font-weight: 500;
     margin-bottom: 10px;
@@ -242,6 +240,11 @@ h5 {
 }
 
 .bar {
+    box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+.profilePage .column.center{
+    width: 100%;
 }
 
 .tabBtn {
@@ -254,15 +257,13 @@ h5 {
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    font-size: 16px;
     font-weight: 700;
     height: 54px;
+    font-size: 16px;
     justify-content: center;
     letter-spacing: 0.5px;
     line-height: 1;
     max-width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
     padding-top: 3px;
     text-decoration: none;
     text-transform: uppercase;
@@ -270,6 +271,7 @@ h5 {
     width: 100%;
     margin-top: 3px;
     margin-bottom: 3px;
+    overflow: hidden;
 }
 
 .tabBtn:hover {
@@ -286,40 +288,108 @@ h5 {
     margin-top: 1rem;
 }
 
-.schemeInputText {
+#Settings .tabBtn{
+    width: 40%;
+    height: 44px;
+    display: inline-flex;
+}
+
+.profileInputText {
     width: 100%;
     padding: 12px 20px;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
+/************* Profile **************/
+.profile-section{
+    width: 100%;
+    background: #f1f1f1;
+    padding: 40px 0px;
+    overflow: hidden;
+    margin: auto;
+}
+.profile-section-row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.profile-section-col{
+    flex: 50%;
+}
+
+.profile-about{
+    padding-right: 30px;
+}
+.profile-achievements{
+    padding-left: 30px;
+}
+.profile-achievements .glow{
+    padding: 10px;
+}
+/************* Schedules **************/
+.scheme{
+    position: relative;
+    width: 98%;
+    height: 100px;
+    background-color: #bdbdbd;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border: 4px solid #555;
+}
+.scheme:hover .scheme-s{
+    width: 100%;
+}
+.scheme img {
+    min-width: 100%;
+    height: auto;
+    z-index: 0;
+}
+.scheme-s{
+    width: 0px;
+    height: 100px;
+    background: rgba(220, 183, 135, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: 0.5s ease;
+}
+.scheme-s a{
+    color: white;
+    font-size: 30px;
+    border: 3px solid white;
+    padding: 10px 30px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    cursor: pointer;
+}
 
 /*************Log in **************/
-.img {
-
-    width: 100%;
-    align-items: center; /*center in main section*/
+.img{
+    overflow: hidden;
+    align-items: center ; /*center in main section*/
     /*  position: absolute; /*position for header mot moving*/
     display: flex;
-    padding: 200px 1px; /* 10px top and bottom, 200px right and left*/
+    padding: 250px 1px; /* 10px top and bottom, 200px right and left*/
     /*For back ground picture*/
     background: url(/img/login.jfif) no-repeat;
-    background-size: cover;
+    background-size:cover;
     background-position: center;
     background-attachment: fixed;
     height: 50vh;
-
 }
 
-.img::after {
-    position: absolute;
-    content: '';
-    top: 6px;
-    left: 1px;
-    height: 88%;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.5);
-
+.img::after{
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .content {
@@ -489,20 +559,16 @@ span {
 }
 
 /*********** Input ***************/
-input {
-
+bmiInput{
     padding-left: 12px;
     width: 250px;
     font-weight: 700;
     font-size: xx-large;
     font-family: Arial, Helvetica, sans-serif;
-
 }
 
-
 /**************Personal trainers*************/
-
-.banner-trainer {
+.banner-trainer{
     background: url(/img/wp.webp);
     background-size: cover;
     background-position: center;
@@ -533,6 +599,7 @@ input {
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
+    overflow: hidden;
 }
 
 .title-trainer {
@@ -576,12 +643,11 @@ input {
     margin: 10px;
 }
 
-img {
+.card-trainer img{
     margin-top: 20px;
     margin-left: 60px;
 
 }
-
 /* Center the div, move it all the way to the left on the navbar
    but not to overlap the logo and make it look pretty  */
 .population_navbar {
@@ -614,7 +680,6 @@ img {
         text-shadow: 0 0 13px #fff, 0 0 16px #ff4da6, 0 0 19px #ff4da6, 0 0 22px #ff4da6, 0 0 25px #ff4da6, 0 0 28px #ff4da6, 0 0 31px #ff4da6;
     }
 }
-
 
 /* Dev/Admin/User Test page */
 .devBox div {
@@ -884,4 +949,14 @@ img {
 .planner-card-hovered {
     background: #f4f4f4;
     border-style: dashed;
+
+/***** Media *****/
+@media screen and (max-width: 770px){
+    .tabBtn{
+        font-size: 2.4vw;
+        letter-spacing: 0px;
+    }
+    .scheme{
+        border: 2.2px solid #555;
+    }
 }
