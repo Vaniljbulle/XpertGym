@@ -885,3 +885,49 @@ img {
     background: #f4f4f4;
     border-style: dashed;
 }
+
+.planner-create-exercise {
+    width: 90%;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #00bfff;
+    border: #00bfff 2px solid;
+    border-radius: 10px;
+    transition-duration: 0.1s;
+}
+
+.planner-create-exercise:hover {
+    transition-duration: 0.1s;
+    border-color: #00bb55;
+    width: 92%;
+}
+
+.planner-create-exercise:active {
+    transition-duration: 0.1s;
+    background-color: #00bb55;
+    width: 92%;
+}
+
+#planner-modal-container {
+    position: fixed;
+    display: none;
+    background-color: deepskyblue;
+    width: 500px;
+    min-height: 500px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    text-align: center;
+}
+
+#planner-modal-container h1 {
+
+}
+
+#planner-modal-exit {
+    margin-left: 470px;
+    width: 30px;
+    height: 30px;
+}
