@@ -1,6 +1,12 @@
 const fill = document.querySelector('.planner-card-fill');
 const empties = document.querySelectorAll('.planner-card-empty');
 
+let exercises = fetchAll();
+
+for (const exercise of exercises) {
+    console.log(exercise);
+}
+
 // Fill listeners
 fill.addEventListener('dragstart', dragStart);
 fill.addEventListener('dragend', dragEnd);

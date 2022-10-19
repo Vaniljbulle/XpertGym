@@ -123,4 +123,16 @@ router.get('/fetch_schedule.js', async (req, res) => {
     res.sendFile('fetch_schedule.js', {root: path.join('server/auth')});
 })
 
+// workout_planner.html
+router.get('/workout_planner.html', verifyToken, async (req, res) => {
+    console.log("workout_planner.html requested");
+    res.sendFile('workout_planner.html', {root: path.join('frontend')});
+})
+
+// schedule_generator.js
+router.get('/schedule_generator.js', verifyToken, async (req, res) => {
+    console.log("schedule_generator.js requested");
+    res.sendFile('schedule_generator.js', {root: path.join('frontend')});
+})
+
 module.exports = router

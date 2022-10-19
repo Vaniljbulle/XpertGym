@@ -1,5 +1,5 @@
 function fetchAll() {
-    fetch('/api/exercise/getAll', {
+    fetch('/api/exercise/all', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -16,7 +16,9 @@ function fetchAll() {
                 // }
             } else {
                 console.log('All exercises failed to be fetched!');
+                return [];
             }
         }).catch(err => console.log(err));
 
+    return [];
 }

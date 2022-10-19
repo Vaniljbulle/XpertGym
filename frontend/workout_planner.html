@@ -139,22 +139,14 @@
     </div>
 </footer>
 <script>
-    function allowDrop(ev) {
-        ev.preventDefault();
-    }
-
-    function drag(ev) {
-        ev.dataTransfer.setData("text", ev.target.id);
-    }
-
     function drop(ev) {
         ev.preventDefault();
-        var data = ev.dataTransfer.getData("text");
+        const data = ev.dataTransfer.getData("text");
         ev.target.appendChild(document.getElementById(data));
     }
 
-    var acc = document.querySelectorAll(".collapsible");
-    var i;
+    const acc = document.querySelectorAll(".collapsible");
+    let i;
 
     for (i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function () {
@@ -167,12 +159,16 @@
 
             // Then show the clicked panel
             this.classList.toggle("active");
-            var Collaps_content = this.nextElementSibling;
+            const Collaps_content = this.nextElementSibling;
             Collaps_content.style.maxHeight = Collaps_content.scrollHeight + "px";
 
         });
     }
 </script>
+<script src="fetch_exercise.js"></script>
+<script src="fetch_schedule.js"></script>
+<script src="add_exercise.js"></script>
+<script src="add_schedule.js"></script>
 <script src="schedule_generator.js"></script>
 </body>
 </html>
