@@ -9,21 +9,26 @@
 <p>This is the admin page</p>
 <!-- Add membership ID to database -->
 <div class="devBox">
-    <div class="devAdders">
-        <!-- Membership ID -->
-        <h2>Memberships</h2>
-        <form id="devMembershipID">
+    <div class="row">
+        <div class="devAdders noBorder">
+            <h2>Database</h2>
+            <button id="clearAll">Clear All</button>
+            <button id="clearUsers">Clear Users</button>
+            <button id="clearSchedules">Clear Schedules</button>
+            <button id="clearMessages">Clear Messages</button>
+            <button id="clearMemberships">Clear Memberships</button>
+        </div>
+        <div class="devAdders noBorder">
+            <!-- Membership ID -->
+            <h2>Memberships</h2>
             <label for="membershipID">Membership ID:</label>
-            <input id="membershipID" type="text" name="membershipID">
-            <input id="membershipIDSubmit" type="submit" value="Add">
-            <input id="membershipIDRemove" type="submit" value="Remove">
-            <input id="membershipIDClear" type="submit" value="Clear all">
-        </form>
-        <h2>Database</h2>
-        <button id="clearAll">Clear All</button>
-        <button id="clearUsers">Clear Users</button>
-        <button id="clearWorkouts">Clear Workouts</button>
-        <button id="clearMessages">Clear Messages</button>
+            <input id="membershipID" type="text">
+            <button id="membershipIDSubmit">Add ID</button>
+            <button id="membershipIDRemove">Remove ID</button>
+        </div>
+        <div class="devListContainer maxHeight" id="membershipList">
+            <!-- List of memberships -->
+        </div>
     </div>
 
 
@@ -57,4 +62,37 @@
 <script src="devMessaging.js"></script>
 <script src="fetch_schedule.js"></script>
 <script src="fetch_exercise.js"></script>
+
+<script>
+    window.onload = function () {
+        // Fetch all membership IDs
+        fetch('/api/membership/get')
+            .then(response => response.json())
+            .then(res => {
+                console.log(res.data)
+                if (res.data[0] !== undefined) {
+                    let membershipList = document.getElementById("membershipList");
+                    for (let i = 0; i < res.data.length; i++) {
+                        let divElement = document.createElement("div");
+                        let paragraphElement = document.createElement("p");
+                        divElement.classList.add("devListItem");
+
+                        paragraphElement.innerText = res.data[i].membership_id;
+
+                        divElement.addEventListener("click", membershipIdListener)
+                        divElement.appendChild(paragraphElement);
+                        membershipList.appendChild(divElement);
+
+                    }
+                }
+
+            })
+            .catch(error => console.error(error));
+    }
+
+    // Membership id listener
+    function membershipIdListener(){
+        document.getElementById("membershipID").value = this.innerText;
+    }
+</script>
 </html>

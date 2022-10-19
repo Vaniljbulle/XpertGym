@@ -24,8 +24,7 @@ document.getElementById("devMessageSubmit").addEventListener("click", function (
     if (data.schedule_id === "" || data.message === null || data.message === undefined) {
         alert("Please select a schedule");
         return;
-    }
-    else if (data.message === "" || data.message === null || data.message === undefined) {
+    } else if (data.message === "" || data.message === null || data.message === undefined) {
         console.log("Message is empty");
         return;
     }
@@ -40,6 +39,7 @@ document.getElementById("devMessageSubmit").addEventListener("click", function (
         .then(res => {
             if (res.status === "ok") {
                 console.log("Message sent");
+                document.getElementById("devMessageBox").value = "";
                 appendMessage({
                     username: res.data.username,
                     timestamp: res.data.timestamp,
@@ -84,12 +84,13 @@ function workoutListListener(e) {
         .then(res => {
             if (res.status === "ok") {
                 // Set message board div id
-                divElement = document.getElementsByClassName("devMessageLogBoard");
+                let divElement = document.getElementsByClassName("devMessageLogBoard");
                 divElement[0].id = data.schedule_id;
 
+                clearMessageLog();
+
                 console.log(res.data.message_log);
-                if (res.data.message_log.length === undefined) {
-                    clearMessageLog();
+                if (res.data.message_log === undefined) {
                     appendMessage({
                         username: "System message",
                         timestamp: "00:00:00",
@@ -97,7 +98,6 @@ function workoutListListener(e) {
                         message: "There are no messages, be the first one to post!"
                     });
                 } else {
-                    clearMessageLog();
                     res.data.message_log.forEach(message => {
                         appendMessage({
                             username: message.username,
@@ -188,12 +188,37 @@ document.getElementById("membershipIDSubmit").addEventListener("click", function
             } else {
                 alert('Membership not added!');
             }
+            location.reload();
         });
 })
 
+// Remove membership from database
+document.getElementById("membershipIDRemove").addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const data = {MEMBERSHIP_ID: document.getElementById("membershipID").value};
+
+    fetch('/api/membership/remove', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(res => res.json())
+        .then(res => {
+            console.log(res);
+            if (res.status === 'ok') {
+                alert('Membership removed!');
+            } else {
+                alert('Membership not removed!');
+            }
+            location.reload();
+        });
+});
+
 // Clear all database
 document.getElementById("clearAll").addEventListener("click", function () {
-    fetch("/api/dev/clear")
+    fetch("/api/database/clear/all")
         .then(response => response.json())
         .then(result => {
             console.log(result);
@@ -203,4 +228,52 @@ document.getElementById("clearAll").addEventListener("click", function () {
                 alert('Database not cleared!');
             }
         });
+});
+
+// Clear all users
+document.getElementById("clearUsers").addEventListener("click", function () {
+   fetch("/api/database/clear/users").then(response => response.json()).then(result => {
+         if (result.status === 'ok') {
+              alert('Users cleared!');
+         } else {
+              alert('Users not cleared!');
+         }
+         location.reload();
+   })
+});
+
+// Clear all schedules
+document.getElementById("clearSchedules").addEventListener("click", function () {
+    fetch("/api/database/clear/schedules").then(response => response.json()).then(result => {
+        if (result.status === 'ok') {
+            alert('Schedules cleared!');
+        } else {
+            alert('Schedules not cleared!');
+        }
+        location.reload();
+    })
+});
+
+// Clear all messages
+document.getElementById("clearMessages").addEventListener("click", function () {
+    fetch("/api/database/clear/messages").then(response => response.json()).then(result => {
+        if (result.status === 'ok') {
+            alert('Messages cleared!');
+        } else {
+            alert('Messages not cleared!');
+        }
+        location.reload();
+    })
+});
+
+// Clear all memberships
+document.getElementById("clearMemberships").addEventListener("click", function () {
+    fetch("/api/database/clear/memberships").then(response => response.json()).then(result => {
+        if (result.status === 'ok') {
+            alert('Memberships cleared!');
+        } else {
+            alert('Memberships not cleared!');
+        }
+        location.reload();
+    })
 });

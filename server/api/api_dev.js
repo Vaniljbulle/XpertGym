@@ -25,23 +25,6 @@ router.get('/api/dev/users', verifyToken, async (req, res) => {
     }
 });
 
-// Cleanse databse
-router.get('/api/dev/clear', verifyToken, async (req, res) => {
-    // Clear all databases
-    if (await isAdmin(req.user)) {
-        console.log("Clearing all databases");
-        await User.deleteMany({username: {$nin:["Admin"]}}); // Delete all accounts except Admin
-        await Membership.deleteMany({user_level: {$nin:[2]}}); // Delete all memberships except Admin
-        await Exercise.deleteMany({});
-        await UserExercise.deleteMany({});
-        await Schedule.deleteMany({});
-        await ScheduleLink.deleteMany({});
-        res.status(200).json({status: 'ok', data: 'All databases cleared'});
-    }else {
-        res.status(403).json({status: 'error', data: 'Not authorized'});
-    }
-})
-
 // Get all schedules for specific user
 router.post('/api/dev/schedule/get', verifyToken, async (req, res) => {
     console.log("Get schedule for specific user ID");
@@ -62,20 +45,24 @@ router.post('/api/dev/schedule/get', verifyToken, async (req, res) => {
 // Get message log for specific schedule (for debugging)
 router.post('/api/dev/schedule/log', verifyToken, async (req, res) => {
     console.log("Get message log for specific schedule ID");
-    console.log(req.body);
 
     if (await isAdmin(req.user)) {
         try {
-            const schedule = await Schedule.findOne({id_schedule: req.body.schedule_id}).lean();
+            const schedule = await Schedule.findOne({_id: req.body.schedule_id}).lean();
 
-            console.log("Schedule fetched successfully: ", schedule);
-            res.status(200).json({status: 'ok', data: {message_log: schedule.message_log}});
+            return res.status(200).json({status: 'ok', data: {message_log: schedule.message_log}});
         } catch (err) {
             console.log("Encountered error during fetching schedules: ", err);
-            res.status(500).json({status: 'error'});
+            return res.status(500).json({status: 'error'});
         }
     } else {
-        res.status(403).json({status: 'error', data: 'Not authorized'});
+        try {
+            const schedule = await Schedule.findOne({_id: req.body.schedule_id, id_user: req.user.id}).lean();
+
+            return res.status(200).json({status: 'ok', data: {message_log: schedule.message_log}});
+        } catch (err) {
+            return res.status(500).json({status: 'error', data: 'Not authorized'});
+        }
     }
 });
 
@@ -101,7 +88,7 @@ console.log("Submit message for specific schedule ID");
     console.log("Data: ", data);
 
     try {
-        await Schedule.updateOne({id_schedule: schedule_id}, {$push: {message_log: data}});
+        await Schedule.updateOne({_id: schedule_id}, {$push: {message_log: data}});
         res.status(200).json({status: 'ok', data: data});
     } catch (err) {
         console.log("Encountered error during submitting message: ", err);
