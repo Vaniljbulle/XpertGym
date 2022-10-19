@@ -832,6 +832,7 @@ bmiInput{
 /************ workout planner ***********/
 
 .grid-container {
+    overflow: visible;
     display: flex;
     text-align: start;
     grid-gap: 10px;
@@ -840,6 +841,7 @@ bmiInput{
 }
 
 .grid-container > div {
+    overflow: visible;
     background-color: rgba(155, 149, 149, 0.8);
     text-align: center;
     padding: 5px 5px;
@@ -891,6 +893,7 @@ bmiInput{
 }
 
 .workout-container {
+    overflow: visible;
     display: flex;
     text-align: start;
     grid-gap: 10px;
@@ -900,6 +903,7 @@ bmiInput{
 
 .workout-container > div {
     background-color: rgba(155, 149, 149, 0.8);
+    overflow: visible;
     display: flex;
     position: center;
     height: 60px;
@@ -919,6 +923,7 @@ bmiInput{
 
 .planner-card-fill {
     background-image: url('https://source.unsplash.com/random/150x150');
+    overflow: visible;
     height: 50px;
     width: 50px;
     top: 5px;
@@ -927,6 +932,7 @@ bmiInput{
 }
 
 .planner-card-fill p{
+    overflow: visible;
     position: relative;
     top: 44px;
     margin: 0 0;
@@ -939,6 +945,7 @@ bmiInput{
 }
 
 .planner-card-empty {
+    overflow: visible;
     display: inline-block;
     height: 50px;
     width: 50px;
@@ -949,6 +956,7 @@ bmiInput{
 .planner-card-hovered {
     background: #f4f4f4;
     border-style: dashed;
+}
 
 /***** Media *****/
 @media screen and (max-width: 770px){
