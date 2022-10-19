@@ -6,8 +6,169 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
 </head>
 <body>
-    <p>Here you will generate your workout scheme!</p>
+<!-- Navigation bar / Header -->
+<nav class="navbar">
+    <a href="index.html" class="logo"></a>
+    <nav class="navigation">
+        <ul>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</nav>
+
+<!-- Banner intro with text -->
+<div class="banner">
+    <div class="about">
+        <h2>Xpert Gym</h2>
+        <p>Log in to get started with your fitness journey!</p>
+        <a href="login.html" class="btn"><span></span>Log In</a>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="column side">
+        <p>hur många i gymmet, calories o sånt</p>
+    </div>
+    <div class="column center">
+        <div class="grid-container">
+            <div class="planner-card-empty">
+                <div class="planner-card-fill" draggable="true">
+                    <p>
+                        Name
+                    </p>
+                </div>
+            </div>
+
+            <div class="planner-card-empty">
+                <div class="planner-card-fill" draggable="true">
+
+                </div>
+            </div>
+
+            <div class="planner-card-empty">
+            </div>
+
+            <div class="planner-card-empty">
+            </div>
+
+            <div class="planner-card-empty">
+            </div>
+
+            <div class="planner-card-empty">
+            </div>
+
+            <div class="planner-card-empty">
+            </div>
+
+            <div class="planner-card-empty">
+            </div>
+
+            <div class="planner-card-empty">
+            </div>
+        </div>
+    </div>
+    <div class="column side">
+        <p>här ska själva workoutsen vara som ska draggas till kalendern?</p>
+        <button class="collapsible">Chest</button>
+        <div class="Collaps_content">
+            <div class="workout-container">
+                <div class="planner-card-empty">
+                </div>
+                <div class="planner-card-empty">
+                </div>
+                <div class="planner-card-empty">
+                </div>
+                <div class="planner-card-empty">
+                </div>
+                <div class="planner-card-empty">
+                </div>
+            </div>
+        </div>
+        <button class="collapsible">Arms</button>
+        <div class="Collaps_content">
+            <div class="workout-container">
+                <div class="planner-card-empty">
+                </div>
+            </div>
+        </div>
+        <button class="collapsible">Legs</button>
+        <div class="Collaps_content">
+            <div class="workout-container">
+                <div class="planner-card-empty">
+                </div>
+            </div>
+        </div>
+        <button class="collapsible">Back</button>
+        <div class="Collaps_content">
+            <div class="workout-container">
+                <div class="planner-card-empty">
+                </div>
+
+            </div>
+        </div>
+        <button class="collapsible">Abs</button>
+        <div class="Collaps_content">
+            <div class="workout-container">
+                <div class="planner-card-empty">
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Footer -->
+<footer>
+    <div class="contact">
+        <h3>Contact information</h3>
+        <h4>.....Info.....</h4>
+        <!-- <img src="#" alt="logo2"/>  -->
+        <h5>Follow Us</h5>
+        <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+            <a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        </div>
+
+
+    </div>
+</footer>
+<script>
+    function drop(ev) {
+        ev.preventDefault();
+        const data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
+
+    const acc = document.querySelectorAll(".collapsible");
+    let i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+
+            // Loop over all the panels and close each one
+            document.querySelectorAll(".Collaps_content").forEach(function (Collaps_content) {
+                Collaps_content.style.maxHeight = "0";
+                Collaps_content.previousElementSibling.classList.remove("active");
+            });
+
+            // Then show the clicked panel
+            this.classList.toggle("active");
+            const Collaps_content = this.nextElementSibling;
+            Collaps_content.style.maxHeight = Collaps_content.scrollHeight + "px";
+
+        });
+    }
+</script>
+<script src="fetch_exercise.js"></script>
+<script src="fetch_schedule.js"></script>
+<script src="add_exercise.js"></script>
+<script src="add_schedule.js"></script>
+<script src="schedule_generator.js"></script>
 </body>
 </html>

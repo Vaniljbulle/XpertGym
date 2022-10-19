@@ -17,23 +17,28 @@
     position: relative;
 }
 
-.column{
+.column {
     border: 3px solid #d5b183;
     text-align: center;
 }
-.row h2{
+
+.row h2 {
     text-transform: uppercase;
 }
-.row h2, p{
+
+.row h2, p {
     text-align: center;
 }
-.column a{
+
+.column a {
     color: #000000;
     padding: 7px 20px;
 }
+
 .column.side {
     width: 25%;
 }
+
 .column.center {
     width: 50%;
 
@@ -44,10 +49,11 @@
     display: table;
     clear: both;
 }
+
 /*End of Column*/
 
 /* start of banner content*/
-.banner{
+.banner {
     background: url(/img/2bg.jpg);
     background-size: cover;
     background-position: center;
@@ -56,7 +62,7 @@
     height: 70vh;
 }
 
-.btn{
+.btn {
     position: relative;
     display: inline-block;
     padding: 10px 30px;
@@ -70,7 +76,8 @@
     overflow: hidden;
     z-index: 0;
 }
-.btn span{
+
+.btn span {
     background: #d3b083;
     height: 100%;
     width: 0;
@@ -80,10 +87,12 @@
     z-index: -1;
     transition: 0.5s;
 }
-.btn:hover span{
+
+.btn:hover span {
     width: 100%;
 }
-.about{
+
+.about {
     position: absolute;
     color: white;
     top: 40%;
@@ -94,35 +103,39 @@
     justify-content: center;
     text-align: center;
 }
-.about .btn{
+
+.about .btn {
     margin-top: 1rem;
 }
 
-.about h2{
+.about h2 {
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 30px;
-    }
+}
+
 /* end of banner content*/
-.navbar{
+.navbar {
     width: 100%;
     height: 80px;
     position: fixed;
     overflow: hidden;
     z-index: 1;
 }
-ul{
+
+ul {
     width: auto;
     float: right;
     margin-top: 15px;
     margin-right: 15px;
 }
-li{
+
+li {
     display: inline-block;
     padding: 15px 30px;
 }
 
-.navigation a{
+.navigation a {
     text-decoration: initial;
     color: white;
     font-weight: 500;
@@ -130,11 +143,12 @@ li{
 
 }
 
-.navigation a:hover{
+.navigation a:hover {
     color: rgb(176, 120, 47);
     text-decoration: underline;
 }
-.logo{
+
+.logo {
     background: url(/img/wlogo.png) no-repeat;
     width: 150px;
     height: 150px;
@@ -149,10 +163,13 @@ li{
 footer {
     background-color: rgb(53, 56, 58);
     width: 100%;
-    bottom: 0; left: 0;right: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     height: auto;
 }
-.contact{
+
+.contact {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -160,13 +177,13 @@ footer {
     text-align: center;
 }
 
-h3{
+h3 {
     color: burlywood;
     font-size: 2.1em;
     font-style: italic;
 }
 
-h4{
+h4 {
     color: burlywood;
     font-weight: 500;
     font-size: 1.1em;
@@ -174,7 +191,7 @@ h4{
     line-height: 28px;
 }
 
-h5{
+h5 {
     color: burlywood;
     font-weight: 500;
     font-size: 1.1em;
@@ -183,7 +200,7 @@ h5{
 }
 
 
-.social-icons{
+.social-icons {
     list-style: none;
     display: flex;
     align-items: center;
@@ -191,19 +208,20 @@ h5{
     margin: 1rem 0 3rem 0;
 }
 
-.social-icons a{
+.social-icons a {
     margin: 0 10px;
 }
 
-.social-icons i{
+.social-icons i {
     color: burlywood;
     font-size: x-large;
 }
 
-.social-icons i:hover{ /*to color when pointing*/
+.social-icons i:hover { /*to color when pointing*/
     color: rgb(176, 120, 47);
     text-decoration: underline;
 }
+
 /************* Personal Page **************/
 .username{
     font-size: 30px;
@@ -211,18 +229,24 @@ h5{
     margin-bottom: 10px;
     text-decoration: underline;
 }
-.container{
+
+.container {
     max-width: 1250px;
     width: 100%;
     margin: auto;
     padding: 10px 30px 30px 30px;
     border-radius: 5px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.bar {
     box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
     box-sizing: border-box;
 }
 .profilePage .column.center{
     width: 100%;
 }
+
 .tabBtn {
     align-items: center;
     background-image: linear-gradient(#464d55, #25292e);
@@ -250,10 +274,18 @@ h5{
     overflow: hidden;
 }
 
-.tabBtn:hover{
+.tabBtn:hover {
     box-shadow: 0 0 12px rgb(53, 56, 59) inset;
-    border: 1px solid rgba(255,255,255,1);
-    color: rgba(255,255,255,1);
+    border: 1px solid rgba(255, 255, 255, 1);
+    color: rgba(255, 255, 255, 1);
+}
+
+/************* Schedules **************/
+.scheme {
+    width: 100%;
+    height: 100px;
+    background-color: #bdbdbd;
+    margin-top: 1rem;
 }
 
 #Settings .tabBtn{
@@ -360,8 +392,8 @@ h5{
     clear: both;
 }
 
-.content{
-    position:absolute;
+.content {
+    position: absolute;
     top: 50%;
     left: 50%;
     text-align: center;
@@ -373,13 +405,13 @@ h5{
     transform: translate(-50%, -50%);
 }
 
-.content h2{
+.content h2 {
     color: white;
     font-size: 45px;
     margin: 0 0 35px 0;
 }
 
-.filed{
+.filed {
     position: relative;
     height: 35px;
     width: 100%;
@@ -388,24 +420,24 @@ h5{
     border-radius: 8px;
 }
 
-.filed input{
+.filed input {
     height: 100%;
     width: 100%;
     color: #222;
-    font-size: 25px ;
+    font-size: 25px;
     margin-right: 10px;
     background: transparent;
     border: none;
     outline: none;
 }
 
-.space{
+.space {
     margin-top: 16px;
 }
 
-.filed1 input{
-    background:  rgb(176, 120, 47);
-    border: 8px ;
+.filed1 input {
+    background: rgb(176, 120, 47);
+    border: 8px;
     color: white;
     font-size: 18px;
     cursor: pointer;
@@ -418,33 +450,34 @@ h5{
     border-radius: 8px;
 
 }
-.filed1 input:hover{
+
+.filed1 input:hover {
     background: burlywood;
 }
 
 
-.signup{
-    color:white;
+.signup {
+    color: white;
     margin-top: 20px;
     font-size: 35px;
 }
 
-.signup a{
+.signup a {
     color: rgb(176, 120, 47);
     margin-top: 20px;
     text-decoration: none;
 }
 
 .signup a:hover {
-    text-decoration:underline ;
-    color:burlywood;
+    text-decoration: underline;
+    color: burlywood;
 
 }
 
 /************ BMI **************/
-.img-BMI{
+.img-BMI {
     width: 100%;
-    align-items: center ; /*center in main section*/
+    align-items: center; /*center in main section*/
     /*  position: absolute; /*position for header mot moving*/
     display: flex;
     padding: 200px 1px; /* 10px top and bottom, 200px right and left*/
@@ -456,7 +489,7 @@ h5{
     height: 50vh;
 }
 
-.box{
+.box {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -467,21 +500,21 @@ h5{
     background-color: rgb(129, 87, 49);
 }
 
-.box h2{
+.box h2 {
     color: white;
     font-size: 40px;
     margin: 0 0 50px 0;
 }
 
-.box a{
+.box a {
     color: burlywood;
     font-size: 35px;
 
 }
 
-.but{
-    background:  rgb(176, 120, 47);
-    border: 8px ;
+.but {
+    background: rgb(176, 120, 47);
+    border: 8px;
     color: white;
     font-size: 40px;
     cursor: pointer;
@@ -495,11 +528,11 @@ h5{
 
 }
 
-.but:hover{
+.but:hover {
     background: rgb(103, 11, 121);
 }
 
-span{
+span {
     color: rgb(170, 33, 33);
     height: 100%;
     width: 50%;
@@ -507,7 +540,7 @@ span{
     margin-top: 10px;
 }
 
-.filed{
+.filed {
     position: relative;
     height: 45px;
     width: 100%;
@@ -516,14 +549,15 @@ span{
     border-radius: 8px;
 }
 
-#output{
-    color:black;
+#output {
+    color: black;
     width: 250px;
     font-weight: 700;
     font-size: xx-large;
-    font-family:cursive;
-    
+    font-family: cursive;
+
 }
+
 /*********** Input ***************/
 bmiInput{
     padding-left: 12px;
@@ -543,7 +577,7 @@ bmiInput{
     height: 50vh;
 }
 
-.about-trainer{
+.about-trainer {
     position: absolute;
     top: 20%;
     left: 10%;
@@ -551,12 +585,12 @@ bmiInput{
     width: 330px;
 }
 
-.about-trainer h2{
+.about-trainer h2 {
     text-transform: uppercase;
     font-size: 30px;
 }
 
-.about-trainer p{
+.about-trainer p {
     font-size: 20px;
 }
 
@@ -568,7 +602,7 @@ bmiInput{
     overflow: hidden;
 }
 
-.title-trainer{
+.title-trainer {
     display: flex;
     justify-content: center;
     color: rgb(129, 87, 49);
@@ -587,22 +621,22 @@ bmiInput{
     transition: 0.7s ease; /*time for transition*/
 }
 
-.card-trainer:hover{
-    background-color: gray ;
+.card-trainer:hover {
+    background-color: gray;
     transform: scale(1.1);
 }
 
-.icon{
+.icon {
     color: purple;
     font-size: 8em;
     text-align: center;
 }
 
-.information{
+.information {
     text-align: center;
 }
 
-.information h3{
+.information h3 {
     color: rgb(129, 87, 49);
     font-size: 1.2em;
     font-weight: 700;
@@ -646,6 +680,275 @@ bmiInput{
         text-shadow: 0 0 13px #fff, 0 0 16px #ff4da6, 0 0 19px #ff4da6, 0 0 22px #ff4da6, 0 0 25px #ff4da6, 0 0 28px #ff4da6, 0 0 31px #ff4da6;
     }
 }
+
+/* Dev/Admin/User Test page */
+.devBox div {
+    margin: 2px;
+    padding: 2px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+}
+
+.devBox input {
+    padding-left: 12px;
+    width: 250px;
+    font-weight: 700;
+    font-size: 1.2em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.devBox button {
+    padding-left: 12px;
+    width: 250px;
+    font-weight: 700;
+    font-size: 1.2em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.devBox .devAdders {
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    /* stack horizontally */
+    display: flex;
+    flex-direction: column;
+}
+
+.devBox .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: fit-content;
+}
+
+.devBox .noBorder {
+    border: none;
+}
+
+.devBox button {
+    margin-top: 5px;
+}
+
+.devChatFrame {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 2px solid #e00b0b;
+    width: fit-content;
+}
+
+.devChatFrame div {
+
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #e00b0b;
+    overflow: auto;
+}
+
+/* Button style */
+.devBox button {
+    display: block;
+}
+
+/* Button stand out style */
+.devChatFrame .fetch {
+    width: 300px;
+    margin-top: 3px;
+    margin-bottom: 15px;
+    height: 50px;
+    color: #e00b0b;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.devChatFrame fieldset {
+    margin: 10px;
+    border: 1px solid #e00b0b;
+    max-width: 500px;
+}
+
+.devChatFrame fieldset p {
+    text-align: left;
+}
+
+.devChatFrame textarea {
+    width: 100%;
+    max-width: 500px;
+    height: 100px;
+    margin: 10px 10px 0 10px;
+    padding: 10px;
+    border: 2px solid #0735ce;
+}
+
+.devChatFrame .postedMessage {
+    /* stack items vertically */
+    display: flex;
+    flex-direction: column;
+    width: 550px;
+}
+
+.devChatFrame .devMessageLogBoard {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.devBox .devListContainer {
+    min-width: 300px;
+    max-width: 500px;
+}
+
+.devBox .devListContainer p {
+    margin: 5px;
+}
+
+.devBox .devListItem{
+    margin: 2px;
+    padding: 0;
+    border: 1px solid #e00b0b;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.devBox .devListItem:hover{
+    background-color: #e00b0b;
+    color: white;
+    transform: scale(1.01);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.devBox .devListItem:active {
+    background-color: #e00b0b;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.devBox .maxHeight {
+    max-height: 300px;
+    overflow: auto;
+}
+
+/************ workout planner ***********/
+
+.grid-container {
+    display: flex;
+    text-align: start;
+    grid-gap: 10px;
+    padding: 10px;
+    -webkit-flex-wrap: wrap;
+}
+
+.grid-container > div {
+    background-color: rgba(155, 149, 149, 0.8);
+    text-align: center;
+    padding: 5px 5px;
+    font-size: 30px;
+    border-radius: 5px;
+    flex-basis: 50px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+.collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 10px 10px;
+    margin-top: 1px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    overflow: hidden;
+    border-radius: 5px;
+
+}
+
+
+.active, .collapsible:hover {
+    background-color: #555;
+}
+
+.collapsible:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2212";
+}
+
+.Collaps_content {
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+}
+
+.workout-container {
+    display: flex;
+    text-align: start;
+    grid-gap: 10px;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+.workout-container > div {
+    background-color: rgba(155, 149, 149, 0.8);
+    display: flex;
+    position: center;
+    height: 60px;
+    width: 60px;
+    top: 5px;
+    left: 5px;
+    cursor: pointer;
+    font-size: 30px;
+    border-radius: 5px;
+    flex-basis: 60px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+/* PLANNER */
+
+.planner-card-fill {
+    background-image: url('https://source.unsplash.com/random/150x150');
+    height: 50px;
+    width: 50px;
+    top: 5px;
+    left: 5px;
+    cursor: pointer;
+}
+
+.planner-card-fill p{
+    position: relative;
+    top: 44px;
+    margin: 0 0;
+    padding: 0 0;
+    font-size: 12px;
+}
+
+.planner-card-hold {
+    border: solid 5px #ccc;
+}
+
+.planner-card-empty {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    border: solid 3px salmon;
+    background: white;
+}
+
+.planner-card-hovered {
+    background: #f4f4f4;
+    border-style: dashed;
 
 /***** Media *****/
 @media screen and (max-width: 770px){

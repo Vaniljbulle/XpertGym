@@ -39,7 +39,6 @@ function addSchedule(data) {
 function addTest() {
     addSchedule({
         name: "First schedule",
-        username: "Admin",
         exercises: [
             {
                 exercise_id: "63470f30fccfc2373f8ddff8",

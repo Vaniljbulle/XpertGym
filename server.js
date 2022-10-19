@@ -9,6 +9,9 @@ const exerciseRoute = require('./server/api/api_exercise.js');
 const scheduleRoute = require('./server/api/api_schedule.js');
 const startupSequence = require('./server/auth/startup_sequence');
 const gymPopData = require('./server/api/api_gym_population_data.js');
+const devRoutes = require('./server/api/api_dev.js');
+const membershipRoute = require('./server/api/api_membership.js');
+const databaseClearRoute = require('./server/api/api_database.js');
 
 const app = express();
 
@@ -22,6 +25,10 @@ app.use(logoutRoute);
 app.use(exerciseRoute);
 app.use(scheduleRoute);
 app.use(gymPopData);
+app.use(devRoutes);
+app.use(membershipRoute);
+app.use(databaseClearRoute);
+
 
 mongoose.connection.on('disconnected', function() {
     fatalError(-2);
