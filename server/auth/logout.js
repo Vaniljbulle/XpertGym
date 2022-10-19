@@ -27,7 +27,7 @@ window.onload = function () {
             if (res.status === 'ok') {
                 const li = document.createElement('li');
                 const a = document.createElement('a');
-                a.innerHTML = "Logout";
+                a.innerHTML = "Log out";
                 a.href = "javascript:logout()";
 
                 li.appendChild(a);
@@ -38,7 +38,7 @@ window.onload = function () {
         const li = document.createElement('li');
         const a = document.createElement('a');
         a.href = 'login.html';
-        a.innerHTML = "Login";
+        a.innerHTML = "Log in";
 
         li.appendChild(a);
 
