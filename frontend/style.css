@@ -175,6 +175,7 @@ footer {
     justify-content: center;
     flex-direction: column;
     text-align: center;
+    margin-top: 30px;
 }
 
 h3 {
@@ -374,7 +375,7 @@ h5 {
 
 /*************Log in **************/
 .img{
-    overflow: hidden;
+    width: 100%;
     align-items: center ; /*center in main section*/
     /*  position: absolute; /*position for header mot moving*/
     display: flex;
@@ -385,20 +386,25 @@ h5 {
     background-position: center;
     background-attachment: fixed;
     height: 50vh;
+    
 }
 
 .img::after{
+    position: absolute;
     content: "";
-    display: table;
-    clear: both;
+    top: 1px;
+    left: 1px;
+    height: 102%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .content {
-    position: absolute;
+    position:absolute;
     top: 50%;
     left: 50%;
     text-align: center;
-    padding: 200px 200px;
+    padding: 80px 40px;
     width: 370px;
     background: rgba(255, 255, 255, 0.04);
     box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
@@ -419,6 +425,7 @@ h5 {
     display: flex;
     background: rgba(255, 255, 255, 0.94);
     border-radius: 8px;
+    overflow: hidden;
 }
 
 .filed input {
@@ -530,7 +537,7 @@ h5 {
 }
 
 .but:hover {
-    background: rgb(103, 11, 121);
+    border:3px solid #d3b083;
 }
 
 span {
@@ -555,17 +562,15 @@ span {
     width: 250px;
     font-weight: 700;
     font-size: xx-large;
-    font-family: cursive;
 
 }
 
 /*********** Input ***************/
-bmiInput{
+.bmiInput{
     padding-left: 12px;
     width: 250px;
     font-weight: 700;
     font-size: xx-large;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 /**************Personal trainers*************/
@@ -576,6 +581,24 @@ bmiInput{
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 50vh;
+}
+
+.images1{
+    background: url(/img/trainer1.jpg);
+    height: 27vh;
+    width: "200px";
+}
+
+.images2{
+    background: url(/img/trainer2.jpg);
+    height: 27vh;
+    width: "200px";
+}
+
+.images3{
+    background: url(/img/trainer3.jpg);
+    height: 27vh;
+    width: "200px";
 }
 
 .about-trainer {
@@ -649,6 +672,7 @@ bmiInput{
     margin-left: 60px;
 
 }
+
 /* Center the div, move it all the way to the left on the navbar
    but not to overlap the logo and make it look pretty  */
 .population_navbar {
