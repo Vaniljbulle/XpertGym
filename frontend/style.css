@@ -1,4 +1,4 @@
-/** {
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
@@ -153,7 +153,9 @@ footer {
     justify-content: center;
     flex-direction: column;
     text-align: center;
+    margin-top:30px;
 }
+
 
 h3{
     color: burlywood;
@@ -168,6 +170,7 @@ h4{
     font-size: 1.1em;
     margin: 10px auto;
     line-height: 28px;
+    font-style: italic;
 }
 
 h5{
@@ -176,6 +179,7 @@ h5{
     font-size: 1.1em;
     margin: 10px auto;
     line-height: 28px;
+    font-style: italic;
 }
 
 
@@ -200,6 +204,50 @@ h5{
     color: rgb(176, 120, 47);
     text-decoration: underline;
 }
+/************* Profile **************/
+.username{
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+.container{
+    max-width: 1250px;
+    width: 100%;
+    margin: auto;
+    padding: 10px 30px 30px 30px;
+    border-radius: 5px;
+    box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+}
+.bar{
+}
+.tabBtn {
+    align-items: center;
+    background-image: linear-gradient(#464d55, #25292e);
+    border: 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: 700;
+    height: 54px;
+    justify-content: center;
+    letter-spacing: 0.5px;
+    line-height: 1;
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 3px;
+    text-decoration: none;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    width: 100%;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
 
 
 /*************Log in **************/
@@ -210,9 +258,8 @@ h5{
     align-items: center ; /*center in main section*/
     /*  position: absolute; /*position for header mot moving*/
     display: flex;
-    padding: 200px 5px; /* 10px top and bottom, 200px right and left*/
+    padding: 200px 1px; /* 10px top and bottom, 200px right and left*/
     /*For back ground picture*/
-
     background: url(/img/login.jfif) no-repeat;
     background-size:cover;
     background-position: center;
@@ -225,8 +272,8 @@ h5{
     position: absolute;
     content: '';
     top: 6px;
-    left: 6px;
-    height: 88%;
+    left: 1px;
+    height: 92%;
     width: 100%;
     background: rgba(0, 0, 0, 0.5);
     
@@ -237,7 +284,7 @@ h5{
     top: 50%;
     left: 50%;
     text-align: center;
-    padding: 200px 200px;
+    padding: 150px 200px;
     width: 370px;
     background: rgba(255, 255, 255, 0.04);
     box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
@@ -258,6 +305,7 @@ h5{
     display: flex;
     background: rgba(255, 255, 255, 0.94);
     border-radius: 8px;
+    overflow: hidden;
 }
 
 .filed input{
@@ -299,6 +347,7 @@ h5{
     color:white;
     margin-top: 20px;
     font-size: 35px;
+    font-style: italic;
 }
 
 .signup a{
@@ -310,6 +359,7 @@ h5{
 .signup a:hover {
     text-decoration:underline ;
     color:burlywood;
+<<<<<<<<< Temporary merge branch 1
 }
 
 /************ BMI **************/
@@ -318,7 +368,7 @@ h5{
     align-items: center ; /*center in main section*/
     /*  position: absolute; /*position for header mot moving*/
     display: flex;
-    padding: 200px 750px; /* 10px top and bottom, 200px right and left*/
+    padding: 200px 1px; /* 10px top and bottom, 200px right and left*/
     /*For back ground picture*/
     background: url(/img/BMI-background.jpg) no-repeat;
     background-size: cover;
@@ -326,7 +376,6 @@ h5{
     background-attachment: fixed;
     height: 50vh;
 }
-
 
 .box{
     position: absolute;
@@ -343,11 +392,13 @@ h5{
     color: white;
     font-size: 40px;
     margin: 0 0 50px 0;
+    font-style: italic;
 }
 
 .box a{
     color: burlywood;
     font-size: 35px;
+    font-style: italic;
 
 }
 
@@ -364,7 +415,12 @@ h5{
     margin-top: 40px;
     padding: 10px 100px;
     border-radius: 8px;
+    font-style: italic;
 
+}
+
+.but:hover{
+    border: 3px solid #d3b083;
 }
 
 span{
@@ -386,23 +442,124 @@ span{
 
 #output{
     color:black;
+    width: 250px;
+    font-weight: 700;
+    font-size: xx-large;
+    font-style: italic;
+    
 }
 /*********** Input ***************/
-input{
-
+.bmiInput{
     padding-left: 12px;
     width: 250px;
     font-weight: 700;
     font-size: xx-large;
-    font-family: Arial, Helvetica, sans-serif;
-
+    font-style: italic;
 }
 
+/**************Personal trainers*************/
+.banner-trainer{
+    background: url(/img/wp.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 50vh;
+}
 
+.images1{
+    background: url(/img/trainer1.jpg);
+    height: 27vh;
+    width:"200px";
+}
 
+.images2{
+    background: url(/img/trainer2.jpg);
+    height: 27vh;
+    width:"200px";
+}
 
+.images3{
+    background: url(/img/trainer3.jpg);
+    height: 27vh;
+    width:"200px";
+}
 
+.about-trainer{
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    color: white;
+    width: 330px;
+}
 
+.about-trainer h2{
+    text-transform: uppercase;
+    font-size: 30px;
+}
 
+.about-trainer p{
+    font-size: 20px;
+}
 
+.content-trainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
 
+.title-trainer{
+    display: flex;
+    justify-content: center;
+    color: rgb(129, 87, 49);
+    font-size: 2.2em;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.cards h2{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-style:italic;
+}
+
+.card-trainer {
+    background-color: white;
+    width: 21.25em;
+    box-shadow: 0 5px 25px rgba(1, 1, 1, 15%);
+    border-radius: 10px;
+    padding: 25px;
+    margin: 15px;
+    transition: 0.7s ease; /*time for transition*/
+}
+
+.card-trainer:hover{
+    background-color: gray ;
+    transform: scale(1.1);
+}
+
+.icon{
+    color: purple;
+    font-size: 8em;
+    text-align: center;
+}
+
+.information{
+    text-align: center;
+}
+
+.information h3{
+    color: rgb(129, 87, 49);
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 10px;
+}
+
+img{
+    margin-top: 20px;
+    margin-left: 60px;
+
+=========
+}
+>>>>>>>>> Temporary merge branch 2
