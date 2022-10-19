@@ -9,29 +9,6 @@
 
 </head>
 <body>
-
-<div id="planner-modal-container">
-    <button id="planner-modal-exit" onclick="exitCreateExercise()">X</button>
-    <h1>Create your own exercise</h1>
-    <h2>Name <input id="name_value" value="Name" name="name"></h2>
-    <h2>Sets <input id="sets_value" value="Sets" name="sets"></h2>
-    <h2>Reps <input id="reps_value" value="Reps" name="reps"></h2>
-    <h2>Description <input id="desc_value" value="Description"></h2>
-    <h2>Muscle group</h2>
-    <p>Chest<input type="radio" name="muscleGroup"></p>
-    <p>Arms<input type="radio" name="muscleGroup"></p>
-    <p>Legs<input type="radio" name="muscleGroup"></p>
-    <p>Back<input type="radio" name="muscleGroup"></p>
-    <p>Abs<input type="radio" name="muscleGroup"></p>
-    <p>Cardio<input type="radio" name="muscleGroup"></p>
-    <h2>Duration <input id="duration_value" value="Duration"></h2>
-    <h2>Difficulty</h2>
-    <p>Beginner<input type="radio" name="difficulty"></p>
-    <p>Moderate<input type="radio" name="difficulty"></p>
-    <p>Advanced<input type="radio" name="difficulty"></p>
-    <button onclick="createExercise()">Create</button>
-</div>
-
 <!-- Navigation bar / Header -->
 <nav class="navbar">
     <a href="index.html" class="logo"></a>
@@ -46,8 +23,12 @@
 <!-- Banner intro with text -->
 <div class="banner">
     <div class="about">
+        <h2>Xpert Gym</h2>
+        <p>Log in to get started with your fitness journey!</p>
+        <a href="login.html" class="btn"><span></span>Log In</a>
     </div>
 </div>
+
 
 <div class="row">
     <div class="column side">
@@ -65,9 +46,7 @@
 
             <div class="planner-card-empty">
                 <div class="planner-card-fill" draggable="true">
-                    <p>
-                        Name
-                    </p>
+
                 </div>
             </div>
 
@@ -94,7 +73,7 @@
         </div>
     </div>
     <div class="column side">
-        <button class="planner-create-exercise" onclick="enterCreateExercise()">Create exercise</button>
+        <p>här ska själva workoutsen vara som ska draggas till kalendern?</p>
         <button class="collapsible">Chest</button>
         <div class="Collaps_content">
             <div class="workout-container">
