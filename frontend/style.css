@@ -19,6 +19,7 @@
 
 .column{
     border: 3px solid #d5b183;
+    text-align: center;
 }
 .row h2{
     text-transform: uppercase;
@@ -32,12 +33,12 @@
 }
 .column.side {
     width: 25%;
-    text-align: center;
 }
 .column.center {
     width: 50%;
-    text-align: center;
+
 }
+
 .row:after {
     content: "";
     display: table;
@@ -203,7 +204,7 @@ h5{
     color: rgb(176, 120, 47);
     text-decoration: underline;
 }
-/************* Profile **************/
+/************* Personal Page **************/
 .username{
     font-size: 30px;
     font-weight: 500;
@@ -254,36 +255,88 @@ h5{
     border: 1px solid rgba(255,255,255,1);
     color: rgba(255,255,255,1);
 }
-/************* Schedules **************/
-.scheme{
-    width: 100%;
-    height: 100px;
-    background-color: #bdbdbd;
-    margin-top: 1rem;
+
+#Settings .tabBtn{
+    width: 40%;
+    height: 44px;
+    display: inline-flex;
 }
 
-.schemeInputText{
+.profileInputText {
     width: 100%;
     padding: 12px 20px;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
+/************* Profile **************/
+.profile-section{
+    width: 100%;
+    background: #f1f1f1;
+    padding: 40px 0px;
+    overflow: hidden;
+    margin: auto;
+}
+.profile-section-row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.profile-section-col{
+    flex: 50%;
+}
 
+.profile-about{
+    padding-right: 30px;
+}
+.profile-achievements{
+    padding-left: 30px;
+}
+.profile-achievements .glow{
+    padding: 10px;
+}
 /************* Schedules **************/
 .scheme{
-    width: 100%;
+    position: relative;
+    width: 98%;
     height: 100px;
     background-color: #bdbdbd;
     margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border: 4px solid #555;
 }
-
-.schemeInputText{
+.scheme:hover .scheme-s{
     width: 100%;
-    padding: 12px 20px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+}
+.scheme img {
+    min-width: 100%;
+    height: auto;
+    z-index: 0;
+}
+.scheme-s{
+    width: 0px;
+    height: 100px;
+    background: rgba(220, 183, 135, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: 0.5s ease;
+}
+.scheme-s a{
+    color: white;
+    font-size: 30px;
+    border: 3px solid white;
+    padding: 10px 30px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    cursor: pointer;
 }
 
 /*************Log in **************/
@@ -450,7 +503,7 @@ span{
     color: rgb(170, 33, 33);
     height: 100%;
     width: 50%;
-    font-size: 16px ;
+    font-size: 16px;
     margin-top: 10px;
 }
 
@@ -556,7 +609,7 @@ bmiInput{
     margin: 10px;
 }
 
-img{
+.card-trainer img{
     margin-top: 20px;
     margin-left: 60px;
 
@@ -599,5 +652,8 @@ img{
     .tabBtn{
         font-size: 2.4vw;
         letter-spacing: 0px;
+    }
+    .scheme{
+        border: 2.2px solid #555;
     }
 }

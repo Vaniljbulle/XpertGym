@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="style.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Title</title>
+  <title>XpertGym - Profile</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 <body>
@@ -30,7 +30,7 @@
 <div class="banner">
   <div class="about">
     <h2 class="username">username</h2>
-    <p>Wellcome to your personal page!</p>
+    <p>Welcome to your personal page!</p>
     <p>Here you can see and modify your schedules and change other settings concerning your profile</p>
   </div>
 </div>
@@ -40,7 +40,6 @@
       <div class="bar">
         <button class="tabBtn" onclick="openTab('Profile')">Profile</button>
         <button class="tabBtn" onclick="openTab('Schemes')">Schemes</button>
-        <button class="tabBtn" onclick="openTab('Achievements')">Achievements</button>
         <button class="tabBtn" onclick="openTab('Settings')">Settings</button>
       </div>
     </div>
@@ -48,28 +47,62 @@
       <div class="container">
         <div class="p">
           <div id="Profile" class="cont tab" style="display:none">
-            <h2>Profile</h2>
-            <p>Here your profile will be shown</p>
+            <div class="profile-section">
+              <div class="profile-section-row">
+                <div class="profile-section-col">
+                  <div class="profile-about">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut blanditiis eius harum iure nam nemo nihil quo sit vel veritatis.</p>
+                  </div>
+                </div>
+                <div class="profile-section-col">
+                  <div class="profile-achievements">
+                    <p>Your personal achievements:</p>
+                    <p id="GymDays_data_ID" class="glow">You have worked out "x" times!</p>
+                    <p id="Schedules_data_ID" class="glow">You have created "x" schedules!</p>
+                    <p id="BMI_data_ID" class="glow">your latest BMI calculated: </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-
           <div id="Schemes" class="cont tab" style="display:none">
             <h2>Schemes</h2>
-            <p>Here schedules will be shown with comments from your personal trainer</p>
-            <div class="scheme"></div>
-            <input class="schemeInputText" type="text" placeholder="insert comment...">
-            <div class="scheme"></div>
-            <input class="schemeInputText" type="text" placeholder="insert comment...">
-          </div>
-
-          <div id="Achievements" class="cont tab" style="display:none">
-            <h2>Achievements</h2>
-            <p>Here your achievements will be shown</p>
+            <p>Here are your previously saved workout schedules</p>
+            <div class="scheme">
+              <img src="/img/wp.webp" alt="">
+              <div class="scheme-s">
+                <a href="workout_planner.html">workout schedule #1</a>
+              </div>
+            </div>
+            <div class="scheme">
+              <img src="/img/contact.jpg" alt="">
+              <div class="scheme-s">
+                <a href="workout_planner.html">workout schedule #2</a>
+              </div>
+            </div>
+            <div class="scheme">
+              <img src="/img/banner.jpeg" alt="">
+              <div class="scheme-s">
+                <a href="workout_planner.html">workout schedule #3</a>
+              </div>
+            </div>
           </div>
 
           <div id="Settings" class="cont tab" style="display:none">
             <h2>Settings</h2>
-            <p>Here can settings be changed</p>
-            <button>change password</button>
+            <button class="tabBtn" onclick="toggleBtn('changeUsernameID')">change username</button>
+            <button class="tabBtn" onclick="toggleBtn('changePasswordID')">change Password</button>
+            <div id="changeUsernameID" style="display:none">
+              <h4>change username</h4>
+              <input class="profileInputText" type="text" placeholder="enter username...">
+              <input class="tabBtn" type="submit" value="Change username">
+            </div>
+            <div id="changePasswordID" style="display:none">
+              <h4>change password</h4>
+              <input class="profileInputText" type="password" placeholder="enter old password...">
+              <input class="profileInputText" type="password" placeholder="enter new password...">
+              <input class="tabBtn" type="submit" value="Change password">
+            </div>
           </div>
 
         </div>
@@ -106,5 +139,13 @@
       x[i].style.display = "none";
     }
     document.getElementById(tabName).style.display = "block";
+  }
+  function toggleBtn(btnName){
+    var x = document.getElementById(btnName);
+    if(x.style.display === "none"){
+      x.style.display = "block";
+    }else{
+      x.style.display = "none";
+    }
   }
 </script>
