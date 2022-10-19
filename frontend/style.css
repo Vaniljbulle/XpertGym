@@ -19,6 +19,7 @@
 
 .column{
     border: 3px solid #d5b183;
+    text-align: center;
 }
 .row h2{
     text-transform: uppercase;
@@ -32,12 +33,12 @@
 }
 .column.side {
     width: 25%;
-    text-align: center;
 }
 .column.center {
     width: 50%;
-    text-align: center;
+
 }
+
 .row:after {
     content: "";
     display: table;
