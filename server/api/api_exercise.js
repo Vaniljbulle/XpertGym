@@ -25,6 +25,7 @@ router.post('/api/exercise/add', verifyToken, async (req, res) => {
     }
 
     const {name, image, sets, reps, description, muscleGroup, duration, difficulty, type} = req.body;
+    console.log({name, image, sets, reps, description, muscleGroup, duration, difficulty, type});
 
     try {
         const isUserExercise = type === 0 || type === 1;
@@ -44,7 +45,7 @@ router.post('/api/exercise/add', verifyToken, async (req, res) => {
         });
 
         if (isUserExercise) {
-            await UserExercise.create({id_exercise: exercise._id, id_user: req.user._id});
+            await UserExercise.create({id_exercise: exercise._id, id_user: req.user.id});
         }
 
         console.log("Exercise added successfully: ", exercise);
@@ -75,7 +76,7 @@ router.post('/api/exercise/remove', verifyToken, async (req, res) => {
             res.status(200).json({status: 'ok'});
         }
         else {
-            await UserExercise.find({id_exercise: _id, id_user: req.user._id}).deleteOne();
+            await UserExercise.find({id_exercise: _id, id_user: req.user.id}).deleteOne();
             const exercise = await Exercise.findById(_id).deleteOne();
             console.log("Exercise removed successfully: ", exercise);
             res.status(200).json({status: 'ok'});
