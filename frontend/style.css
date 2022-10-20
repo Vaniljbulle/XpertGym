@@ -986,3 +986,117 @@ span {
         border: 2.2px solid #555;
     }
 }
+
+
+/************** Contact *************/
+
+.banner2{
+    background-image: linear-gradient(to bottom right, black, burlywood);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 70vh;
+}
+
+.Contact-Container{
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    position: relative;
+}
+
+.cont_left {
+    width: 25%;
+    text-align: center;
+    border: 1px solid #d5b183;
+}
+
+.cont_right {
+    width: 75%;
+    text-align: center;
+    border: 1px solid #d5b183;
+}
+
+.Contact_info{
+    position: absolute;
+    margin-top: 50px;
+    top: 15%;
+    text-align: center;
+    color: burlywood;
+    width: 100%;
+    max-height: 250px;
+}
+
+
+.fill_in_form{
+    position: relative;
+    width: 70%;
+    display: inline-flex;
+    background: rgba(255, 255, 255, 0.94);
+    margin-top: 20px;
+    overflow: hidden;
+
+}
+.fill_in_form input{
+    height: 45px;
+    width: 100%;
+    color: #222;
+    font-size: 14px;
+    margin-right: 10px;
+    background: lightgray;
+    border: 1px solid #030303;
+    outline: none;
+    font-weight: 400;
+}
+
+.comment_box{
+    position: relative;
+    width: 70%;
+    display: inline-flex;
+    background: rgba(255, 255, 255, 0.94);
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.comment_box textarea{
+    height: 300px;
+    min-height: 300px;
+    width: 100%;
+    color: #222;
+    font-size: 14px;
+    margin-right: 10px;
+    background: lightgray;
+    border: 1px solid #030303;
+    outline: none;
+    font-weight: 400;
+}
+
+.send input{
+    background:  rgb(176, 120, 47);
+    border: 8px ;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    height: 100%;
+    width: 20%;
+    outline: none;
+    border: none;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 10px 10px;
+    border-radius: 8px;
+}
+.send input:hover{
+    background: burlywood;
+}
+
+.Contact_info > div{
+    width: auto;
+    margin-inline: 50px;
+    display: inline-block;
+    margin-top: 60px;
+    margin-left: 150px;
+}
