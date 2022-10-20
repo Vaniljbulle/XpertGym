@@ -236,18 +236,27 @@ function dragDrop() {
     this.addEventListener('click', cardOnClick); // Click event listener for the card
     this.firstElementChild.classList.remove('planner-card-hold');
     this.classList.remove('planner-card-hovered');
+    this.classList.add('planner-card-selected-hovered'); // Border change when hovering over an unselected card
 }
 
 function cardOnClick() {
-    // Remove selection from all cards
-    const divs = document.querySelectorAll('.planner-card-empty');
-    for (const div of divs) {
-        if (div.classList.contains('planner-card-selected'))
-            div.classList.toggle('planner-card-selected');
+    // If the card is already selected, deselect it
+    if (this.classList.contains('planner-card-selected')) {
+        this.classList.remove('planner-card-selected');
+        this.classList.add('planner-card-selected-hovered');
+        return;
     }
 
-    // Mark our card as selected
-    if (this.firstElementChild.classList.contains('planner-card-fill')) {
-        this.classList.toggle('planner-card-selected');
+    // If the card is not selected, unselect all cards
+    const divs = document.querySelectorAll('.planner-card-empty');
+    for (const div of divs) {
+        if (div.classList.contains('planner-card-selected')) {
+            div.classList.remove('planner-card-selected');
+            div.classList.add('planner-card-selected-hovered');
+        }
     }
+
+    // Select the card
+    this.classList.remove('planner-card-selected-hovered');
+    this.classList.toggle('planner-card-selected');
 }
