@@ -225,6 +225,7 @@ function dragLeave() {
 
 function dragDrop() {
     console.log(this.className);
+    if (this.firstElementChild !== null) return; // Returning if this slot is occupied
     if (currentlyDragged.type === 0) {
         this.append(currentlyDragged.element.cloneNode(true));
         this.firstElementChild.classList.add('planner-card-fill');
