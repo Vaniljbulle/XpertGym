@@ -404,12 +404,12 @@ h5 {
     top: 50%;
     left: 50%;
     text-align: center;
-    padding: 80px 40px;
-    width: 370px;
+    padding: 80px 8px;
     background: rgba(255, 255, 255, 0.04);
     box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
     z-index: 9;
     transform: translate(-50%, -50%);
+    border-radius: 20px;
 }
 
 .content h2 {
@@ -504,7 +504,7 @@ overflow: hidden;
     text-align: center;
     padding: 90px 40px;
     border-radius: 20px;
-    width: 370px;
+    width: 300px;
     transform: translate(-50%, -50%);
     background-color: rgb(129, 87, 49);
 }
@@ -532,7 +532,7 @@ overflow: hidden;
     outline: none;
     border: none;
     margin-top: 40px;
-    padding: 10px 100px;
+    padding: 10px 20px;
     border-radius: 8px;
 
 }
