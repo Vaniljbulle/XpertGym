@@ -1035,3 +1035,7 @@ bmiInput{
 .planner-card-selected {
     border: solid 3px yellow;
 }
+
+.planner-card-selected-hovered:hover {
+    border: solid 3px green;
+}
