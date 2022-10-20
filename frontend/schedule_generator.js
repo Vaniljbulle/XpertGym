@@ -197,7 +197,6 @@ for (const empty of empties) {
 // Drag Functions
 
 function dragStart() {
-    console.log(this.className);
     if (this.classList.contains('planner-card-fill')) {
         currentlyDragged.type = 1;
     } else {
@@ -205,6 +204,10 @@ function dragStart() {
     }
     currentlyDragged.element = this;
     this.className += ' planner-card-hold';
+
+    // Add class to the div card is being lifted from
+    this.parentElement.classList.add('cardLifted');
+    console.log(this.parentElement.classList);
 }
 
 function dragEnd() {
@@ -218,12 +221,22 @@ function dragOver(e) {
 
 function dragEnter(e) {
     e.preventDefault();
-    this.className += ' planner-card-hovered';
+    if (this.firstElementChild === null)
+        this.classList.add('planner-card-hovered');
 }
 
 function dragLeave() {
-    this.removeEventListener('click', cardOnClick); // Remove click event listener
-    this.className = 'planner-card-empty';
+    if (currentlyDragged.element !== null && this.firstElementChild !== null) {
+        if (currentlyDragged.element.id === this.firstElementChild.id && this.classList.contains('cardLifted')) {
+            this.removeEventListener('click', cardOnClick);
+            this.classList.remove('planner-card-selected');
+            this.classList.remove('planner-card-selected-hovered');
+            this.classList.remove('cardLifted');
+        }
+    } else {
+        this.classList.remove('planner-card-hovered');
+        console.log("REMOVED HOVER");
+    }
 }
 
 function dragDrop() {
