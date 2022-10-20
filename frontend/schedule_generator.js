@@ -1,8 +1,10 @@
-const fill = document.querySelector('.planner-card-fill');
 const empties = document.querySelectorAll('.planner-card-empty');
 const exerciseModal = document.getElementById("planner-modal-container");
 
 const categories = document.getElementsByClassName("workout-container");
+let exerciseCards = [];
+
+let currentlyDragged = {element: null, type: 0};
 
 const name = document.getElementById("name_value");
 const sets = document.getElementById("sets_value");
@@ -65,12 +67,16 @@ function spawnExerciseCard(exercise) {
     const category = getExerciseClass(exercise);
     if (category === "") return;
     let card = document.createElement("div");
+    let image = document.createElement("img");
     let text = document.createElement("p");
+    image.src = exercise.image;
     text.innerHTML = exercise.name;
     card.className = category;
+    card.draggable = true;
+    card.append(image);
     card.appendChild(text);
     categories[exercise.muscleGroup].appendChild(card);
-
+    addCardToList(card);
 }
 
 function exitCreateExercise() {
@@ -171,9 +177,11 @@ function fetchExercise(id) {
         }).catch(err => console.log(err));
 }
 
-// Fill listeners
-fill.addEventListener('dragstart', dragStart);
-fill.addEventListener('dragend', dragEnd);
+function addCardToList(card) {
+    exerciseCards.push(card);
+    exerciseCards[exerciseCards.length-1].addEventListener('dragstart', dragStart);
+    exerciseCards[exerciseCards.length-1].addEventListener('dragend', dragEnd);
+}
 
 // Loop through empty boxes and add listeners
 for (const empty of empties) {
@@ -186,12 +194,20 @@ for (const empty of empties) {
 // Drag Functions
 
 function dragStart() {
+    console.log(this.className);
+    if (this.classList.contains('planner-card-fill')) {
+        currentlyDragged.type = 1;
+    }
+    else {
+        currentlyDragged.type = 0;
+    }
+    currentlyDragged.element = this;
     this.className += ' planner-card-hold';
-    setTimeout(() => (this.className = 'invisible'), 0);
 }
 
 function dragEnd() {
-    this.className = 'planner-card-fill';
+    console.log(this.className);
+    currentlyDragged.element = null;
 }
 
 function dragOver(e) {
@@ -208,6 +224,15 @@ function dragLeave() {
 }
 
 function dragDrop() {
-    this.className = 'planner-card-empty';
-    this.append(fill);
+    console.log(this.className);
+    if (currentlyDragged.type === 0) {
+        this.append(currentlyDragged.element.cloneNode(true));
+        this.firstElementChild.classList.add('planner-card-fill');
+        addCardToList(this.firstElementChild);
+    }
+    else {
+        this.append(currentlyDragged.element);
+    }
+    this.firstElementChild.classList.remove('planner-card-hold');
+    this.classList.remove('planner-card-hovered');
 }
