@@ -147,6 +147,7 @@ function createExercise() {
 }
 
 function fetchExercise(id) {
+    //console.log("Fetching exercise with id: " + id);
     fetch('/api/exercise/getByID', {
         method: 'POST',
         headers: {
@@ -167,7 +168,7 @@ function fetchExercise(id) {
                     duration: res.data.duration,
                     difficulty: res.data.difficulty,
                     type: res.data.type,
-                    exerciseID: id._id
+                    exerciseID: id._id === undefined ? id : id._id
                 };
                 sortedExercises[res.data.muscleGroup].push(data);
                 const index = sortedExercises[res.data.muscleGroup].length - 1;
