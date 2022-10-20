@@ -895,7 +895,7 @@ bmiInput{
 .workout-container {
     overflow: visible;
     display: flex;
-    text-align: start;
+    text-align: center;
     grid-gap: 10px;
     padding: 10px;
     flex-wrap: wrap;
@@ -911,6 +911,7 @@ bmiInput{
     top: 5px;
     left: 5px;
     cursor: pointer;
+    text-align: center;
     font-size: 30px;
     border-radius: 5px;
     flex-basis: 60px;
@@ -920,10 +921,17 @@ bmiInput{
     border: solid 3px salmon;
 }
 
+.workout-container > div > p {
+    overflow: visible;
+    position: relative;
+    margin: 0 0;
+    padding: 0 0;
+    font-size: 12px;
+}
+
 /* PLANNER */
 
 .planner-card-fill {
-    background-image: url('https://source.unsplash.com/random/150x150');
     overflow: visible;
     height: 50px;
     width: 50px;
@@ -932,17 +940,25 @@ bmiInput{
     cursor: pointer;
 }
 
+.planner-card-fill img {
+    overflow: visible;
+    max-height: 50px;
+    max-width: 50px;
+    top: 5px;
+    left: 5px;
+    cursor: pointer;
+}
+
 .planner-card-fill p{
     overflow: visible;
     position: relative;
-    top: 44px;
     margin: 0 0;
     padding: 0 0;
     font-size: 12px;
 }
 
 .planner-card-hold {
-    border: solid 5px #ccc;
+
 }
 
 .planner-card-empty {
