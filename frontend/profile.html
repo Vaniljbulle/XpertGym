@@ -149,4 +149,12 @@
       x.style.display = "none";
     }
   }
+
+  window.onload = function () {
+      fetch('/api/login/status')
+          .then(res => res.json())
+          .then(res => {
+              document.querySelector('.username').innerHTML = res.data;
+          })
+  }
 </script>
