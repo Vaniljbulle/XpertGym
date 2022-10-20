@@ -75,6 +75,7 @@ function spawnExerciseCard(exercise) {
     card.draggable = true;
     card.append(image);
     card.appendChild(text);
+    card.id = exercise.exerciseID; // ID of the exercise in the database
     categories[exercise.muscleGroup].appendChild(card);
     addCardToList(card);
 }
@@ -165,7 +166,8 @@ function fetchExercise(id) {
                     muscleGroup: res.data.muscleGroup,
                     duration: res.data.duration,
                     difficulty: res.data.difficulty,
-                    type: res.data.type
+                    type: res.data.type,
+                    exerciseID: id._id
                 };
                 sortedExercises[res.data.muscleGroup].push(data);
                 const index = sortedExercises[res.data.muscleGroup].length - 1;
@@ -234,6 +236,7 @@ function dragDrop() {
         this.append(currentlyDragged.element);
     }
     this.addEventListener('click', cardOnClick); // Click event listener for the card
+    this.id = currentlyDragged.element.id; // Set ID of the card to the ID of the exercise in the database
     this.firstElementChild.classList.remove('planner-card-hold');
     this.classList.remove('planner-card-hovered');
     this.classList.add('planner-card-selected-hovered'); // Border change when hovering over an unselected card
@@ -247,6 +250,15 @@ function cardOnClick() {
         return;
     }
 
+    cardClearSelections();
+    // Select the card
+    this.classList.remove('planner-card-selected-hovered');
+    this.classList.toggle('planner-card-selected');
+
+
+}
+
+function cardClearSelections() {
     // If the card is not selected, unselect all cards
     const divs = document.querySelectorAll('.planner-card-empty');
     for (const div of divs) {
@@ -255,8 +267,4 @@ function cardOnClick() {
             div.classList.add('planner-card-selected-hovered');
         }
     }
-
-    // Select the card
-    this.classList.remove('planner-card-selected-hovered');
-    this.classList.toggle('planner-card-selected');
 }
