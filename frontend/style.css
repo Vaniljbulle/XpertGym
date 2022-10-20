@@ -39,6 +39,9 @@
     width: 25%;
 }
 
+.column.side.start{
+    width: 33%;
+}
 .column.center {
     width: 50%;
 
@@ -60,6 +63,10 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 70vh;
+}
+
+.banner.start{
+    height: 100vh;
 }
 
 .btn {
@@ -102,6 +109,10 @@
     align-content: center;
     justify-content: center;
     text-align: center;
+}
+
+.about.start{
+    top: 50%;
 }
 
 .about .btn {
@@ -587,19 +598,16 @@ span {
 .images1{
     background: url(/img/trainer1.jpg);
     height: 27vh;
-    width: "200px";
 }
 
 .images2{
     background: url(/img/trainer2.jpg);
     height: 27vh;
-    width: "200px";
 }
 
 .images3{
     background: url(/img/trainer3.jpg);
     height: 27vh;
-    width: "200px";
 }
 
 .about-trainer {
@@ -1099,4 +1107,41 @@ span {
     display: inline-block;
     margin-top: 60px;
     margin-left: 150px;
+}
+
+/***** Mouse indicator scroll *****/
+
+.indicator {
+    width: 47px;
+    height: 75px;
+    border: 2px solid #fff;
+    border-radius: 50px;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    overflow: hidden;
+}
+.indicator:before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 15px;
+    border-radius: 50%;
+    animation: animate 1.5s linear infinite;
+}
+@keyframes animate {
+    0% {
+        opacity: 1; top: 15px;
+    }
+    100% {
+        opacity: 0; top: 100px;
+        transform: scale(0.8);
+    }
 }
