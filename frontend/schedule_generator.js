@@ -179,8 +179,8 @@ function fetchExercise(id) {
 
 function addCardToList(card) {
     exerciseCards.push(card);
-    exerciseCards[exerciseCards.length-1].addEventListener('dragstart', dragStart);
-    exerciseCards[exerciseCards.length-1].addEventListener('dragend', dragEnd);
+    exerciseCards[exerciseCards.length - 1].addEventListener('dragstart', dragStart);
+    exerciseCards[exerciseCards.length - 1].addEventListener('dragend', dragEnd);
 }
 
 // Loop through empty boxes and add listeners
@@ -197,8 +197,7 @@ function dragStart() {
     console.log(this.className);
     if (this.classList.contains('planner-card-fill')) {
         currentlyDragged.type = 1;
-    }
-    else {
+    } else {
         currentlyDragged.type = 0;
     }
     currentlyDragged.element = this;
@@ -220,6 +219,7 @@ function dragEnter(e) {
 }
 
 function dragLeave() {
+    this.removeEventListener('click', cardOnClick); // Remove click event listener
     this.className = 'planner-card-empty';
 }
 
@@ -230,10 +230,24 @@ function dragDrop() {
         this.append(currentlyDragged.element.cloneNode(true));
         this.firstElementChild.classList.add('planner-card-fill');
         addCardToList(this.firstElementChild);
-    }
-    else {
+    } else {
         this.append(currentlyDragged.element);
     }
+    this.addEventListener('click', cardOnClick); // Click event listener for the card
     this.firstElementChild.classList.remove('planner-card-hold');
     this.classList.remove('planner-card-hovered');
+}
+
+function cardOnClick() {
+    // Remove selection from all cards
+    const divs = document.querySelectorAll('.planner-card-empty');
+    for (const div of divs) {
+        if (div.classList.contains('planner-card-selected'))
+            div.classList.toggle('planner-card-selected');
+    }
+
+    // Mark our card as selected
+    if (this.firstElementChild.classList.contains('planner-card-fill')) {
+        this.classList.toggle('planner-card-selected');
+    }
 }
