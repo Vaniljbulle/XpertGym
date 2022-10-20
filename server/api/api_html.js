@@ -5,6 +5,11 @@ const Membership = require("../database/membership");
 const {verifyToken} = require('../auth/token');
 const isAdmin = require('../auth/isAdmin');
 
+// Get profile.html
+router.get('/profile.html', verifyToken, async (req, res) => {
+    res.sendFile('profile.html', {root: 'frontend'});
+});
+
 // GET devMessaging.js
 router.get('/devMessaging.js', verifyToken, async (req, res) => {
     res.sendFile('devMessaging.js', {root: 'server/auth'});
