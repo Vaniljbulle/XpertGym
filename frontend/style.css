@@ -1031,3 +1031,7 @@ bmiInput{
     width: 30px;
     height: 30px;
 }
+
+.planner-card-selected {
+    border: solid 3px yellow;
+}
