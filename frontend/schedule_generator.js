@@ -255,7 +255,20 @@ function cardOnClick() {
     this.classList.remove('planner-card-selected-hovered');
     this.classList.toggle('planner-card-selected');
 
-
+    // Fetch exercise data
+    fetch('/api/exercise/getByID', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({_id: this.id})
+    }).then(res => res.json()).then(res => {
+        if (res.status === 'ok') {
+            console.log(res.data);
+        } else {
+            console.log('Failed to fetch exercise data!');
+        }
+    })
 }
 
 function cardClearSelections() {
