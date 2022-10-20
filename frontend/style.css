@@ -375,7 +375,7 @@ h5 {
 
 /*************Log in **************/
 .img{
-    width: 100%;
+    overflow: hidden;
     align-items: center ; /*center in main section*/
     /*  position: absolute; /*position for header mot moving*/
     display: flex;
@@ -484,7 +484,7 @@ h5 {
 
 /************ BMI **************/
 .img-BMI {
-    width: 100%;
+overflow: hidden;
     align-items: center; /*center in main section*/
     /*  position: absolute; /*position for header mot moving*/
     display: flex;
@@ -502,7 +502,8 @@ h5 {
     top: 50%;
     left: 50%;
     text-align: center;
-    padding: 100px 100px;
+    padding: 90px 40px;
+    border-radius: 20px;
     width: 370px;
     transform: translate(-50%, -50%);
     background-color: rgb(129, 87, 49);
@@ -647,7 +648,7 @@ span {
 
 .card-trainer:hover {
     background-color: gray;
-    transform: scale(1.1);
+    transform: scale(1.06);
 }
 
 .icon {
