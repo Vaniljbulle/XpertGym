@@ -1159,3 +1159,7 @@ bmiInput{
     background-color: #00bb55;
     box-shadow: 1px 1px 1px #000;
 }
+
+.modifyExerciseColumn {
+    display: none;
+}

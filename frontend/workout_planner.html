@@ -59,7 +59,31 @@
 
 <div class="row">
     <div class="column side">
-        <p>hur många i gymmet, calories o sånt</p>
+        <h4>Click an exercise to modify</h4>
+        <div class="modifyExerciseColumn">
+            <div>
+                <h4>Name <input id="name_value_modified" placeholder="Name" name="name"></h4>
+                <h4>Sets <input id="sets_value_modified" placeholder="Sets" name="sets"></h4>
+                <h4>Reps <input id="reps_value_modified" placeholder="Reps" name="reps"></h4>
+                <h4>Description <input id="desc_value_modified" placeholder="Description"></h4>
+                <h4>Muscle group</h4>
+                <p>Chest<input type="radio" name="muscleGroup"></p>
+                <p>Arms<input type="radio" name="muscleGroup"></p>
+                <p>Legs<input type="radio" name="muscleGroup"></p>
+                <p>Back<input type="radio" name="muscleGroup"></p>
+                <p>Abs<input type="radio" name="muscleGroup"></p>
+                <p>Cardio<input type="radio" name="muscleGroup"></p>
+                <h4>Duration <input id="duration_value_modified" placeholder="Duration"></h4>
+                <h4>Difficulty</h4>
+                <p>Beginner<input type="radio" name="difficulty"></p>
+                <p>Moderate<input type="radio" name="difficulty"></p>
+                <p>Advanced<input type="radio" name="difficulty"></p>
+            </div>
+            <div>
+                <button onclick="modifyExercise()">Modify</button>
+                <button onclick="deleteExercise()">Delete</button>
+            </div>
+        </div>
     </div>
     <div class="column center">
         <!-- Option bar schedule planner -->
