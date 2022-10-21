@@ -298,9 +298,47 @@ function cardClearSelections() {
 
 document.addEventListener("click", function (event) {
     if (event.target.id === "loadSchedule") {
+        reload_loadScheduleModal();
         document.querySelector(".loadScheduleModal").style.display = "block"
     } else {
         document.querySelector(".loadScheduleModal").style.display = "none"
     }
 });
 
+function reload_loadScheduleModal(){
+    const loadScheduleModal = document.querySelector(".loadScheduleModalSchedules");
+    while (loadScheduleModal.firstChild) {
+        loadScheduleModal.removeChild(loadScheduleModal.firstChild);
+    }
+
+    fetch("/api/schedule/all")
+        .then(response => response.json())
+        .then(result => {
+            if (result.status === "ok") {
+                if (result.data.length === 0) {
+                    document.querySelector(".loadScheduleModalHintText").innerHTML = "No saved schedules found";
+                } else {
+                    document.querySelector(".loadScheduleModalHintText").innerHTML = "Select a schedule to load";
+                    for (const schedule of result.data) {
+                        addButtonLoadScheduleModal(schedule);
+                    }
+                }
+            }
+        });
+}
+
+function addButtonLoadScheduleModal(schedule){
+    const loadScheduleModal = document.querySelector(".loadScheduleModalSchedules");
+    const button = document.createElement("div");
+    button.classList.add("modalButton");
+    button.innerHTML = schedule.name;
+    button.id = schedule._id;
+
+    button.addEventListener("click", loadSchedule);
+    loadScheduleModal.appendChild(button);
+}
+
+function loadSchedule(){
+    const scheduleID = this.id;
+    console.log("LOAD SCHEDULE WITH ID: " + scheduleID);
+}
