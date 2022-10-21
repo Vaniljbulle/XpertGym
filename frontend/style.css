@@ -1116,12 +1116,10 @@ span {
     height: 75px;
     border: 2px solid #fff;
     border-radius: 50px;
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translate(-50%, -50%);
-    margin: 0 auto;
+    bottom: 20px;
+    margin: 0;
     overflow: hidden;
+    position: absolute;
 }
 .indicator:before {
     content: "";
@@ -1135,6 +1133,49 @@ span {
     top: 15px;
     border-radius: 50%;
     animation: animate 1.5s linear infinite;
+}
+
+.photoContainer{
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+.photoContainer section{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start;
+    color: #fff;
+}
+.startCont{
+    background: url(/img/2bg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+    text-align: center;
+}
+
+.banner-nolog .btn {
+    margin-top: 1rem;
+}
+
+.banner-nolog h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 30px;
+}
+.first{
+    background-color: #171717;
+}
+.second{
+    background-color: #282828;
+}
+.third{
+    background-color: #2f2f2f;
 }
 @keyframes animate {
     0% {
