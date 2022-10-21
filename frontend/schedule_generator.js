@@ -242,10 +242,15 @@ function dragLeave() {
 }
 
 function dragDrop() {
-    console.log(this.className);
+    /*
+     * If the card is being dropped into an occupied slot, swap the cards
+     */
     if (this.firstElementChild !== null) {
+        // Save target card to a variable and remove it from the DOM
         const tmp = this.firstElementChild;
         this.firstElementChild.remove();
+
+        // Add the target card to the original position
         draggedFrom.appendChild(tmp);
         draggedFrom.id = tmp.id;
         draggedFrom.classList.add('planner-card-selected-hovered');
@@ -265,8 +270,15 @@ function dragDrop() {
     this.classList.add('planner-card-selected-hovered'); // Border change when hovering over an unselected card
 }
 
+/*
+ * Function to handle clicking on a card
+ */
 function cardOnClick() {
-    // If the card is already selected, deselect it
+    /*
+     * If the card is already selected, remove the selected class and remove the event listener
+     * Hide left side modify exercise panel
+     * Add back hover effect
+     */
     if (this.classList.contains('planner-card-selected')) {
         this.classList.remove('planner-card-selected');
         this.classList.add('planner-card-selected-hovered');
@@ -274,13 +286,17 @@ function cardOnClick() {
         return;
     }
 
+    // Clear all card selections
     cardClearSelections();
-    // Select the card
+
+    // Select the new card
     this.classList.remove('planner-card-selected-hovered');
     this.classList.toggle('planner-card-selected');
+
+    // Set clicked element to the currently selected card
     clickedElement = this;
 
-    // Fetch exercise data
+    // Fetch exercise data for the selected card
     fetch('/api/exercise/getByID', {
         method: 'POST',
         headers: {
@@ -289,6 +305,7 @@ function cardOnClick() {
         body: JSON.stringify({_id: this.id})
     }).then(res => res.json()).then(res => {
         if (res.status === 'ok') {
+            // Enable modifying the exercise
             modifyExercise(res.data);
         } else {
             console.log('Failed to fetch exercise data!');
@@ -296,9 +313,12 @@ function cardOnClick() {
     })
 }
 
+/*
+ * Function to modify an existing exercise in the schedule
+ */
 function modifyExercise(exercise) {
     console.log(exercise);
-    // Set inputs in modifyExerciseColumn to the exercise data
+    // Set inputs to the exercise data
     document.getElementById('name_value_modified').value = exercise.name;
     document.getElementById('sets_value_modified').value = exercise.sets;
     document.getElementById('reps_value_modified').value = exercise.reps;
@@ -308,12 +328,14 @@ function modifyExercise(exercise) {
     document.getElementById("difficulty_value_modified_" + exercise.difficulty).checked = true;
     document.getElementById("muscle_group_modified_" + exercise.muscleGroup).checked = true;
 
-    // Get element by class and change style
+    // Show modify exercise panel
     document.getElementsByClassName('modifyExerciseColumn')[0].style.display = 'block';
 }
 
+/*
+ * Function to unselect all cards
+ */
 function cardClearSelections() {
-    // If the card is not selected, unselect all cards
     const divs = document.querySelectorAll('.planner-card-empty');
     for (const div of divs) {
         if (div.classList.contains('planner-card-selected')) {
@@ -323,6 +345,11 @@ function cardClearSelections() {
     }
 }
 
+/*
+ * Modal listener for loadSchedule
+ * Open modal when button is clicked with id loadSchedule
+ * Close modal when clicking anywhere else or choosing a schedule
+ */
 document.addEventListener("click", function (event) {
     if (event.target.id === "loadSchedule") {
         reload_loadScheduleModal();
@@ -332,19 +359,27 @@ document.addEventListener("click", function (event) {
     }
 });
 
+/*
+ * Cleans modal of stale schedules
+ * Fetches schedules from database
+ */
 function reload_loadScheduleModal(){
+    // Remove stale schedules
     const loadScheduleModal = document.querySelector(".loadScheduleModalSchedules");
     while (loadScheduleModal.firstChild) {
         loadScheduleModal.removeChild(loadScheduleModal.firstChild);
     }
 
+    // Get new schedules data
     fetch("/api/schedule/all")
         .then(response => response.json())
         .then(result => {
             if (result.status === "ok") {
                 if (result.data.length === 0) {
+                    // No schedules
                     document.querySelector(".loadScheduleModalHintText").innerHTML = "No saved schedules found";
                 } else {
+                    // Add schedules to modal
                     document.querySelector(".loadScheduleModalHintText").innerHTML = "Select a schedule to load";
                     for (const schedule of result.data) {
                         addButtonLoadScheduleModal(schedule);
@@ -354,22 +389,38 @@ function reload_loadScheduleModal(){
         });
 }
 
+/*
+ * @param schedule - schedule to add
+ * Adds a button to the modal with the schedule name
+ * Clicking the button loads the schedule (NOT IMPLEMENTED, console logs id)
+ */
 function addButtonLoadScheduleModal(schedule){
+    // Create the button
     const loadScheduleModal = document.querySelector(".loadScheduleModalSchedules");
     const button = document.createElement("div");
+
+    // Set button data
     button.classList.add("modalButton");
     button.innerHTML = schedule.name;
     button.id = schedule._id;
-
     button.addEventListener("click", loadSchedule);
+
+    // Add button to modal
     loadScheduleModal.appendChild(button);
 }
 
+/*
+ * Not implemented
+ */
 function loadSchedule(){
     const scheduleID = this.id;
     console.log("LOAD SCHEDULE WITH ID: " + scheduleID);
 }
 
+/*
+ * Modal listener for deleteExercise
+ * Removes selected exercise from schedule
+ */
 function deleteExercise() {
     document.getElementsByClassName('modifyExerciseColumn')[0].style.display = 'none';
     clickedElement.removeEventListener('click', cardOnClick);
