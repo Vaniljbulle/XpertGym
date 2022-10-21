@@ -270,6 +270,37 @@ function dragDrop() {
     this.firstElementChild.classList.remove('planner-card-hold');
     this.classList.remove('planner-card-hovered');
     this.classList.add('planner-card-selected-hovered'); // Border change when hovering over an unselected card
+
+    cardAutoClick(this);
+}
+
+/*
+ * Function to automatically select a card when dragged
+ */
+function cardAutoClick(card) {
+    cardClearSelections();
+    // Select the new card
+    card.classList.remove('planner-card-selected-hovered');
+    card.classList.toggle('planner-card-selected');
+
+    // Set clicked element to the currently selected card
+    clickedElement = card;
+
+    // Fetch exercise data for the selected card
+    fetch('/api/exercise/getByID', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({_id: card.id})
+    }).then(res => res.json()).then(res => {
+        if (res.status === 'ok') {
+            // Enable modifying the exercise
+            modifyExercise(res.data);
+        } else {
+            console.log('Failed to fetch exercise data!');
+        }
+    })
 }
 
 /*
