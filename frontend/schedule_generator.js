@@ -229,12 +229,7 @@ function dragEnter(e) {
 
 function dragLeave() {
     if (currentlyDragged.element !== null && this.firstElementChild !== null) {
-        if (currentlyDragged.element.id === this.firstElementChild.id && this.classList.contains('cardLifted')) {
-            this.removeEventListener('click', cardOnClick);
-            this.classList.remove('planner-card-selected');
-            this.classList.remove('planner-card-selected-hovered');
-            this.classList.remove('cardLifted');
-        }
+
     } else {
         this.classList.remove('planner-card-hovered');
         console.log("REMOVED HOVER");
@@ -242,6 +237,7 @@ function dragLeave() {
 }
 
 function dragDrop() {
+    console.log("Dropped");
     /*
      * If the card is being dropped into an occupied slot, swap the cards
      */
@@ -255,7 +251,13 @@ function dragDrop() {
         draggedFrom.id = tmp.id;
         draggedFrom.classList.add('planner-card-selected-hovered');
         draggedFrom.addEventListener('click', cardOnClick);
+    }else {
+        draggedFrom.removeEventListener('click', cardOnClick);
+        draggedFrom.classList.remove('planner-card-selected');
+        draggedFrom.classList.remove('planner-card-selected-hovered');
+        draggedFrom.classList.remove('cardLifted');
     }
+
     if (currentlyDragged.type === 0) {
         this.append(currentlyDragged.element.cloneNode(true));
         this.firstElementChild.classList.add('planner-card-fill');
