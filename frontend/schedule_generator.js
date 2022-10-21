@@ -6,6 +6,7 @@ let exerciseCards = [];
 
 let currentlyDragged = {element: null, type: 0};
 let draggedFrom = null;
+let clickedElement = null;
 
 const name = document.getElementById("name_value");
 const sets = document.getElementById("sets_value");
@@ -277,6 +278,7 @@ function cardOnClick() {
     // Select the card
     this.classList.remove('planner-card-selected-hovered');
     this.classList.toggle('planner-card-selected');
+    clickedElement = this;
 
     // Fetch exercise data
     fetch('/api/exercise/getByID', {
@@ -366,4 +368,13 @@ function addButtonLoadScheduleModal(schedule){
 function loadSchedule(){
     const scheduleID = this.id;
     console.log("LOAD SCHEDULE WITH ID: " + scheduleID);
+}
+
+function deleteExercise() {
+    document.getElementsByClassName('modifyExerciseColumn')[0].style.display = 'none';
+    clickedElement.removeEventListener('click', cardOnClick);
+    clickedElement.classList.remove('planner-card-selected');
+    clickedElement.classList.remove('planner-card-selected-hovered');
+    clickedElement.classList.remove('cardLifted');
+    clickedElement.firstElementChild.remove();
 }
