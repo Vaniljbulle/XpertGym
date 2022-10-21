@@ -295,3 +295,15 @@ function cardClearSelections() {
         }
     }
 }
+
+let modelOpen = false;
+document.addEventListener("click", function (event) {
+    if (!event.target.closest(".loadScheduleModal") && modelOpen) {
+        modelOpen = false;
+        document.querySelector(".loadScheduleModal").style.display = "none"
+    }else if (event.target.id && !modelOpen){
+        modelOpen = true;
+        document.querySelector(".loadScheduleModal").style.display = "block"
+    }
+});
+

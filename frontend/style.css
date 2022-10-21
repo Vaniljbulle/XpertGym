@@ -1091,3 +1091,18 @@ bmiInput{
     height: 55%;
     box-shadow: 1px 1px 1px #000;
 }
+
+.loadScheduleModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    overflow: auto;
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(8, 74, 168, 0.6);
+
+    width: 400px;
+    min-height: 500px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

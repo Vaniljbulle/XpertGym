@@ -32,6 +32,12 @@
     <button onclick="createExercise()">Create</button>
 </div>
 
+<!-- Load schedule modal -->
+<div class="loadScheduleModal">
+    <div class="loadScheduleModalContent">
+    </div>
+</div>
+
 <!-- Navigation bar / Header -->
 <nav class="navbar">
     <a href="index.html" class="logo"></a>
@@ -56,9 +62,9 @@
     <div class="column center">
         <!-- Option bar schedule planner -->
         <div class="schedule_option_bar">
-            <div class="schedule_option_bar_button"><p>Load schedule</p></div>
-            <div class="schedule_option_bar_button"><p>Clean schedule</p></div>
-            <div class="schedule_option_bar_button"><p>Save schedule</p></div>
+            <div class="schedule_option_bar_button" id="loadSchedule">Load schedule</div>
+            <div class="schedule_option_bar_button" id="cleanSchedule">Clean schedule</div>
+            <div class="schedule_option_bar_button" id="saveSchedule">Save schedule</div>
         </div>
         <div class="grid-container">
             <div class="planner-card-empty">
