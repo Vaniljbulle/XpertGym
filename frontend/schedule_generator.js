@@ -286,11 +286,27 @@ function cardOnClick() {
         body: JSON.stringify({_id: this.id})
     }).then(res => res.json()).then(res => {
         if (res.status === 'ok') {
-            console.log(res.data);
+            modifyExercise(res.data);
         } else {
             console.log('Failed to fetch exercise data!');
         }
     })
+}
+
+function modifyExercise(exercise) {
+    console.log(exercise);
+    // Set inputs in modifyExerciseColumn to the exercise data
+    document.getElementById('name_value_modified').value = exercise.name;
+    document.getElementById('sets_value_modified').value = exercise.sets;
+    document.getElementById('reps_value_modified').value = exercise.reps;
+    document.getElementById('desc_value_modified').value = exercise.description;
+    document.getElementById('duration_value_modified').value = exercise.duration;
+
+    document.getElementById("difficulty_value_modified_" + exercise.difficulty).checked = true;
+    document.getElementById("muscle_group_modified_" + exercise.muscleGroup).checked = true;
+
+    // Get element by class and change style
+    document.getElementsByClassName('modifyExerciseColumn')[0].style.display = 'block';
 }
 
 function cardClearSelections() {
