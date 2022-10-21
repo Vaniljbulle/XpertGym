@@ -269,6 +269,7 @@ function cardOnClick() {
     if (this.classList.contains('planner-card-selected')) {
         this.classList.remove('planner-card-selected');
         this.classList.add('planner-card-selected-hovered');
+        document.getElementsByClassName('modifyExerciseColumn')[0].style.display = 'none';
         return;
     }
 
