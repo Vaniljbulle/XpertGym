@@ -5,6 +5,7 @@ const categories = document.getElementsByClassName("workout-container");
 let exerciseCards = [];
 
 let currentlyDragged = {element: null, type: 0};
+let draggedFrom = null;
 
 const name = document.getElementById("name_value");
 const sets = document.getElementById("sets_value");
@@ -195,7 +196,6 @@ for (const empty of empties) {
 }
 
 // Drag Functions
-
 function dragStart() {
     if (this.classList.contains('planner-card-fill')) {
         currentlyDragged.type = 1;
@@ -207,6 +207,7 @@ function dragStart() {
 
     // Add class to the div card is being lifted from
     this.parentElement.classList.add('cardLifted');
+    draggedFrom = this.parentElement;
     console.log(this.parentElement.classList);
 }
 
@@ -241,7 +242,14 @@ function dragLeave() {
 
 function dragDrop() {
     console.log(this.className);
-    if (this.firstElementChild !== null) return; // Returning if this slot is occupied
+    if (this.firstElementChild !== null) {
+        const tmp = this.firstElementChild;
+        this.firstElementChild.remove();
+        draggedFrom.appendChild(tmp);
+        draggedFrom.id = tmp.id;
+        draggedFrom.classList.add('planner-card-selected-hovered');
+        draggedFrom.addEventListener('click', cardOnClick);
+    }
     if (currentlyDragged.type === 0) {
         this.append(currentlyDragged.element.cloneNode(true));
         this.firstElementChild.classList.add('planner-card-fill');
