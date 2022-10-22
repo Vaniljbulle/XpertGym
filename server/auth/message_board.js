@@ -29,7 +29,7 @@ document.getElementById("devMessageSubmit").addEventListener("click", function (
         message: document.getElementById("devMessageBox").value
     };
     if (data.schedule_id === "" || data.message === null || data.message === undefined) {
-        alert("Please select a schedule");
+        alert("Please save or load a schedule before sending a message");
         return;
     } else if (data.message === "" || data.message === null || data.message === undefined) {
         console.log("Message is empty");
