@@ -632,6 +632,12 @@ function removeRow() {
 
 function saveSchedule() {
     console.log("save schedule");
+    const scheduleName = prompt("Please enter a name for your schedule");
+    if (scheduleName === null || scheduleName === "") {
+        alert("Schedule name cannot be empty");
+        return;
+    }
+
     const rows = document.getElementsByClassName("grid-container");
 
     let exerciseList = new Array(0);
@@ -651,7 +657,7 @@ function saveSchedule() {
     }
 
     const data = {
-        name: "First schedule",
+        name: scheduleName,
         exercises: exerciseList
     }
 
