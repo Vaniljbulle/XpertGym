@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 const User = require("../database/user");
 const Membership = require("../database/membership");
 const router = require('express').Router();
-const {generateAccessToken, generateRefreshToken, verifyToken} = require('../auth/token');
+const {generateAccessToken, generateRefreshToken} = require('../auth/token');
 
 // Login post request
 router.post('/api/login', async (req, res) => {
@@ -44,11 +44,5 @@ router.post('/api/login', async (req, res) => {
     }
     res.json({status: 'error', error: 'Invalid username/password'})
 })
-
-// Get for status if user is logged in or not, returns username if logged in
-router.get('/api/login/status', verifyToken, async (req, res) => {
-    console.log("Login status get request");
-    res.json({status: 'ok', data: req.user.username});
-});
 
 module.exports = router
