@@ -627,8 +627,6 @@ function removeRow() {
         // Remove second to last div
         column.removeChild(column.children[column.children.length - 2]);
         column.removeChild(column.children[column.children.length - 2]);
-        //column.lastChild.remove();
-        //column.lastChild.remove();
     }
 }
 
@@ -687,6 +685,7 @@ function cleanSchedule() {
     }
     addRow();
     document.getElementsByClassName('devMessageLogBoard')[0].id = "";
+    clearMessageLog();
 }
 
 function updateRow(row) {
