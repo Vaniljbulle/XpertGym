@@ -88,40 +88,15 @@
     <div class="column center">
         <!-- Option bar schedule planner -->
         <div class="schedule_option_bar">
+            <input placeholder="Schedule name">
+            <div class="schedule_option_bar_button" onclick="addRow()">Add row</div>
+            <div class="schedule_option_bar_button" onclick="removeRow()">Remove row</div>
             <div class="schedule_option_bar_button" id="loadSchedule">Load schedule</div>
-            <div class="schedule_option_bar_button" id="cleanSchedule">Clean schedule</div>
-            <div class="schedule_option_bar_button" id="saveSchedule">Save schedule</div>
-        </div>
-        <div class="grid-container">
-            <div class="planner-card-empty">
-            </div>
-
-            <div class="planner-card-empty">
-            </div>
-
-            <div class="planner-card-empty">
-            </div>
-
-            <div class="planner-card-empty">
-            </div>
-
-            <div class="planner-card-empty">
-            </div>
-
-            <div class="planner-card-empty">
-            </div>
-
-            <div class="planner-card-empty">
-            </div>
-
-            <div class="planner-card-empty">
-            </div>
-
-            <div class="planner-card-empty">
-            </div>
+            <div class="schedule_option_bar_button" onclick="cleanSchedule()">Clean schedule</div>
+            <div class="schedule_option_bar_button" onclick="saveSchedule()">Save schedule</div>
         </div>
     </div>
-    <div class="column side">
+    <div class="column side planner">
         <button class="planner-create-exercise" onclick="enterCreateExercise()">Create exercise</button>
         <button class="collapsible">Chest</button>
         <div class="Collaps_content">
