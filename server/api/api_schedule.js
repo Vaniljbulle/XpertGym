@@ -38,7 +38,7 @@ router.post('/api/schedule/add', verifyToken, async (req, res) => {
         }
 
         console.log("Schedule added successfully: ", req.user);
-        res.status(200).json({status: 'ok', data: req.user.username});
+        res.status(200).json({status: 'ok', data: req.user.username, scheduleID: schedule._id});
     } catch (err) {
         console.log("Encountered error during adding schedule: ", err);
         res.status(500).json({status: 'error'});
