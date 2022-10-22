@@ -10,6 +10,8 @@ let currentlyDragged = {element: null, type: 0};
 let draggedFrom = null;
 let clickedElement = null;
 
+let currentScheduleID = null;
+
 const name = document.getElementById("name_value");
 const sets = document.getElementById("sets_value");
 const reps = document.getElementById("reps_value");
@@ -473,7 +475,7 @@ function loadSchedule() {
                 for (const card of res.data) {
                     loadCardToSchedule(card);
                 }
-
+                document.getElementsByClassName('devMessageLogBoard')[0].id = this.id;
             } else {
                 console.log('Schedule failed to be fetched!');
             }
@@ -630,6 +632,7 @@ function cleanSchedule() {
         headers[0].remove();
     }
     addRow();
+    document.getElementsByClassName('devMessageLogBoard')[0].id = "";
 }
 
 function updateRow(row) {
