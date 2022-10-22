@@ -92,6 +92,12 @@ router.get('/login.js', async (req, res) => {
     res.sendFile('login.js', {root: path.join('server/auth')});
 })
 
+// Logout script (client side)
+router.get('/logout.js', async (req, res) => {
+    console.log("Logout script requested");
+    res.sendFile('logout.js', {root: path.join('server/auth')});
+})
+
 // add_exercise script (client side)
 router.get('/add_exercise.js', async (req, res) => {
     console.log("add_exercise script requested");
