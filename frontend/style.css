@@ -735,7 +735,7 @@ bmiInput{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    border: 2px solid #e00b0b;
+
     width: fit-content;
 }
 

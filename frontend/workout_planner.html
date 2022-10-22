@@ -95,6 +95,21 @@
             <div class="schedule_option_bar_button" onclick="cleanSchedule()">Clean schedule</div>
             <div class="schedule_option_bar_button" onclick="saveSchedule()">Save schedule</div>
         </div>
+
+        <div class="devChatFrame">
+            <div id="devMessageLog">
+                <h2>Message board</h2>
+                <div class="devMessageLogBoard">
+                </div>
+                <form>
+                    <label for="devMessageBox"></label>
+                    <textarea id="devMessageBox" name="messageSubmit"
+                              placeholder="Write a message. Press submit to send" class="postedMessage"></textarea>
+                    <p><input id="devMessageSubmit" type="submit" value="Submit"></p>
+                </form>
+            </div>
+        </div>
+
     </div>
     <div class="column side planner">
         <button class="planner-create-exercise" onclick="enterCreateExercise()">Create exercise</button>
