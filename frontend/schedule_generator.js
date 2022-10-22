@@ -475,11 +475,62 @@ function loadSchedule() {
                 for (const card of res.data) {
                     loadCardToSchedule(card);
                 }
-                document.getElementsByClassName('devMessageLogBoard')[0].id = this.id;
+
+                reloadMessageBoard(this.id);
             } else {
                 console.log('Schedule failed to be fetched!');
             }
         }).catch(err => console.log(err));
+}
+
+function reloadMessageBoard(scheduleID) {
+    document.getElementsByClassName('devMessageLogBoard')[0].id = scheduleID;
+
+    // Remove stale messages
+    const messageBoard = document.querySelector(".devMessageLogBoard");
+    while (messageBoard.firstChild) {
+        messageBoard.removeChild(messageBoard.firstChild);
+    }
+
+    const data = {schedule_id: scheduleID};
+
+    fetch("/api/dev/schedule/log", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(res => res.json())
+        .then(res => {
+            if (res.status === "ok") {
+                // Set message board div id
+                let divElement = document.getElementsByClassName("devMessageLogBoard");
+                divElement[0].id = data.schedule_id;
+
+                clearMessageLog();
+
+                console.log(res.data.message_log);
+                if (res.data.message_log === undefined || res.data.message_log.length === 0) {
+                    appendMessage({
+                        username: "System message",
+                        timestamp: "00:00:00",
+                        date: "00/00/0000",
+                        message: "There are no messages, be the first one to post!"
+                    });
+                } else {
+                    res.data.message_log.forEach(message => {
+                        appendMessage({
+                            username: message.username,
+                            timestamp: message.timestamp,
+                            date: message.date,
+                            message: message.message
+                        });
+                    });
+                }
+            } else {
+                console.log("Error getting message log");
+            }
+        });
 }
 
 function loadCardToSchedule(card) {
@@ -572,9 +623,12 @@ function addRow() {
 function removeRow() {
     console.log("remove row");
     const column = document.getElementsByClassName("column center")[0];
-    if (column.children.length > 1){
-        column.lastChild.remove();
-        column.lastChild.remove();
+    if (column.children.length > 2){
+        // Remove second to last div
+        column.removeChild(column.children[column.children.length - 2]);
+        column.removeChild(column.children[column.children.length - 2]);
+        //column.lastChild.remove();
+        //column.lastChild.remove();
     }
 }
 
