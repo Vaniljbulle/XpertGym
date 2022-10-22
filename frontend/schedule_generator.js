@@ -1,6 +1,8 @@
 const empties = document.querySelectorAll('.planner-card-empty');
 const exerciseModal = document.getElementById("planner-modal-container");
 
+const grid = document.getElementsByClassName("grid-container");
+
 const categories = document.getElementsByClassName("workout-container");
 let exerciseCards = [];
 
@@ -215,6 +217,8 @@ function dragStart() {
 function dragEnd() {
     console.log(this.className);
     currentlyDragged.element = null;
+    if (currentlyDragged.type === 1)
+        updateRow(draggedFrom.parentElement);
 }
 
 function dragOver(e) {
@@ -251,7 +255,7 @@ function dragDrop() {
         draggedFrom.id = tmp.id;
         draggedFrom.classList.add('planner-card-selected-hovered');
         draggedFrom.addEventListener('click', cardOnClick);
-    }else {
+    } else {
         draggedFrom.removeEventListener('click', cardOnClick);
         draggedFrom.classList.remove('planner-card-selected');
         draggedFrom.classList.remove('planner-card-selected-hovered');
@@ -272,6 +276,7 @@ function dragDrop() {
     this.classList.add('planner-card-selected-hovered'); // Border change when hovering over an unselected card
 
     cardAutoClick(this);
+    updateRow(this.parentElement);
 }
 
 /*
@@ -396,7 +401,7 @@ document.addEventListener("click", function (event) {
  * Cleans modal of stale schedules
  * Fetches schedules from database
  */
-function reload_loadScheduleModal(){
+function reload_loadScheduleModal() {
     // Remove stale schedules
     const loadScheduleModal = document.querySelector(".loadScheduleModalSchedules");
     while (loadScheduleModal.firstChild) {
@@ -427,7 +432,7 @@ function reload_loadScheduleModal(){
  * Adds a button to the modal with the schedule name
  * Clicking the button loads the schedule (NOT IMPLEMENTED, console logs id)
  */
-function addButtonLoadScheduleModal(schedule){
+function addButtonLoadScheduleModal(schedule) {
     // Create the button
     const loadScheduleModal = document.querySelector(".loadScheduleModalSchedules");
     const button = document.createElement("div");
@@ -445,9 +450,85 @@ function addButtonLoadScheduleModal(schedule){
 /*
  * Not implemented
  */
-function loadSchedule(){
+function loadSchedule() {
     const scheduleID = this.id;
     console.log("LOAD SCHEDULE WITH ID: " + scheduleID);
+
+    // JSON post request
+    fetch('/api/schedule/getExercises', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({_id: scheduleID})
+    }).then(res => res.json())
+        .then(res => {
+            console.log(res);
+            if (res.status === 'ok') {
+                console.log(res.data);
+                cleanSchedule();
+                for (const card of res.data) {
+                    loadCardToSchedule(card);
+                }
+
+            } else {
+                console.log('Schedule failed to be fetched!');
+            }
+        }).catch(err => console.log(err));
+}
+
+function loadCardToSchedule(card) {
+    const rows = document.getElementsByClassName("grid-container");
+    while (rows.length < card.day)
+        addRow();
+
+    const row = rows[card.day - 1];
+
+    // JSON post request
+    fetch('/api/exercise/getByID', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({_id: card.id_exercise})
+    }).then(res => res.json())
+        .then(res => {
+            console.log(res);
+            if (res.status === 'ok') {
+                console.log("Fetched an exercise");
+                console.log(res.data);
+
+                const category = getExerciseClass(res.data);
+                console.log(muscle + " " + category);
+                if (category === "") return;
+                let cardElement = document.createElement("div");
+                let imageElement = document.createElement("img");
+                let textElement = document.createElement("p");
+                imageElement.src = res.data.image;
+                textElement.innerHTML = res.data.name;
+                cardElement.className = category;
+                cardElement.classList.add("planner-card-fill");
+                cardElement.draggable = true;
+                cardElement.append(imageElement);
+                cardElement.appendChild(textElement);
+                cardElement.id = res.data._id; // ID of the exercise in the database
+
+                row.lastChild.appendChild(cardElement);
+                row.lastChild.id = res.data._id;
+                row.lastChild.addEventListener('click', cardOnClick);
+                row.lastChild.classList.add("planner-card-selected-hovered");
+
+                cardElement.addEventListener('dragstart', dragStart);
+                cardElement.addEventListener('dragend', dragEnd);
+
+                console.log("Successfully spawned the exercise");
+                updateRow(row);
+
+            } else {
+                console.log('Schedule failed to be fetched!');
+            }
+        }).catch(err => console.log(err));
+
 }
 
 /*
@@ -461,4 +542,109 @@ function deleteExercise() {
     clickedElement.classList.remove('planner-card-selected-hovered');
     clickedElement.classList.remove('cardLifted');
     clickedElement.firstElementChild.remove();
+    updateRow(clickedElement.parentElement);
 }
+
+function addRow() {
+    console.log("add row");
+    const column = document.getElementsByClassName("column center")[0];
+
+    let header = document.createElement("h1");
+    header.innerHTML = "Workout number: " + (column.children.length / 2 + 0.5);
+
+    let container = document.createElement("div");
+    container.className += "grid-container";
+
+    column.appendChild(header);
+    column.appendChild(container);
+    updateRow(container);
+}
+
+function removeRow() {
+    console.log("remove row");
+    const column = document.getElementsByClassName("column center")[0];
+    if (column.children.length > 1){
+        column.lastChild.remove();
+        column.lastChild.remove();
+    }
+}
+
+function saveSchedule() {
+    console.log("save schedule");
+    const rows = document.getElementsByClassName("grid-container");
+
+    let exerciseList = new Array(0);
+
+    for (let i = 0; i < rows.length; i++) {
+        const cards = rows[i].children;
+        console.log("cards: " + cards.length);
+        for (let j = 0; j < cards.length; j++) {
+            if (cards[j].id === "") continue;
+            const cardInfo = {
+                exercise_id: cards[j].id,
+                day: i + 1,
+                order: j
+            }
+            exerciseList.push(cardInfo);
+        }
+    }
+
+    const data = {
+        name: "First schedule",
+        exercises: exerciseList
+    }
+
+    console.log(data);
+
+    // JSON post request
+    fetch('/api/schedule/add', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(res => res.json())
+        .then(res => {
+            console.log(res);
+            if (res.status === 'ok') {
+                alert('Schedule added successfully! ' + res.data);
+            } else {
+                alert('Schedule failed to be added!');
+            }
+        }).catch(err => console.log(err));
+}
+
+function cleanSchedule() {
+    console.log("clean schedule");
+    const column = document.getElementsByClassName("column center")[0];
+    const length = column.children.length - 1;
+    for (let i = 0; i < length; i++) {
+        column.lastChild.remove();
+    }
+    addRow();
+}
+
+function updateRow(row) {
+    const cards = row.children;
+    for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        if (card.children.length === 0) {
+            card.remove();
+            i--;
+        }
+    }
+    addEmptyCard(row);
+}
+
+function addEmptyCard(row) {
+    let card = document.createElement("div");
+    card.className += "planner-card-empty";
+    row.appendChild(card);
+    card.addEventListener('dragover', dragOver);
+    card.addEventListener('dragenter', dragEnter);
+    card.addEventListener('dragleave', dragLeave);
+    card.addEventListener('drop', dragDrop);
+}
+
+
+addRow();
