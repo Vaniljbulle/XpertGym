@@ -553,13 +553,17 @@ function addRow() {
     const column = document.getElementsByClassName("column center")[0];
 
     let header = document.createElement("h1");
-    header.innerHTML = "Workout number: " + (column.children.length / 2 + 0.5);
+    header.innerHTML = "Workout number: " + (column.children.length / 2);
+    header.classList.add("workout-number");
 
     let container = document.createElement("div");
     container.className += "grid-container";
 
-    column.appendChild(header);
-    column.appendChild(container);
+    // Append row before the last div
+    column.insertBefore(container, column.lastElementChild);
+    column.insertBefore(header, container);
+    //column.appendChild(header);
+    //column.appendChild(container);
     updateRow(container);
 }
 
@@ -619,10 +623,11 @@ function saveSchedule() {
 
 function cleanSchedule() {
     console.log("clean schedule");
-    const column = document.getElementsByClassName("column center")[0];
-    const length = column.children.length - 1;
-    for (let i = 0; i < length; i++) {
-        column.lastChild.remove();
+    const rows = document.getElementsByClassName("grid-container");
+    const headers = document.getElementsByClassName("workout-number");
+    while (rows.length > 0) {
+        rows[0].remove();
+        headers[0].remove();
     }
     addRow();
 }
