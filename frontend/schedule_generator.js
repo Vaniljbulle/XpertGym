@@ -246,11 +246,14 @@ function dragDrop() {
         const tmp = this.firstElementChild;
         this.firstElementChild.remove();
 
-        // Add the target card to the original position
-        draggedFrom.appendChild(tmp);
-        draggedFrom.id = tmp.id;
-        draggedFrom.classList.add('planner-card-selected-hovered');
-        draggedFrom.addEventListener('click', cardOnClick);
+        // Only swap cards if dragged from schedule
+        if (currentlyDragged.type === 1) {
+            // Add the target card to the original position
+            draggedFrom.appendChild(tmp);
+            draggedFrom.id = tmp.id;
+            draggedFrom.classList.add('planner-card-selected-hovered');
+            draggedFrom.addEventListener('click', cardOnClick);
+        }
     }else {
         draggedFrom.removeEventListener('click', cardOnClick);
         draggedFrom.classList.remove('planner-card-selected');
