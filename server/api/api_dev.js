@@ -50,7 +50,8 @@ router.post('/api/dev/schedule/log', verifyToken, async (req, res) => {
         try {
             const schedule = await Schedule.findOne({_id: req.body.schedule_id}).lean();
 
-            return res.status(200).json({status: 'ok', data: {message_log: schedule.message_log}});
+            const messages = schedule.message_log === null ? [] : schedule.message_log;
+            return res.status(200).json({status: 'ok', data: {message_log: messages}});
         } catch (err) {
             console.log("Encountered error during fetching schedules: ", err);
             return res.status(500).json({status: 'error'});
