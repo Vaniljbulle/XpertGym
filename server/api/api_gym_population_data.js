@@ -15,7 +15,6 @@ function getGymPopData() {
     const date = new Date();
     const hour = date.getHours();
     const day = date.getDay();
-
     return (Math.trunc(fetchSingular(day, data, hour) * 100));
 }
 

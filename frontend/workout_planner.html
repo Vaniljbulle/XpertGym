@@ -6,8 +6,203 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
 </head>
 <body>
-    <p>Here you will generate your workout scheme!</p>
+
+<div id="planner-modal-container">
+    <button id="planner-modal-exit" onclick="exitCreateExercise()">X</button>
+    <h1>Create your own exercise</h1>
+    <h2>Name <input id="name_value" value="Name" name="name"></h2>
+    <h2>Sets <input id="sets_value" value="Sets" name="sets"></h2>
+    <h2>Reps <input id="reps_value" value="Reps" name="reps"></h2>
+    <h2>Description <input id="desc_value" value="Description"></h2>
+    <h2>Muscle group</h2>
+    <p>Chest<input type="radio" name="muscleGroup"></p>
+    <p>Arms<input type="radio" name="muscleGroup"></p>
+    <p>Legs<input type="radio" name="muscleGroup"></p>
+    <p>Back<input type="radio" name="muscleGroup"></p>
+    <p>Abs<input type="radio" name="muscleGroup"></p>
+    <p>Cardio<input type="radio" name="muscleGroup"></p>
+    <h2>Duration <input id="duration_value" value="Duration"></h2>
+    <h2>Difficulty</h2>
+    <p>Beginner<input type="radio" name="difficulty"></p>
+    <p>Moderate<input type="radio" name="difficulty"></p>
+    <p>Advanced<input type="radio" name="difficulty"></p>
+    <button onclick="createExercise()">Create</button>
+</div>
+
+<!-- Load schedule modal -->
+<div class="loadScheduleModal">
+    <div class="loadScheduleModalContent">
+        <div><h2 class="loadScheduleModalHintText"></h2></div>
+        <div class="loadScheduleModalSchedules"></div>
+    </div>
+</div>
+
+<!-- Navigation bar / Header -->
+<nav class="navbar">
+    <a href="index.html" class="logo"></a>
+    <nav class="navigation">
+        <ul>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</nav>
+
+<!-- Banner intro with text -->
+<div class="banner">
+    <div class="about">
+    </div>
+</div>
+
+<div class="row">
+    <div class="column side">
+        <h4>Click an exercise to modify</h4>
+        <div class="modifyExerciseColumn">
+            <div>
+                <h4>Name <input id="name_value_modified" placeholder="Name" name="name"></h4>
+                <h4>Sets <input id="sets_value_modified" placeholder="Sets" name="sets"></h4>
+                <h4>Reps <input id="reps_value_modified" placeholder="Reps" name="reps"></h4>
+                <h4>Description <input id="desc_value_modified" placeholder="Description"></h4>
+                <h4>Muscle group</h4>
+                <p>Chest<input type="radio" id="muscle_group_modified_0" name="muscleGroup"></p>
+                <p>Arms<input type="radio" id="muscle_group_modified_1" name="muscleGroup"></p>
+                <p>Legs<input type="radio" id="muscle_group_modified_2" name="muscleGroup"></p>
+                <p>Back<input type="radio" id="muscle_group_modified_3" name="muscleGroup"></p>
+                <p>Abs<input type="radio" id="muscle_group_modified_4" name="muscleGroup"></p>
+                <p>Cardio<input type="radio" id="muscle_group_modified_5" name="muscleGroup"></p>
+                <h4>Duration <input id="duration_value_modified" placeholder="Duration"></h4>
+                <h4>Difficulty</h4>
+                <p>Beginner<input type="radio" id="difficulty_value_modified_0" name="difficulty"></p>
+                <p>Moderate<input type="radio" id="difficulty_value_modified_1" name="difficulty"></p>
+                <p>Advanced<input type="radio" id="difficulty_value_modified_2" name="difficulty"></p>
+            </div>
+            <div>
+                <button onclick="modifyExercise()">Modify</button>
+                <button onclick="deleteExercise()">Delete</button>
+            </div>
+        </div>
+    </div>
+    <div class="column center">
+        <!-- Option bar schedule planner -->
+        <div class="schedule_option_bar">
+            <div class="schedule_option_bar_button" id="loadSchedule">Load schedule</div>
+            <div class="schedule_option_bar_button" id="cleanSchedule">Clean schedule</div>
+            <div class="schedule_option_bar_button" id="saveSchedule">Save schedule</div>
+        </div>
+        <div class="grid-container">
+            <div class="planner-card-empty">
+            </div>
+
+            <div class="planner-card-empty">
+            </div>
+
+            <div class="planner-card-empty">
+            </div>
+
+            <div class="planner-card-empty">
+            </div>
+
+            <div class="planner-card-empty">
+            </div>
+
+            <div class="planner-card-empty">
+            </div>
+
+            <div class="planner-card-empty">
+            </div>
+
+            <div class="planner-card-empty">
+            </div>
+
+            <div class="planner-card-empty">
+            </div>
+        </div>
+    </div>
+    <div class="column side">
+        <button class="planner-create-exercise" onclick="enterCreateExercise()">Create exercise</button>
+        <button class="collapsible">Chest</button>
+        <div class="Collaps_content">
+            <div class="workout-container">
+            </div>
+        </div>
+        <button class="collapsible">Arms</button>
+        <div class="Collaps_content">
+            <div class="workout-container">
+            </div>
+        </div>
+        <button class="collapsible">Legs</button>
+        <div class="Collaps_content">
+            <div class="workout-container">
+            </div>
+        </div>
+        <button class="collapsible">Back</button>
+        <div class="Collaps_content">
+            <div class="workout-container">
+            </div>
+        </div>
+        <button class="collapsible">Abs</button>
+        <div class="Collaps_content">
+            <div class="workout-container">
+            </div>
+        </div>
+        <button class="collapsible">Cardio</button>
+        <div class="Collaps_content">
+            <div class="workout-container">
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Footer -->
+<footer>
+    <div class="contact">
+        <h3>Contact information</h3>
+        <h4>.....Info.....</h4>
+        <!-- <img src="#" alt="logo2"/>  -->
+        <h5>Follow Us</h5>
+        <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+            <a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        </div>
+
+
+    </div>
+</footer>
+<script>
+    function drop(ev) {
+        ev.preventDefault();
+        const data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
+
+    const acc = document.querySelectorAll(".collapsible");
+    let i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+
+            // Loop over all the panels and close each one
+            document.querySelectorAll(".Collaps_content").forEach(function (Collaps_content) {
+                Collaps_content.style.maxHeight = "0";
+                Collaps_content.previousElementSibling.classList.remove("active");
+            });
+
+            // Then show the clicked panel
+            this.classList.toggle("active");
+            const Collaps_content = this.nextElementSibling;
+            Collaps_content.style.maxHeight = Collaps_content.scrollHeight + "px";
+
+        });
+    }
+</script>
+<script src="fetch_exercise.js"></script>
+<script src="fetch_schedule.js"></script>
+<script src="add_exercise.js"></script>
+<script src="add_schedule.js"></script>
+<script src="schedule_generator.js"></script>
 </body>
 </html>

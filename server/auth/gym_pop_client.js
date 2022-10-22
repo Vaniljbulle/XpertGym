@@ -4,7 +4,7 @@ fetch('/api/gympopulationdata')
     .then(response => response.json())
     .then(data => {
         if (isNaN(data.currentPop) || data.currentPop === undefined || data.currentPop === null) {
-            population_data.innerHTML = "";
+            population_data.innerHTML = "Gym closed";
         } else {
             population_data.innerHTML = "Gym population: " + data.currentPop + "%";
         }

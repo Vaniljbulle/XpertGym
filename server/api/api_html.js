@@ -3,6 +3,12 @@ const router = require('express').Router();
 const User = require("../database/user");
 const Membership = require("../database/membership");
 const {verifyToken} = require('../auth/token');
+const isAdmin = require('../auth/isAdmin');
+
+// GET devMessaging.js
+router.get('/devMessaging.js', verifyToken, async (req, res) => {
+    res.sendFile('devMessaging.js', {root: 'server/auth'});
+});
 
 // GET request for client side gym pop data change js
 router.get('/gym_pop_client.js', async (req, res) => {
@@ -32,8 +38,14 @@ router.get('/admin.html', verifyToken, async (req, res) => {
         return;
     }
 
-    console.log("Admin page was sent to " + req.user.username);
-    res.sendFile('admin.html', {root: 'frontend'});
+    if (await isAdmin(req.user)) {
+        console.log("Admin page was sent to " + req.user.username + " with membership id " + membership.user_level);
+        res.sendFile('admin.html', {root: 'frontend'});
+    }
+    else {
+        console.log("Non-admin user attempted to access admin page");
+        return res.status(403).send('Forbidden - ' + req.user.username + ' with user level ' + membership.user_level);
+    }
 })
 
 // Index (Home page)
@@ -109,6 +121,18 @@ router.get('/remove_schedule.js', async (req, res) => {
 router.get('/fetch_schedule.js', async (req, res) => {
     console.log("fetch_schedule script requested");
     res.sendFile('fetch_schedule.js', {root: path.join('server/auth')});
+})
+
+// workout_planner.html
+router.get('/workout_planner.html', verifyToken, async (req, res) => {
+    console.log("workout_planner.html requested");
+    res.sendFile('workout_planner.html', {root: path.join('frontend')});
+})
+
+// schedule_generator.js
+router.get('/schedule_generator.js', verifyToken, async (req, res) => {
+    console.log("schedule_generator.js requested");
+    res.sendFile('schedule_generator.js', {root: path.join('frontend')});
 })
 
 module.exports = router
