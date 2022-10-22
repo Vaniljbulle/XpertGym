@@ -63,6 +63,28 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 70vh;
+    animation: change 15s infinite ease-in;
+}
+
+@keyframes change{
+    0%{
+    background-image : url(/img/2bg.jpg);
+    }
+    20%{
+    background-image : url(/img/IM1.jpg);
+    }
+    40%{
+    background-image : url(/img/IM2.jpg);
+    }
+    60%{
+    background-image : url(/img/IM3.jpg);
+    }
+    80%{
+    background-image : url(/img/IM4.jpg);
+    }
+    100%{
+    background-image : url(/img/IM5.jpg);
+    }
 }
 
 .banner.start{
