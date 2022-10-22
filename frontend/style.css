@@ -665,8 +665,7 @@ bmiInput{
 
 /* MAKE THE TEXT GLOW IN PRETTY PINK */
 .glow {
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding: 15px;
     color: #fff;
     text-align: center;
     -webkit-animation: glow 1s ease-in-out infinite alternate;
