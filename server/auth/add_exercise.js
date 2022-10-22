@@ -10,9 +10,10 @@ function addExercise(data) {
         .then(res => {
             console.log(res);
             if (res.status === 'ok') {
-                alert('Exercise added successfully! ' + res.data);
+                return res.data;
             } else {
-                alert('Exercise failed to be added!');
+                return null;
             }
         }).catch(err => console.log(err));
+    return null;
 }

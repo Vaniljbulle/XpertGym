@@ -6,23 +6,20 @@ router.get('/api/gympopulationdata', async (req, res) => {
     res.json({currentPop: getGymPopData()});
 });
 
+// Get data from xlsx file
+const workbook = xlsx.readFile('./server/database/occupation-data-xpert-gym.xlsx');
+const data = xlsx.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
 
 function getGymPopData() {
-    // Get data from xlsx file
-    const workbook = xlsx.readFile('./server/database/occupation-data-xpert-gym.xlsx');
-    const data = xlsx.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
-
     // Get current hour
     const date = new Date();
     const hour = date.getHours();
-
-    // Get monday/sunday of current week
     const day = date.getDay();
-
     return (Math.trunc(fetchSingular(day, data, hour) * 100));
 }
 
 function fetchSingular(dayInteger, dataSheet, hour){
+    if (hour < 6 || hour > 23) return undefined;
     hour -= 6;
     switch (dayInteger) {
         case 0:

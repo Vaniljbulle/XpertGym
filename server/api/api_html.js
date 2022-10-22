@@ -5,6 +5,11 @@ const Membership = require("../database/membership");
 const {verifyToken} = require('../auth/token');
 const isAdmin = require('../auth/isAdmin');
 
+// GET message_board.js
+router.get('/message_board.js', async (req, res) => {
+   res.sendFile('message_board.js', {root: 'server/auth'});
+});
+
 // GET devMessaging.js
 router.get('/devMessaging.js', verifyToken, async (req, res) => {
     res.sendFile('devMessaging.js', {root: 'server/auth'});
