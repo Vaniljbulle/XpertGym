@@ -12,6 +12,7 @@ const gymPopData = require('./server/api/api_gym_population_data.js');
 const devRoutes = require('./server/api/api_dev.js');
 const membershipRoute = require('./server/api/api_membership.js');
 const databaseClearRoute = require('./server/api/api_database.js');
+const {generateDefaultExercises} = require('./server/database/generateDefaultExercises');
 
 const app = express();
 
@@ -40,6 +41,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/xpertdb', {useNewUrlParser: true, us
     app.listen(3000, () => console.log('Server started\nListening on port 3000...'));
 
     startupSequence.run().then(r => console.log("Sequence completed"));
+    generateDefaultExercises().then(r => console.log("Default exercises generated"));
 }).catch(() => {
     fatalError(-1);
 });
