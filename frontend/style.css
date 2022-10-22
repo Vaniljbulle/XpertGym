@@ -735,8 +735,7 @@ bmiInput{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-
-    width: fit-content;
+    width: 100%;
 }
 
 .devChatFrame div {
@@ -766,7 +765,10 @@ bmiInput{
 .devChatFrame fieldset {
     margin: 10px;
     border: 1px solid #e00b0b;
+    border-radius: 10px;
     max-width: 500px;
+    text-align: left;
+    padding: 10px;
 }
 
 .devChatFrame fieldset p {
