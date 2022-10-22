@@ -668,7 +668,8 @@ function saveSchedule() {
         .then(res => {
             console.log(res);
             if (res.status === 'ok') {
-                alert('Schedule added successfully! ' + res.data);
+                reloadMessageBoard(res.scheduleID);
+                alert('Schedule saved successfully! ' + res.data);
             } else {
                 alert('Schedule failed to be added!');
             }
