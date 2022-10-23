@@ -655,6 +655,7 @@ span {
     flex-direction: row;
     flex-wrap: wrap;
     overflow: hidden;
+    padding: 10px;
 }
 
 .title-trainer {
