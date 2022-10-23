@@ -9,6 +9,37 @@
 
 </head>
 <body>
+
+<div id="planner-modal-container">
+    <button id="planner-modal-exit" onclick="exitCreateExercise()">X</button>
+    <h1>Create your own exercise</h1>
+    <h2>Name <input id="name_value" value="Name" name="name"></h2>
+    <h2>Sets <input id="sets_value" value="Sets" name="sets"></h2>
+    <h2>Reps <input id="reps_value" value="Reps" name="reps"></h2>
+    <h2>Description <input id="desc_value" value="Description"></h2>
+    <h2>Muscle group</h2>
+    <p>Chest<input type="radio" name="muscleGroup"></p>
+    <p>Arms<input type="radio" name="muscleGroup"></p>
+    <p>Legs<input type="radio" name="muscleGroup"></p>
+    <p>Back<input type="radio" name="muscleGroup"></p>
+    <p>Abs<input type="radio" name="muscleGroup"></p>
+    <p>Cardio<input type="radio" name="muscleGroup"></p>
+    <h2>Duration <input id="duration_value" value="Duration"></h2>
+    <h2>Difficulty</h2>
+    <p>Beginner<input type="radio" name="difficulty"></p>
+    <p>Moderate<input type="radio" name="difficulty"></p>
+    <p>Advanced<input type="radio" name="difficulty"></p>
+    <button onclick="createExercise()">Create</button>
+</div>
+
+<!-- Load schedule modal -->
+<div class="loadScheduleModal">
+    <div class="loadScheduleModalContent">
+        <div><h2 class="loadScheduleModalHintText"></h2></div>
+        <div class="loadScheduleModalSchedules"></div>
+    </div>
+</div>
+
 <!-- Navigation bar / Header -->
 <nav class="navbar">
     <a href="index.html" class="logo"></a>
@@ -16,6 +47,7 @@
         <ul>
             <li><a href="profile.html">Profile</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <script src="logout.js"></script>
         </ul>
     </nav>
 </nav>
@@ -23,100 +55,94 @@
 <!-- Banner intro with text -->
 <div class="banner">
     <div class="about">
-        <h2>Xpert Gym</h2>
-        <p>Log in to get started with your fitness journey!</p>
-        <a href="login.html" class="btn"><span></span>Log In</a>
     </div>
 </div>
 
-
 <div class="row">
     <div class="column side">
-        <p>hur många i gymmet, calories o sånt</p>
-    </div>
-    <div class="column center">
-        <div class="grid-container">
-            <div class="planner-card-empty">
-                <div class="planner-card-fill" draggable="true">
-                    <p>
-                        Name
-                    </p>
-                </div>
+        <h4>Click an exercise to modify</h4>
+        <div class="modifyExerciseColumn">
+            <div>
+                <h4>Name <input id="name_value_modified" placeholder="Name" name="name"></h4>
+                <h4>Sets <input id="sets_value_modified" placeholder="Sets" name="sets"></h4>
+                <h4>Reps <input id="reps_value_modified" placeholder="Reps" name="reps"></h4>
+                <h4>Description <input id="desc_value_modified" placeholder="Description"></h4>
+                <h4>Muscle group</h4>
+                <p>Chest<input type="radio" id="muscle_group_modified_0" name="muscleGroup"></p>
+                <p>Arms<input type="radio" id="muscle_group_modified_1" name="muscleGroup"></p>
+                <p>Legs<input type="radio" id="muscle_group_modified_2" name="muscleGroup"></p>
+                <p>Back<input type="radio" id="muscle_group_modified_3" name="muscleGroup"></p>
+                <p>Abs<input type="radio" id="muscle_group_modified_4" name="muscleGroup"></p>
+                <p>Cardio<input type="radio" id="muscle_group_modified_5" name="muscleGroup"></p>
+                <h4>Duration <input id="duration_value_modified" placeholder="Duration"></h4>
+                <h4>Difficulty</h4>
+                <p>Beginner<input type="radio" id="difficulty_value_modified_0" name="difficulty"></p>
+                <p>Moderate<input type="radio" id="difficulty_value_modified_1" name="difficulty"></p>
+                <p>Advanced<input type="radio" id="difficulty_value_modified_2" name="difficulty"></p>
             </div>
-
-            <div class="planner-card-empty">
-                <div class="planner-card-fill" draggable="true">
-
-                </div>
-            </div>
-
-            <div class="planner-card-empty">
-            </div>
-
-            <div class="planner-card-empty">
-            </div>
-
-            <div class="planner-card-empty">
-            </div>
-
-            <div class="planner-card-empty">
-            </div>
-
-            <div class="planner-card-empty">
-            </div>
-
-            <div class="planner-card-empty">
-            </div>
-
-            <div class="planner-card-empty">
+            <div>
+                <button onclick="modifyExercise()">Modify</button>
+                <button onclick="deleteExercise()">Delete</button>
             </div>
         </div>
     </div>
-    <div class="column side">
-        <p>här ska själva workoutsen vara som ska draggas till kalendern?</p>
+    <div class="column center">
+        <!-- Option bar schedule planner -->
+        <div class="schedule_option_bar">
+            <div class="schedule_option_bar_button" onclick="addRow()">Add row</div>
+            <div class="schedule_option_bar_button" onclick="removeRow()">Remove row</div>
+            <div class="schedule_option_bar_button" id="loadSchedule">Load</div>
+            <div class="schedule_option_bar_button" onclick="cleanSchedule()">Clean</div>
+            <div class="schedule_option_bar_button" onclick="saveSchedule()">Save</div>
+        </div>
+
+        <div class="devChatFrame">
+            <div id="devMessageLog">
+                <h2>Message board</h2>
+                <div class="devMessageLogBoard">
+                </div>
+                <form>
+                    <label for="devMessageBox"></label>
+                    <textarea id="devMessageBox" name="messageSubmit"
+                              placeholder="Write a message. Press submit to send" class="postedMessage"></textarea>
+                    <p><input id="devMessageSubmit" type="submit" value="Submit"></p>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="column side planner">
+        <button class="planner-create-exercise" onclick="enterCreateExercise()">Create exercise</button>
+        <h1>Exercises</h1>
+        <p>Drag an exercise into a slot in the planner.</p>
         <button class="collapsible">Chest</button>
         <div class="Collaps_content">
             <div class="workout-container">
-                <div class="planner-card-empty">
-                </div>
-                <div class="planner-card-empty">
-                </div>
-                <div class="planner-card-empty">
-                </div>
-                <div class="planner-card-empty">
-                </div>
-                <div class="planner-card-empty">
-                </div>
             </div>
         </div>
         <button class="collapsible">Arms</button>
         <div class="Collaps_content">
             <div class="workout-container">
-                <div class="planner-card-empty">
-                </div>
             </div>
         </div>
         <button class="collapsible">Legs</button>
         <div class="Collaps_content">
             <div class="workout-container">
-                <div class="planner-card-empty">
-                </div>
             </div>
         </div>
         <button class="collapsible">Back</button>
         <div class="Collaps_content">
             <div class="workout-container">
-                <div class="planner-card-empty">
-                </div>
-
             </div>
         </div>
         <button class="collapsible">Abs</button>
         <div class="Collaps_content">
             <div class="workout-container">
-                <div class="planner-card-empty">
-                </div>
-
+            </div>
+        </div>
+        <button class="collapsible">Cardio</button>
+        <div class="Collaps_content">
+            <div class="workout-container">
             </div>
         </div>
 
@@ -171,5 +197,6 @@
 <script src="add_exercise.js"></script>
 <script src="add_schedule.js"></script>
 <script src="schedule_generator.js"></script>
+<script src="message_board.js"></script>
 </body>
 </html>

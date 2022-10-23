@@ -182,7 +182,9 @@ footer {
     height: auto;
 }
 
-.contact {
+.
+
+{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -703,6 +705,7 @@ span {
 
 /* MAKE THE TEXT GLOW IN PRETTY PINK */
 .glow {
+    padding: 15px;
     color: #fff;
     text-align: center;
     -webkit-animation: glow 1s ease-in-out infinite alternate;
@@ -772,8 +775,7 @@ span {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    border: 2px solid #e00b0b;
-    width: fit-content;
+    width: 100%;
 }
 
 .devChatFrame div {
@@ -803,7 +805,10 @@ span {
 .devChatFrame fieldset {
     margin: 10px;
     border: 1px solid #e00b0b;
+    border-radius: 10px;
     max-width: 500px;
+    text-align: left;
+    padding: 10px;
 }
 
 .devChatFrame fieldset p {
@@ -870,6 +875,7 @@ span {
 /************ workout planner ***********/
 
 .grid-container {
+    overflow: visible;
     display: flex;
     text-align: start;
     grid-gap: 10px;
@@ -878,6 +884,7 @@ span {
 }
 
 .grid-container > div {
+    overflow: visible;
     background-color: rgba(155, 149, 149, 0.8);
     text-align: center;
     padding: 5px 5px;
@@ -929,8 +936,9 @@ span {
 }
 
 .workout-container {
+    overflow: visible;
     display: flex;
-    text-align: start;
+    text-align: center;
     grid-gap: 10px;
     padding: 10px;
     flex-wrap: wrap;
@@ -938,6 +946,7 @@ span {
 
 .workout-container > div {
     background-color: rgba(155, 149, 149, 0.8);
+    overflow: visible;
     display: flex;
     position: center;
     height: 60px;
@@ -945,18 +954,28 @@ span {
     top: 5px;
     left: 5px;
     cursor: pointer;
+    text-align: center;
     font-size: 30px;
     border-radius: 5px;
     flex-basis: 60px;
     flex-grow: 0;
     flex-shrink: 0;
     flex-wrap: wrap;
+    border: solid 3px salmon;
+}
+
+.workout-container > div > p {
+    overflow: visible;
+    position: relative;
+    margin: 0 0;
+    padding: 0 0;
+    font-size: 12px;
 }
 
 /* PLANNER */
 
 .planner-card-fill {
-    background-image: url('https://source.unsplash.com/random/150x150');
+    overflow: visible;
     height: 50px;
     width: 50px;
     top: 5px;
@@ -964,19 +983,29 @@ span {
     cursor: pointer;
 }
 
+.planner-card-fill img {
+    overflow: visible;
+    max-height: 50px;
+    max-width: 50px;
+    top: 5px;
+    left: 5px;
+    cursor: pointer;
+}
+
 .planner-card-fill p{
+    overflow: visible;
     position: relative;
-    top: 44px;
     margin: 0 0;
     padding: 0 0;
     font-size: 12px;
 }
 
 .planner-card-hold {
-    border: solid 5px #ccc;
+
 }
 
 .planner-card-empty {
+    overflow: visible;
     display: inline-block;
     height: 50px;
     width: 50px;
@@ -988,9 +1017,6 @@ span {
     background: #f4f4f4;
     border-style: dashed;
 }
-
-
-/************** Contact *************/
 
 .banner2{
     background-image: linear-gradient(to bottom right, black, burlywood);
@@ -1227,4 +1253,182 @@ span {
     .vl {
         height: 150px;
     }
+}
+
+.planner-create-exercise {
+    width: 90%;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #00bfff;
+    border: #00bfff 2px solid;
+    border-radius: 10px;
+    transition-duration: 0.1s;
+}
+
+.planner-create-exercise:hover {
+    transition-duration: 0.1s;
+    border-color: #00bb55;
+    width: 92%;
+}
+
+.planner-create-exercise:active {
+    transition-duration: 0.1s;
+    background-color: #00bb55;
+    width: 92%;
+}
+
+#planner-modal-container {
+    position: fixed;
+    display: none;
+    background-color: deepskyblue;
+    width: 500px;
+    min-height: 500px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    text-align: center;
+}
+
+#planner-modal-container h1 {
+
+}
+
+#planner-modal-exit {
+    margin-left: 470px;
+    width: 30px;
+    height: 30px;
+}
+
+.planner-card-selected {
+    border: solid 3px yellow;
+}
+
+.planner-card-selected-hovered:hover {
+    border: solid 3px green;
+}
+
+.cardLifted{
+
+}
+
+.schedule_option_bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 50px;
+}
+
+.schedule_option_bar_button {
+    margin: 0 3px 0 3px;
+    width: 100%;
+    height: 60%;
+    background-color: #00bfff;
+    border: #ff0000 1px solid;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+    transition-duration: 0.1s;
+
+    box-shadow: 3px 3px 3px #000;
+
+    color: #000000;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #ffffff;
+
+    overflow: hidden;
+}
+
+.schedule_option_bar_button:hover {
+    transition-duration: 0.1s;
+    border-color: #00bb55;
+    width: 115%;
+    height: 60%;
+    box-shadow: 7px 7px 7px #000;
+}
+
+
+/* Button active animation */
+.schedule_option_bar_button:active {
+    transition-duration: 0.1s;
+    background-color: #00bb55;
+    width: 90%;
+    height: 55%;
+    box-shadow: 1px 1px 1px #000;
+}
+
+.loadScheduleModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    overflow: auto;
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(49, 120, 231, 0.8);
+    border-radius: 10px;
+    width: 400px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loadScheduleModalContent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10%;
+}
+
+.loadScheduleModalContent h2 {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.loadScheduleModalSchedules {
+    width: 80%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalButton {
+    margin-bottom: 10px;
+    width: 80%;
+    min-height: 30px;
+    height: 30px;
+    background-color: salmon;
+    border: #000000 1px solid;
+    border-radius: 10px;
+    transition-duration: 0.1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    box-shadow: 3px 3px 3px #000;
+}
+
+.modalButton:hover {
+    transition-duration: 0.1s;
+    background: greenyellow;
+    border-color: #00bb55;
+    width: 85%;
+    box-shadow: 7px 7px 7px #000;
+}
+
+.modalButton:active {
+    transition-duration: 0.1s;
+    background-color: #00bb55;
+    box-shadow: 1px 1px 1px #000;
+}
+
+.modifyExerciseColumn {
+    display: none;
 }
