@@ -98,7 +98,7 @@ async function getAllExercises() {
         /***** Shoulder exercises *****/
         generateDefaultExercise(
             "Barbell overhead press",
-            "img/icons/bench-press.png",
+            "img/icons/shoulders.png",
             3,
             12,
             "",
@@ -110,7 +110,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Seated dumbbell press",
-            "img/icons/bench-press.png",
+            "img/icons/shoulders.png",
             3,
             12,
             "",
@@ -122,7 +122,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Front raise",
-            "img/icons/bench-press.png",
+            "img/icons/shoulders.png",
             3,
             12,
             "",
@@ -134,7 +134,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Dumbbell lateral raise",
-            "img/icons/bench-press.png",
+            "img/icons/shoulders.png",
             3,
             12,
             "",
@@ -146,7 +146,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Cable lateral raise",
-            "img/icons/bench-press.png",
+            "img/icons/shoulders.png",
             3,
             12,
             "",
@@ -162,7 +162,7 @@ async function getAllExercises() {
         /***** Tricep exercises *****/
         generateDefaultExercise(
             "Dip",
-            "img/icons/bench-press.png",
+            "img/icons/triceps.png",
             4,
             10,
             "Push through your chest extending your arms and stopping just before locking out. Focus on using your triceps (arms) since this exercise can be used for chest also.",
@@ -174,7 +174,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Overhead extension",
-            "img/icons/bench-press.png",
+            "img/icons/triceps.png",
             3,
             10,
             "Sit up with your back straigh preferebly against the back of the chair if possible, and hold on to a dumbbell with 2 hands. Lift the dumbbell above the head reaching to the back while holding a position with the arms at 90° and lift up the dumbbell in that position while extending your arms.",
@@ -186,7 +186,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Cable rope pushdowns",
-            "img/icons/bench-press.png",
+            "img/icons/triceps.png",
             4,
             12,
             "",
@@ -198,7 +198,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Skull crusher",
-            "img/icons/bench-press.png",
+            "img/icons/triceps.png",
             2,
             10,
             "",
@@ -210,7 +210,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Diamond pushup",
-            "img/icons/bench-press.png",
+            "img/icons/triceps.png",
             2,
             12,
             "",
@@ -223,7 +223,7 @@ async function getAllExercises() {
         /***** Bicep exercises *****/
         generateDefaultExercise(
             "Dumbbell curl",
-            "img/icons/bench-press.png",
+            "img/icons/dumbbell-curl.png",
             4,
             12,
             "",
@@ -235,7 +235,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Cable curl",
-            "img/icons/bench-press.png",
+            "img/icons/biceps.png",
             4,
             10,
             "",
@@ -247,7 +247,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Barbell curl",
-            "img/icons/bench-press.png",
+            "img/icons/biceps.png",
             2,
             12,
             "",
@@ -259,7 +259,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Hammer curl",
-            "img/icons/bench-press.png",
+            "img/icons/biceps.png",
             4,
             10,
             "",
@@ -271,7 +271,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "EZ-bar preacher curl",
-            "img/icons/bench-press.png",
+            "img/icons/biceps.png",
             4,
             10,
             "",
@@ -301,7 +301,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Calf raises",
-            "img/icons/squats.png",
+            "img/icons/calves.png",
             4,
             10,
             "",
@@ -313,7 +313,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Lunges",
-            "img/icons/squats.png",
+            "img/icons/legs.png",
             4,
             10,
             "",
@@ -325,7 +325,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Wall sit",
-            "img/icons/squats.png",
+            "img/icons/legs.png",
             0,
             0,
             "",
@@ -337,7 +337,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Leg press",
-            "img/icons/squats.png",
+            "img/icons/legs.png",
             3,
             12,
             "",
@@ -349,7 +349,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Leg extension",
-            "img/icons/squats.png",
+            "img/icons/legs.png",
             3,
             12,
             "",
@@ -378,7 +378,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Deadlift",
-            "img/icons/pullups.png",
+            "img/icons/deadlift.png",
             2,
             10,
             "",
@@ -390,7 +390,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Seated cable row",
-            "img/icons/pullups.png",
+            "img/icons/back.png",
             4,
             10,
             "",
@@ -402,7 +402,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Lat pulldown",
-            "img/icons/pullups.png",
+            "img/icons/back.png",
             4,
             10,
             "",
@@ -414,7 +414,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Single arm dumbbell row",
-            "img/icons/pullups.png",
+            "img/icons/back.png",
             4,
             10,
             "",
@@ -429,7 +429,7 @@ async function getAllExercises() {
         /***** Ab exercises *****/
         generateDefaultExercise(
             "Sit up",
-            "img/icons/bench-press.png",
+            "img/icons/situp.png",
             4,
             10,
             "Lie down on your back with your knees bent. Curl your upper body towards your knees while keeping your feet on the ground then return and repeat.",
@@ -441,7 +441,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Plank",
-            "img/icons/bench-press.png",
+            "img/icons/plank.png",
             0,
             0,
             "Lie down on your chest with arms bent at 90° angle and standing on your toes so you have a straight form on your body. Hold this position for a duration of time.",
@@ -453,7 +453,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Leg raises",
-            "img/icons/bench-press.png",
+            "img/icons/abs.png",
             2,
             16,
             "",
@@ -465,7 +465,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Bicycle crunches",
-            "img/icons/bench-press.png",
+            "img/icons/abs.png",
             2,
             12,
             "",
@@ -477,7 +477,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Mountain climber",
-            "img/icons/bench-press.png",
+            "img/icons/abs.png",
             2,
             16,
             "",
@@ -493,7 +493,7 @@ async function getAllExercises() {
         /***** Cardio exercises *****/
         generateDefaultExercise(
             "Jogging",
-            "img/icons/parkour.png",
+            "img/icons/jogging.png",
             0,
             0,
             "Distance jogging",
@@ -505,7 +505,7 @@ async function getAllExercises() {
 
         generateDefaultExercise(
             "Jump rope",
-            "img/icons/parkour.png",
+            "img/icons/jump-rope.png",
             0,
             0,
             "Jumping rope. If its too difficult to do 15-30 minutes in one go, you can do intervals of jumping as fast as you can for 1 minute and take a 20-30 second break and repeat.",
@@ -516,7 +516,7 @@ async function getAllExercises() {
         );
         generateDefaultExercise(
             "Cycling",
-            "img/icons/parkour.png",
+            "img/icons/cycling.png",
             0,
             0,
             "",
