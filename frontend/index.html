@@ -63,7 +63,7 @@
   const x = Array.from(
           document.getElementsByClassName('PSitem')
   );
-  const y = document.getElementById('loginButton')
+  const y = document.getElementById('loginButton');
   window.onload = function () {
     fetch('/api/login/status')
             .then(res => res.json())
