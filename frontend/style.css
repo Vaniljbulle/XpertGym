@@ -1006,16 +1006,6 @@ span {
     background: #f4f4f4;
     border-style: dashed;
 }
-/***** Media *****/
-@media screen and (max-width: 770px){
-    .tabBtn{
-        font-size: 2.4vw;
-        letter-spacing: 0px;
-    }
-    .scheme{
-        border: 2.2px solid #555;
-    }
-}
 
 
 /************** Contact *************/
@@ -1157,7 +1147,9 @@ span {
     overflow-y: scroll;
     height: 100vh;
 }
-
+.section p, img{
+    font-size: 18px;
+}
 .photoContainer section{
     height: 100vh;
     display: flex;
@@ -1166,6 +1158,7 @@ span {
     scroll-snap-align: start;
     scroll-snap-stop: always;
     color: #fff;
+    font-size: 18px;
 }
 .startCont{
     background: url(/img/2bg.jpg);
@@ -1195,6 +1188,35 @@ span {
 .third{
     background-color: #2f2f2f;
 }
+
+.first p, img{
+    margin: 20px;
+}
+.second p, img{
+    margin: 20px;
+}
+.third p, img{
+    margin: 20px;
+}
+
+.first p{
+    max-width: 350px;
+}
+.second p{
+    max-width: 350px;
+}
+.third p{
+    max-width: 350px;
+}
+.vl {
+    border-left: 6px solid #cba87c;
+    border-radius: 15px;
+    height: 225px;
+    left: 50%;
+    margin: 50px;
+    top: 0;
+}
+
 @keyframes animate {
     0% {
         opacity: 1; top: 15px;
@@ -1202,5 +1224,25 @@ span {
     100% {
         opacity: 0; top: 100px;
         transform: scale(0.8);
+    }
+}
+
+/***** Media *****/
+@media screen and (max-width: 1000px){
+    .vl {
+        margin: 0px;
+    }
+}
+
+@media screen and (max-width: 770px){
+    .tabBtn{
+        font-size: 2.4vw;
+        letter-spacing: 0px;
+    }
+    .scheme{
+        border: 2.2px solid #555;
+    }
+    .vl {
+        height: 150px;
     }
 }
