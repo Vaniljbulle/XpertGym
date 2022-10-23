@@ -96,6 +96,66 @@ async function getAllExercises() {
             2
         );
         /***** Shoulder exercises *****/
+        generateDefaultExercise(
+            "Barbell overhead press",
+            "img/icons/bench-press.png",
+            3,
+            12,
+            "",
+            1,
+            0,
+            2,
+            2
+        );
+
+        generateDefaultExercise(
+            "Seated dumbbell press",
+            "img/icons/bench-press.png",
+            3,
+            12,
+            "",
+            1,
+            0,
+            2,
+            2
+        );
+
+        generateDefaultExercise(
+            "Front raise",
+            "img/icons/bench-press.png",
+            3,
+            12,
+            "",
+            1,
+            0,
+            2,
+            2
+        );
+
+        generateDefaultExercise(
+            "Dumbbell lateral raise",
+            "img/icons/bench-press.png",
+            3,
+            12,
+            "",
+            1,
+            0,
+            2,
+            2
+        );
+
+        generateDefaultExercise(
+            "Cable lateral raise",
+            "img/icons/bench-press.png",
+            3,
+            12,
+            "",
+            1,
+            0,
+            1,
+            2
+        );
+
         //endregion
 
         //region arm exercises
@@ -112,7 +172,117 @@ async function getAllExercises() {
             2
         );
 
+        generateDefaultExercise(
+            "Overhead extension",
+            "img/icons/bench-press.png",
+            3,
+            10,
+            "Sit up with your back straigh preferebly against the back of the chair if possible, and hold on to a dumbbell with 2 hands. Lift the dumbbell above the head reaching to the back while holding a position with the arms at 90° and lift up the dumbbell in that position while extending your arms.",
+            1,
+            0,
+            2,
+            2
+        );
+
+        generateDefaultExercise(
+            "Cable rope pushdowns",
+            "img/icons/bench-press.png",
+            4,
+            12,
+            "",
+            1,
+            0,
+            2,
+            2
+        );
+
+        generateDefaultExercise(
+            "Skull crusher",
+            "img/icons/bench-press.png",
+            2,
+            10,
+            "",
+            1,
+            0,
+            3,
+            2
+        );
+
+        generateDefaultExercise(
+            "Diamond pushup",
+            "img/icons/bench-press.png",
+            2,
+            12,
+            "",
+            1,
+            0,
+            2,
+            2
+        );
+
         /***** Bicep exercises *****/
+        generateDefaultExercise(
+            "Dumbbell curl",
+            "img/icons/bench-press.png",
+            4,
+            12,
+            "",
+            1,
+            0,
+            1,
+            2
+        );
+
+        generateDefaultExercise(
+            "Cable curl",
+            "img/icons/bench-press.png",
+            4,
+            10,
+            "",
+            1,
+            0,
+            1,
+            2
+        );
+
+        generateDefaultExercise(
+            "Barbell curl",
+            "img/icons/bench-press.png",
+            2,
+            12,
+            "",
+            1,
+            0,
+            2,
+            2
+        );
+
+        generateDefaultExercise(
+            "Hammer curl",
+            "img/icons/bench-press.png",
+            4,
+            10,
+            "",
+            1,
+            0,
+            1,
+            2
+        );
+
+        generateDefaultExercise(
+            "EZ-bar preacher curl",
+            "img/icons/bench-press.png",
+            4,
+            10,
+            "",
+            1,
+            0,
+            1,
+            2
+        );
+
+
+
         //endregion
 
         //region Leg exercises
@@ -128,6 +298,68 @@ async function getAllExercises() {
             2,
             2
         );
+
+        generateDefaultExercise(
+            "Calf raises",
+            "img/icons/squats.png",
+            4,
+            10,
+            "",
+            2,
+            0,
+            2,
+            2
+        );
+
+        generateDefaultExercise(
+            "Lunges",
+            "img/icons/squats.png",
+            4,
+            10,
+            "",
+            2,
+            0,
+            2,
+            2
+        );
+
+        generateDefaultExercise(
+            "Wall sit",
+            "img/icons/squats.png",
+            0,
+            0,
+            "",
+            2,
+            0.5,
+            3,
+            2
+        );
+
+        generateDefaultExercise(
+            "Leg press",
+            "img/icons/squats.png",
+            3,
+            12,
+            "",
+            2,
+            0,
+            2,
+            2
+        );
+
+        generateDefaultExercise(
+            "Leg extension",
+            "img/icons/squats.png",
+            3,
+            12,
+            "",
+            2,
+            0,
+            2,
+            2
+        );
+
+
         //endregion
 
         //region Back exercises
@@ -138,6 +370,54 @@ async function getAllExercises() {
             4,
             10,
             "Stand beneath the bar and grip it. Let go of the ground and start pulling yourself up towards the bar and then returning to a hanging position",
+            3,
+            0,
+            1,
+            2
+        );
+
+        generateDefaultExercise(
+            "Deadlift",
+            "img/icons/pullups.png",
+            2,
+            10,
+            "",
+            3,
+            0,
+            3,
+            2
+        );
+
+        generateDefaultExercise(
+            "Seated cable row",
+            "img/icons/pullups.png",
+            4,
+            10,
+            "",
+            3,
+            0,
+            2,
+            2
+        );
+
+        generateDefaultExercise(
+            "Lat pulldown",
+            "img/icons/pullups.png",
+            4,
+            10,
+            "",
+            3,
+            0,
+            2,
+            2
+        );
+
+        generateDefaultExercise(
+            "Single arm dumbbell row",
+            "img/icons/pullups.png",
+            4,
+            10,
+            "",
             3,
             0,
             1,
@@ -158,6 +438,55 @@ async function getAllExercises() {
             1,
             2
         );
+
+        generateDefaultExercise(
+            "Plank",
+            "img/icons/bench-press.png",
+            0,
+            0,
+            "Lie down on your chest with arms bent at 90° angle and standing on your toes so you have a straight form on your body. Hold this position for a duration of time.",
+            4,
+            1,
+            2,
+            2
+        );
+
+        generateDefaultExercise(
+            "Leg raises",
+            "img/icons/bench-press.png",
+            2,
+            16,
+            "",
+            4,
+            0,
+            1,
+            2
+        );
+
+        generateDefaultExercise(
+            "Bicycle crunches",
+            "img/icons/bench-press.png",
+            2,
+            12,
+            "",
+            4,
+            0,
+            2,
+            2
+        );
+
+        generateDefaultExercise(
+            "Mountain climber",
+            "img/icons/bench-press.png",
+            2,
+            16,
+            "",
+            4,
+            0,
+            1,
+            2
+        );
+
         //endregion
 
         //region Cardio exercises
@@ -171,6 +500,41 @@ async function getAllExercises() {
             5,
             20,
             1,
+            2
+        );
+
+        generateDefaultExercise(
+            "Jump rope",
+            "img/icons/parkour.png",
+            0,
+            0,
+            "Jumping rope. If its too difficult to do 15-30 minutes in one go, you can do intervals of jumping as fast as you can for 1 minute and take a 20-30 second break and repeat.",
+            15,
+            5,
+            1,
+            2
+        );
+        generateDefaultExercise(
+            "Cycling",
+            "img/icons/parkour.png",
+            0,
+            0,
+            "",
+            5,
+            30,
+            1,
+            2
+        );
+
+        generateDefaultExercise(
+            "Stair climbers",
+            "img/icons/parkour.png",
+            0,
+            0,
+            "",
+            5,
+            25,
+            2,
             2
         );
         //endregion
