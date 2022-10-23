@@ -396,7 +396,7 @@ h5 {
     display: flex;
     padding: 250px 1px; /* 10px top and bottom, 200px right and left*/
     /*For back ground picture*/
-    background: url(/img/login.jfif) no-repeat;
+    background: url(/img/test.jpg) no-repeat;
     background-size:cover;
     background-position: center;
     background-attachment: fixed;
@@ -1025,6 +1025,14 @@ span {
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 70vh;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
 }
 
 .Contact-Container{
