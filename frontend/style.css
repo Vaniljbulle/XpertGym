@@ -63,28 +63,6 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 70vh;
-    animation: change 15s infinite ease-in;
-}
-
-@keyframes change{
-    0%{
-    background-image : url(/img/2bg.jpg);
-    }
-    20%{
-    background-image : url(/img/IM1.jpg);
-    }
-    40%{
-    background-image : url(/img/IM2.jpg);
-    }
-    60%{
-    background-image : url(/img/IM3.jpg);
-    }
-    80%{
-    background-image : url(/img/IM4.jpg);
-    }
-    100%{
-    background-image : url(/img/IM5.jpg);
-    }
 }
 
 .banner.start{
@@ -173,12 +151,14 @@ li {
     color: white;
     font-weight: 500;
     font-size: 1.1em;
+    transition: 0.1s;
 
 }
 
 .navigation a:hover {
-    color: rgb(176, 120, 47);
-    text-decoration: underline;
+    color: burlywood;
+    border-bottom: #d3b083 3px solid;
+    transition: 0.1s;
 }
 
 .logo {
