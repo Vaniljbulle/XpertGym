@@ -520,7 +520,6 @@ overflow: hidden;
     border-radius: 20px;
     width: 300px;
     background: rgba(0, 0, 0, 0.5);
-    box-shadow: -1px 4px 28px 0px burlywood;
     transform: translate(-50%, -50%);
 }
 
