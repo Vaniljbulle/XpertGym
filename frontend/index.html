@@ -1,82 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="style.css">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Title</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 <body>
 <!-- Navigation bar / Header -->
 <nav class="navbar">
-  <a href="index.html" class="logo"></a>
+    <a href="index.html" class="logo"></a>
 
-  <!-- Gym population text -->
-  <div class="population_navbar">
-    <p id="population_data_ID" class="glow"></p>
-    <script src="gym_pop_client.js"></script>
-  </div>
+    <!-- Gym population text -->
+    <div class="population_navbar">
+        <p id="population_data_ID" class="glow"></p>
+        <script src="gym_pop_client.js"></script>
+    </div>
 
-  <nav class="navigation">
-    <ul>
-      <li class="PSitem" style="visibility: hidden"><a href="calcBMI.html">Calculate BMI</a></li>
-      <li class="PSitem" style="visibility: hidden"><a href="workout_planner.html">Workout planner</a></li>
-      <li class="PSitem" style="visibility: hidden"><a href="trainers.html">Personal trainers</a></li>
-      <li class="PSitem" style="visibility: hidden"><a href="profile.html">Profile</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
+    <nav class="navigation">
+        <ul>
+            <li class="PSitem" style="visibility: hidden"><a href="calcBMI.html">Calculate BMI</a></li>
+            <li class="PSitem" style="visibility: hidden"><a href="workout_planner.html">Workout planner</a></li>
+            <li class="PSitem" style="visibility: hidden"><a href="trainers.html">Personal trainers</a></li>
+            <li class="PSitem" style="visibility: hidden"><a href="profile.html">Profile</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 </nav>
 
 <div class="photoContainer">
-  <!-- Banner intro with text -->
-  <section class="startCont">
-    <div class="banner-nolog">
-      <h2>Xpert Gym</h2></br>
-      <p>Log in to get started with your fitness journey!</p>
-      <a style="visibility: visible" href="login.html" id="loginButton" class="btn"><span></span>Log In</a>
-    </div>
-      <div class="indicator"></div>
-  </section>
+    <!-- Banner intro with text -->
+    <section class="startCont">
+        <div class="banner-nolog">
+            <h2>Xpert Gym</h2></br>
+            <p>Log in to get started with your fitness journey!</p>
+            <a style="visibility: visible" href="login.html" id="loginButton" class="btn"><span></span>Log In</a>
+        </div>
+        <div class="indicator"></div>
+    </section>
 
-  <section class="first">
-    <img src="/img/startphoto1.jpg" alt="Snow" style="width:50vh">
-    <div class="vl"></div>
-    <p>There are plenty of free weights to choose to improve your strength</p>
-  </section>
-  <section class="second">
-    <p>We have a wide selection of treadmills to choose between to perform your warmup and cardio exercises.</p>
-    <div class="vl"></div>
-    <img src="/img/startphoto2.jpg" alt="Snow" style="width:50vh">
-  </section>
-  <section class="third">
-    <img src="/img/startphoto3.jpg" alt="Snow" style="width:50vh">
-    <div class="vl"></div>
-    <p>Here at Xpert gym we also have the standards machines and bars to perform your weight training.</p>
-  </section>
+    <section class="first">
+        <img src="/img/startphoto1.jpg" alt="Snow" style="width:50vh">
+        <div class="vl"></div>
+        <p>There are plenty of free weights to choose to improve your strength</p>
+    </section>
+    <section class="second">
+        <p>We have a wide selection of treadmills to choose between to perform your warmup and cardio exercises.</p>
+        <div class="vl"></div>
+        <img src="/img/startphoto2.jpg" alt="Snow" style="width:50vh">
+    </section>
+    <section class="third">
+        <img src="/img/startphoto3.jpg" alt="Snow" style="width:50vh">
+        <div class="vl"></div>
+        <p>Here at Xpert gym we also have the standards machines and bars to perform your weight training.</p>
+    </section>
 </div>
 
 </body>
 </html>
 <script>
-  const x = Array.from(
-          document.getElementsByClassName('PSitem')
-  );
-  const y = document.getElementById('loginButton');
-  window.onload = function () {
-    fetch('/api/login/status')
+    const x = Array.from(
+        document.getElementsByClassName('PSitem')
+    );
+    const y = document.getElementById('loginButton');
+    window.onload = function () {
+        fetch('/api/login/status')
             .then(res => res.json())
             .then(res => { // USER LOGGED IN, USERNAME IN res.data
-              x.forEach(x=> {
-                x.style.visibility = 'visible';
-              });
-              y.style.visibility = 'hidden';
-            }).catch(err => { // USER NOT LOGGED IN
-      x.forEach(x=> {
-        x.style.visibility = 'hidden';
-      });
-      y.style.visibility = 'visible';
-    })
-  }
+                console.log(res);
+                if (res.status === 'ok') {
+                    x.forEach(x => {
+                        x.style.visibility = 'visible';
+                    });
+                    y.style.visibility = 'hidden';
+                } else {
+                    x.forEach(x => {
+                        x.style.visibility = 'hidden';
+                    });
+                    y.style.visibility = 'visible';
+                }
+            }).catch(err => console.log(err))
+    }
 </script>
