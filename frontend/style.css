@@ -882,19 +882,57 @@ span {
     padding: 10px;
     -webkit-flex-wrap: wrap;
 }
-
 .grid-container > div {
-    overflow: visible;
     background-color: rgba(155, 149, 149, 0.8);
+    overflow: visible;
+    display: flex;
+    position: center;
+    height: 80px;
+    width: 80px;
+    top: 5px;
+    left: 5px;
     text-align: center;
-    padding: 5px 5px;
     font-size: 30px;
     border-radius: 5px;
-    flex-basis: 50px;
+    flex-basis: 80px;
     flex-grow: 0;
     flex-shrink: 0;
     flex-wrap: wrap;
+    border: solid 3px salmon;
 }
+
+.grid-container > div > div {
+    justify-content: center;
+    display: flex;
+    cursor: pointer;
+    text-align: center;
+    height: 80px;
+    width: 80px;
+    font-size: 30px;
+    border-radius: 5px;
+    flex-basis: 80px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+
+.grid-container > div > div > p {
+    overflow: visible;
+    position: relative;
+    margin: 0 0;
+    padding: 0 0;
+    font-size: 12px;
+}
+
+.grid-container > div > div > img {
+    display: block;
+    height: 30px;
+    width: auto;
+    margin: auto auto;
+}
+
 
 .collapsible {
     background-color: #777;
@@ -949,19 +987,28 @@ span {
     overflow: visible;
     display: flex;
     position: center;
-    height: 60px;
-    width: 60px;
+    height: 80px;
+    width: 80px;
     top: 5px;
     left: 5px;
     cursor: pointer;
     text-align: center;
     font-size: 30px;
     border-radius: 5px;
-    flex-basis: 60px;
+    flex-basis: 80px;
     flex-grow: 0;
     flex-shrink: 0;
     flex-wrap: wrap;
+    flex-direction: column;
     border: solid 3px salmon;
+    justify-content: center;
+}
+
+.workout-container > div > img {
+    display: block;
+    height: 30px;
+    width: auto;
+    margin: auto auto;
 }
 
 .workout-container > div > p {
@@ -985,8 +1032,8 @@ span {
 
 .planner-card-fill img {
     overflow: visible;
-    max-height: 50px;
-    max-width: 50px;
+    max-height: 40px;
+    max-width: 40px;
     top: 5px;
     left: 5px;
     cursor: pointer;
@@ -1005,12 +1052,12 @@ span {
 }
 
 .planner-card-empty {
+    background-color: rgba(155, 149, 149, 0.8);
     overflow: visible;
-    display: inline-block;
     height: 50px;
     width: 50px;
+    border-radius: 5px;
     border: solid 3px salmon;
-    background: white;
 }
 
 .planner-card-hovered {
