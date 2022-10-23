@@ -20,10 +20,10 @@
 
   <nav class="navigation">
     <ul>
-      <li style="display:none"><a href="calcBMI.html">Calculate BMI</a></li>
-      <li style="display:none"><a href="workout_planner.html">Workout planner</a></li>
-      <li style="display:none"><a href="trainers.html">Personal trainers</a></li>
-      <li><a href="profile.html">Profile</a></li>
+      <li class="PSitem" style="visibility: hidden"><a href="calcBMI.html">Calculate BMI</a></li>
+      <li class="PSitem" style="visibility: hidden"><a href="workout_planner.html">Workout planner</a></li>
+      <li class="PSitem" style="visibility: hidden"><a href="trainers.html">Personal trainers</a></li>
+      <li class="PSitem" style="visibility: hidden"><a href="profile.html">Profile</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
@@ -35,7 +35,7 @@
     <div class="banner-nolog">
       <h2>Xpert Gym</h2></br>
       <p>Log in to get started with your fitness journey!</p>
-      <a style="display: ruby" href="login.html" class="btn"><span></span>Log In</a>
+      <a style="visibility: visible" href="login.html" id="loginButton" class="btn"><span></span>Log In</a>
     </div>
       <div class="indicator"></div>
   </section>
@@ -59,3 +59,24 @@
 
 </body>
 </html>
+<script>
+  const x = Array.from(
+          document.getElementsByClassName('PSitem')
+  );
+  const y = document.getElementById('loginButton')
+  window.onload = function () {
+    fetch('/api/login/status')
+            .then(res => res.json())
+            .then(res => { // USER LOGGED IN, USERNAME IN res.data
+              x.forEach(x=> {
+                x.style.visibility = 'visible';
+              });
+              y.style.visibility = 'hidden';
+            }).catch(err => { // USER NOT LOGGED IN
+      x.forEach(x=> {
+        x.style.visibility = 'hidden';
+      });
+      y.style.visibility = 'visible';
+    })
+  }
+</script>
