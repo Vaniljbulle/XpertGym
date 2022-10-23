@@ -95,8 +95,10 @@ async function getAllExercises() {
             1,
             2
         );
+        /***** Shoulder exercises *****/
         //endregion
-        //region Tricep exercises
+
+        //region arm exercises
         /***** Tricep exercises *****/
         generateDefaultExercise(
             "Dip",
@@ -106,6 +108,68 @@ async function getAllExercises() {
             "Push through your chest extending your arms and stopping just before locking out. Focus on using your triceps (arms) since this exercise can be used for chest also.",
             1,
             0,
+            1,
+            2
+        );
+
+        /***** Bicep exercises *****/
+        //endregion
+
+        //region Leg exercises
+        /***** Leg exercises *****/
+        generateDefaultExercise(
+            "Squat",
+            "img/icons/squats.png",
+            4,
+            10,
+            "Stand straight with your feet hip-width apart and tigthen your stomach muscles. Lower down to about 90 degrees and straighten your legs to lift back up then repeat this movement.",
+            2,
+            0,
+            2,
+            2
+        );
+        //endregion
+
+        //region Back exercises
+        /***** Back exercises *****/
+        generateDefaultExercise(
+            "Pull up",
+            "img/icons/pullups.png",
+            4,
+            10,
+            "Stand beneath the bar and grip it. Let go of the ground and start pulling yourself up towards the bar and then returning to a hanging position",
+            3,
+            0,
+            1,
+            2
+        );
+        //endregion
+
+        //region Ab exercises
+        /***** Ab exercises *****/
+        generateDefaultExercise(
+            "Sit up",
+            "img/icons/bench-press.png",
+            4,
+            10,
+            "Lie down on your back with your knees bent. Curl your upper body towards your knees while keeping your feet on the ground then return and repeat.",
+            4,
+            0,
+            1,
+            2
+        );
+        //endregion
+
+        //region Cardio exercises
+        /***** Cardio exercises *****/
+        generateDefaultExercise(
+            "Jogging",
+            "img/icons/parkour.png",
+            0,
+            0,
+            "Distance jogging",
+            5,
+            20,
             1,
             2
         );
