@@ -34,7 +34,7 @@
     <section class="startCont">
         <div class="banner-nolog">
             <h2>Xpert Gym</h2></br>
-            <p>Log in to get started with your fitness journey!</p>
+            <p id="landingPageText">Log in to get started with your fitness journey!</p>
             <a style="visibility: visible" href="login.html" id="loginButton" class="btn"><span></span>Log In</a>
         </div>
         <div class="indicator"></div>
@@ -63,6 +63,7 @@
     const x = Array.from(
         document.getElementsByClassName('PSitem')
     );
+    var landingText = document.getElementById('landingPageText');
     const y = document.getElementById('loginButton');
     window.onload = function () {
         fetch('/api/login/status')
@@ -74,6 +75,7 @@
                         x.style.visibility = 'visible';
                     });
                     y.style.visibility = 'hidden';
+                  landingText.innerText = "The gym that takes your training seriously.";
                 } else {
                     x.forEach(x => {
                         x.style.visibility = 'hidden';
