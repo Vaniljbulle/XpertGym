@@ -96,16 +96,18 @@
 </div>
 <!-- Footer -->
 <footer>
-    <div class="contact">
-        <h3>Contact information</h3>
-        <p2>.....Info.....</p2>
-        <!-- <img src="#" alt="logo2"/>  -->
-        <p2>Follow Us</p2>
-        <div class="social-icons">
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-            <a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-        </div>
+
+  <div class="contact">
+    <h3>Contact information</h3>
+    <h4>Phone: 070-000-010</h4>
+    <h4>Email: company@xpertgym.com</h4>
+    <!-- <img src="#" alt="logo2"/>  -->
+    <h5>Follow Us</h5>
+    <div class="social-icons">
+      <a href="#"><i class="fa-brands fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      <a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+    </div>
 
 
     </div>
@@ -180,4 +182,9 @@
         window.localStorage.setItem('scheduleID', JSON.stringify(scheme.currentTarget.id));
         window.location.href = 'workout_planner.html';
     }
+  
+  const x = document.querySelectorAll('.scheme').length;
+  var amountPlannerText = document.getElementById('Schedules_data_ID');
+  amountPlannerText.innerText = "You have created " + x + " workout schedules!";
+  console.log(x);
 </script>

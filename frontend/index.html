@@ -20,59 +20,69 @@
 
     <nav class="navigation">
         <ul>
-            <li><a href="profile.html">Profile</a></li>
+            <li class="PSitem" style="visibility: hidden"><a href="calcBMI.html">Calculate BMI</a></li>
+            <li class="PSitem" style="visibility: hidden"><a href="workout_planner.html">Workout planner</a></li>
+            <li class="PSitem" style="visibility: hidden"><a href="trainers.html">Personal trainers</a></li>
+            <li class="PSitem" style="visibility: hidden"><a href="profile.html">Profile</a></li>
             <li><a href="contact.html">Contact</a></li>
             <script src="logout.js"></script>
         </ul>
     </nav>
 </nav>
 
-<!-- Banner intro with text -->
-<div class="banner">
-    <div class="about">
-        <h2>Xpert Gym</h2>
-        <p>Log in to get started with your fitness journey!</p>
-        <a href="login.html" class="btn"><span></span>Log In</a>
-    </div>
-</div>
-
-<!-- Center content -->
-<div class="row">
-    <div class="column side">
-        <h2>BMI & Nutrition</h2>
-        <p>Here you can calculate your BMI and how many calories your body requires in order to lose or gain weight.
-            Nutritinous facts are also provided!</p>
-        <a class="btn" href="calcBMI.html">Calculate BMI<span></span></a>
-    </div>
-    <div class="column center">
-        <h2>Workout planner</h2>
-        <p>In the workout planner you can select between multiple premade workout schemes and even plan your own
-            customised workout!</p>
-        <a href="workout_planner.html" class="btn">Generate workout<span></span></a>
-    </div>
-    <div class="column side">
-        <h2>Personal Trainers</h2>
-        <p>There are plently of personal trainers here at Xpert gym!</p>
-        <a class="btn" href="trainers.html">Personal Trainer<span></span></a>
-    </div>
-</div>
-
-<!-- Footer -->
-<footer>
-    <div class="contact">
-        <h3>Contact information</h3>
-        <h4>.....Info.....</h4>
-        <!-- <img src="#" alt="logo2"/>  -->
-        <h5>Follow Us</h5>
-        <div class="social-icons">
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-            <a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+<div class="photoContainer">
+    <!-- Banner intro with text -->
+    <section class="startCont">
+        <div class="banner-nolog">
+            <h2>Xpert Gym</h2></br>
+            <p id="landingPageText">Log in to get started with your fitness journey!</p>
+            <a style="visibility: visible" href="login.html" id="loginButton" class="btn"><span></span>Log In</a>
         </div>
+        <div class="indicator"></div>
+    </section>
 
-
-    </div>
-</footer>
+    <section class="first">
+        <img src="/img/startphoto1.jpg" alt="Snow" style="width:50vh">
+        <div class="vl"></div>
+        <p>There are plenty of free weights to choose to improve your strength</p>
+    </section>
+    <section class="second">
+        <p>We have a wide selection of treadmills to choose between to perform your warmup and cardio exercises.</p>
+        <div class="vl"></div>
+        <img src="/img/startphoto2.jpg" alt="Snow" style="width:50vh">
+    </section>
+    <section class="third">
+        <img src="/img/startphoto3.jpg" alt="Snow" style="width:50vh">
+        <div class="vl"></div>
+        <p>Here at Xpert gym we also have the standards machines and bars to perform your weight training.</p>
+    </section>
+</div>
 
 </body>
 </html>
+<script>
+    const x = Array.from(
+        document.getElementsByClassName('PSitem')
+    );
+    var landingText = document.getElementById('landingPageText');
+    const y = document.getElementById('loginButton');
+    window.onload = function () {
+        fetch('/api/login/status')
+            .then(res => res.json())
+            .then(res => { // USER LOGGED IN, USERNAME IN res.data
+                console.log(res);
+                if (res.status === 'ok') {
+                    x.forEach(x => {
+                        x.style.visibility = 'visible';
+                    });
+                    y.style.visibility = 'hidden';
+                  landingText.innerText = "The gym that takes your training seriously.";
+                } else {
+                    x.forEach(x => {
+                        x.style.visibility = 'hidden';
+                    });
+                    y.style.visibility = 'visible';
+                }
+            }).catch(err => console.log(err))
+    }
+</script>

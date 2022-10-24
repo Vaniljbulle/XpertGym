@@ -5,9 +5,15 @@ const Membership = require("../database/membership");
 const {verifyToken} = require('../auth/token');
 const isAdmin = require('../auth/isAdmin');
 
+
 // Get profile.html
 router.get('/profile.html', verifyToken, async (req, res) => {
     res.sendFile('profile.html', {root: 'frontend'});
+
+// GET message_board.js
+router.get('/message_board.js', async (req, res) => {
+    res.sendFile('message_board.js', {root: 'server/auth'});
+
 });
 
 // GET devMessaging.js
@@ -46,8 +52,7 @@ router.get('/admin.html', verifyToken, async (req, res) => {
     if (await isAdmin(req.user)) {
         console.log("Admin page was sent to " + req.user.username + " with membership id " + membership.user_level);
         res.sendFile('admin.html', {root: 'frontend'});
-    }
-    else {
+    } else {
         console.log("Non-admin user attempted to access admin page");
         return res.status(403).send('Forbidden - ' + req.user.username + ' with user level ' + membership.user_level);
     }
@@ -145,5 +150,36 @@ router.get('/schedule_generator.js', verifyToken, async (req, res) => {
     console.log("schedule_generator.js requested");
     res.sendFile('schedule_generator.js', {root: path.join('frontend')});
 })
+
+// calcBMI.html
+router.get('/calcBMI.html', verifyToken, async (req, res) => {
+    console.log("calcBMI.html requested");
+    res.sendFile('calcBMI.html', {root: path.join('frontend')});
+})
+
+// BMI.js
+router.get('/BMI.js', verifyToken, async (req, res) => {
+    console.log("BMI.js requested");
+    res.sendFile('BMI.js', {root: path.join('frontend')});
+})
+
+// trainers.html
+router.get('/trainers.html', verifyToken, async (req, res) => {
+    console.log("trainers.html requested");
+    res.sendFile('trainers.html', {root: path.join('frontend')});
+})
+
+// profile.html
+router.get('/profile.html', verifyToken, async (req, res) => {
+    console.log("profile.html requested");
+    res.sendFile('profile.html', {root: path.join('frontend')});
+})
+
+// contact.html
+router.get('/contact.html', async (req, res) => {
+    console.log("contact.html requested");
+    res.sendFile('contact.html', {root: path.join('frontend')});
+})
+
 
 module.exports = router

@@ -25,6 +25,7 @@ router.post('/api/exercise/add', verifyToken, async (req, res) => {
     }
 
     const {name, image, sets, reps, description, muscleGroup, duration, difficulty, type} = req.body;
+    console.log({name, image, sets, reps, description, muscleGroup, duration, difficulty, type});
 
     try {
         const isUserExercise = type === 0 || type === 1;
@@ -44,11 +45,11 @@ router.post('/api/exercise/add', verifyToken, async (req, res) => {
         });
 
         if (isUserExercise) {
-            await UserExercise.create({id_exercise: exercise._id, id_user: req.user._id});
+            await UserExercise.create({id_exercise: exercise._id, id_user: req.user.id});
         }
 
         console.log("Exercise added successfully: ", exercise);
-        res.status(200).json({status: 'ok', data: name});
+        res.status(200).json({status: 'ok', data: exercise._id});
     } catch (err) {
         console.log("Encountered error during adding exercise: ", err);
         res.status(500).json({status: 'error'});
@@ -75,7 +76,7 @@ router.post('/api/exercise/remove', verifyToken, async (req, res) => {
             res.status(200).json({status: 'ok'});
         }
         else {
-            await UserExercise.find({id_exercise: _id, id_user: req.user._id}).deleteOne();
+            await UserExercise.find({id_exercise: _id, id_user: req.user.id}).deleteOne();
             const exercise = await Exercise.findById(_id).deleteOne();
             console.log("Exercise removed successfully: ", exercise);
             res.status(200).json({status: 'ok'});
@@ -83,6 +84,37 @@ router.post('/api/exercise/remove', verifyToken, async (req, res) => {
 
     } catch (err) {
         console.log("Encountered error during exercise removal: ", err);
+        res.status(500).json({status: 'error'});
+    }
+})
+
+// Get one exercise by ID post request
+router.post('/api/exercise/getByID', verifyToken, async (req, res) => {
+    console.log("Exercise getByID post request");
+
+    // Check input for validity
+    if (req.body._id === undefined) {
+        res.status(400).json({status: 'error', data: 'Invalid input'});
+        return;
+    }
+
+    const {_id} = req.body;
+
+    try {
+        if (await isAdmin(req.user)){
+            const exercise = await Exercise.findById(_id).lean();
+            console.log("Exercise fetched successfully: ", exercise);
+            res.status(200).json({status: 'ok', data: exercise});
+        }
+        else {
+            await UserExercise.find({id_exercise: _id, id_user: req.user.id}).lean();
+            const exercise = await Exercise.findById(_id).lean();
+            console.log("Exercise fetched successfully: ", exercise);
+            res.status(200).json({status: 'ok', data: exercise});
+        }
+
+    } catch (err) {
+        console.log("Encountered error during exercise fetching: ", err);
         res.status(500).json({status: 'error'});
     }
 })
@@ -103,13 +135,18 @@ router.post('/api/exercise/all', verifyToken, async (req, res) => {
         }
     } else {
         try {
-            let all = await Exercise.find({type: 0}).lean();
+            let all = [];
+            const standards = await Exercise.find({type: 2}).lean();
+            for (const standard of standards) {
+                all.push(standard._id);
+            }
             const customExercises = await UserExercise.find({id_user: req.user.id}).lean();
             for (const customExercise of customExercises) {
-                all += await Exercise.findById(customExercise.id_exercise).lean();
+                const tmp = await Exercise.findById(customExercise.id_exercise).lean();
+                all.push(tmp._id);
             }
 
-            console.log("All allowed exercises was sent");
+            console.log("All allowed exercises was sent", all);
             res.status(200).json({status: 'ok', data: all});
         } catch (err) {
             res.status(500).json({status: 'error', data: err});

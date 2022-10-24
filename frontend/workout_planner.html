@@ -8,10 +8,95 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
 </head>
-<body>
+<body id="planner-body">
+<div id="planner-modal-container">
+    <button id="planner-modal-exit" onclick="exitCreateExercise()">X</button>
+    <h1>Create your own exercise</h1>
+    <div class="planner-modal-content">
+        <h2>Name</h2>
+        <input id="name_value" placeholder="Name" name="name">
+    </div>
+    <div class="planner-modal-content">
+        <h2>Sets</h2>
+        <input id="sets_value" placeholder="Sets" name="sets">
+    </div>
+    <div class="planner-modal-content">
+        <h2>Reps</h2>
+        <input id="reps_value" placeholder="Reps" name="reps">
+    </div>
+    <div class="planner-modal-content">
+        <h2>Description </h2>
+        <textarea id="desc_value" placeholder="Description"></textarea>
+    </div>
+
+    <h2>Muscle group</h2>
+    <div class="planner-modal-content">
+        <p>Chest </p>
+        <input type="radio" name="muscleGroup">
+    </div>
+    <div class="planner-modal-content">
+        <p>Arms </p>
+        <input type="radio" name="muscleGroup">
+    </div>
+    <div class="planner-modal-content">
+        <p>Legs </p>
+        <input type="radio" name="muscleGroup">
+    </div>
+    <div class="planner-modal-content">
+        <p>Back </p>
+        <input type="radio" name="muscleGroup">
+    </div>
+    <div class="planner-modal-content">
+        <p>Abs </p>
+        <input type="radio" name="muscleGroup">
+    </div>
+    <div class="planner-modal-content">
+        <p>Cardio </p>
+        <input type="radio" name="muscleGroup">
+    </div>
+
+    <div class="planner-modal-content">
+        <h2>Duration </h2>
+        <input id="duration_value" placeholder="Duration">
+    </div>
+    <h2>Difficulty</h2>
+    <div class="planner-modal-content">
+        <p>Beginner </p>
+        <input type="radio" name="difficulty">
+    </div>
+    <div class="planner-modal-content">
+        <p>Moderate </p>
+        <input type="radio" name="difficulty">
+    </div>
+    <div class="planner-modal-content">
+        <p>Advanced </p>
+        <input type="radio" name="difficulty">
+    </div>
+    <div class="planner-modal-content">
+
+    </div>
+
+    <button class="planner-modal-button" onclick="createExercise()">Create</button>
+</div>
+
+<!-- Load schedule modal -->
+<div class="loadScheduleModal">
+    <div class="loadScheduleModalContent">
+        <div><h2 class="loadScheduleModalHintText"></h2></div>
+        <div class="loadScheduleModalSchedules"></div>
+    </div>
+</div>
+
 <!-- Navigation bar / Header -->
 <nav class="navbar">
     <a href="index.html" class="logo"></a>
+
+    <!-- Gym population text -->
+    <div class="population_navbar">
+        <p id="population_data_ID" class="glow"></p>
+        <script src="gym_pop_client.js"></script>
+    </div>
+
     <nav class="navigation">
         <ul>
             <li><a href="profile.html">Profile</a></li>
@@ -22,102 +107,139 @@
 </nav>
 
 <!-- Banner intro with text -->
-<div class="banner">
+<div class="banner planner">
     <div class="about">
-        <h2>Xpert Gym</h2>
-        <p>Log in to get started with your fitness journey!</p>
-        <a href="login.html" class="btn"><span></span>Log In</a>
     </div>
 </div>
 
-
-<div class="row">
+<div class="row planner">
     <div class="column side">
-        <p>hur många i gymmet, calories o sånt</p>
-    </div>
-    <div class="column center">
-        <div class="grid-container">
-            <div class="planner-card-empty">
-                <div class="planner-card-fill" draggable="true">
-                    <p>
-                        Name
-                    </p>
+        <h1 id="planner-modify-header">Modify</h1>
+        <p>Click on an exercise to select it, then modify or delete it below.</p>
+        <div class="modifyExerciseColumn">
+            <div>
+                <div class="planner-modify-content">
+                    <h4>Name </h4>
+                    <input id="name_value_modified" placeholder="Name" name="name">
+                </div>
+                <div class="planner-modify-content">
+                    <h4>Sets </h4>
+                    <input id="sets_value_modified" placeholder="Sets" name="sets">
+                </div>
+                <div class="planner-modify-content">
+                    <h4>Reps </h4>
+                    <input id="reps_value_modified" placeholder="Reps" name="reps">
+                </div>
+                <h4>Description </h4>
+                <div class="planner-modify-content">
+                    <textarea id="desc_value_modified" placeholder="Description"></textarea>
+                </div>
+                <h4>Muscle group</h4>
+                <div class="planner-modify-content">
+                    <p>Chest </p>
+                    <input type="radio" id="muscle_group_modified_0" name="muscleGroup">
+                </div>
+                <div class="planner-modify-content">
+                    <p>Arms </p>
+                    <input type="radio" id="muscle_group_modified_1" name="muscleGroup">
+                </div>
+                <div class="planner-modify-content">
+                    <p>Legs </p>
+                    <input type="radio" id="muscle_group_modified_2" name="muscleGroup">
+                </div>
+                <div class="planner-modify-content">
+                    <p>Back </p>
+                    <input type="radio" id="muscle_group_modified_3" name="muscleGroup">
+                </div>
+                <div class="planner-modify-content">
+                    <p>Abs </p>
+                    <input type="radio" id="muscle_group_modified_4" name="muscleGroup">
+                </div>
+                <div class="planner-modify-content">
+                    <p>Cardio </p>
+                    <input type="radio" id="muscle_group_modified_5" name="muscleGroup">
+                </div>
+                <div class="planner-modify-content">
+                    <h4>Duration </h4>
+                    <input id="duration_value_modified" placeholder="Duration">
+                </div>
+                <h4>Difficulty</h4>
+                <div class="planner-modify-content">
+                    <p>Beginner </p>
+                    <input type="radio" id="difficulty_value_modified_0" name="difficulty">
+                </div>
+                <div class="planner-modify-content">
+                    <p>Moderate </p>
+                    <input type="radio" id="difficulty_value_modified_1" name="difficulty">
+                </div>
+                <div class="planner-modify-content">
+                    <p>Advanced </p>
+                    <input type="radio" id="difficulty_value_modified_2" name="difficulty">
                 </div>
             </div>
-
-            <div class="planner-card-empty">
-                <div class="planner-card-fill" draggable="true">
-
-                </div>
-            </div>
-
-            <div class="planner-card-empty">
-            </div>
-
-            <div class="planner-card-empty">
-            </div>
-
-            <div class="planner-card-empty">
-            </div>
-
-            <div class="planner-card-empty">
-            </div>
-
-            <div class="planner-card-empty">
-            </div>
-
-            <div class="planner-card-empty">
-            </div>
-
-            <div class="planner-card-empty">
+            <div>
+                <button onclick="editExercise()">Modify</button>
+                <button onclick="deleteExercise()">Delete</button>
             </div>
         </div>
     </div>
-    <div class="column side">
-        <p>här ska själva workoutsen vara som ska draggas till kalendern?</p>
+    <div class="column center planner">
+        <!-- Option bar schedule planner -->
+        <div class="schedule_option_bar">
+            <div class="schedule_option_bar_button" onclick="addRow()">Add row</div>
+            <div class="schedule_option_bar_button" onclick="removeRow()">Remove row</div>
+            <div class="schedule_option_bar_button" onclick="cleanSchedule()">Clean</div>
+            <div class="schedule_option_bar_button" id="loadSchedule">Load</div>
+            <div class="schedule_option_bar_button" onclick="saveSchedule()">Save</div>
+        </div>
+
+        <div class="devChatFrame">
+            <div id="devMessageLog">
+                <h2>Message board</h2>
+                <div class="devMessageLogBoard">
+                </div>
+                <form>
+                    <label for="devMessageBox"></label>
+                    <textarea id="devMessageBox" name="messageSubmit"
+                              placeholder="Write a message. Press submit to send" class="postedMessage"></textarea>
+                    <p><input id="devMessageSubmit" type="submit" value="Submit"></p>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="column side planner">
+        <h1>Exercises</h1>
+        <p>Drag an exercise into a slot in the planner.</p>
+        <button class="planner-create-exercise" onclick="enterCreateExercise()">Create exercise</button>
         <button class="collapsible">Chest</button>
         <div class="Collaps_content">
             <div class="workout-container">
-                <div class="planner-card-empty">
-                </div>
-                <div class="planner-card-empty">
-                </div>
-                <div class="planner-card-empty">
-                </div>
-                <div class="planner-card-empty">
-                </div>
-                <div class="planner-card-empty">
-                </div>
             </div>
         </div>
         <button class="collapsible">Arms</button>
         <div class="Collaps_content">
             <div class="workout-container">
-                <div class="planner-card-empty">
-                </div>
             </div>
         </div>
         <button class="collapsible">Legs</button>
         <div class="Collaps_content">
             <div class="workout-container">
-                <div class="planner-card-empty">
-                </div>
             </div>
         </div>
         <button class="collapsible">Back</button>
         <div class="Collaps_content">
             <div class="workout-container">
-                <div class="planner-card-empty">
-                </div>
-
             </div>
         </div>
         <button class="collapsible">Abs</button>
         <div class="Collaps_content">
             <div class="workout-container">
-                <div class="planner-card-empty">
-                </div>
-
+            </div>
+        </div>
+        <button class="collapsible">Cardio</button>
+        <div class="Collaps_content">
+            <div class="workout-container">
             </div>
         </div>
 
@@ -127,7 +249,8 @@
 <footer>
     <div class="contact">
         <h3>Contact information</h3>
-        <h4>.....Info.....</h4>
+        <h4>Phone: 070-000-010</h4>
+        <h4>Email: company@xpertgym.com</h4>
         <!-- <img src="#" alt="logo2"/>  -->
         <h5>Follow Us</h5>
         <div class="social-icons">
@@ -162,8 +285,9 @@
             this.classList.toggle("active");
             const Collaps_content = this.nextElementSibling;
             Collaps_content.style.maxHeight = Collaps_content.scrollHeight + "px";
-
         });
+
+        acc[i].nextElementSibling.style.maxHeight = "0";
     }
 </script>
 <script src="fetch_exercise.js"></script>
@@ -171,5 +295,6 @@
 <script src="add_exercise.js"></script>
 <script src="add_schedule.js"></script>
 <script src="schedule_generator.js"></script>
+<script src="message_board.js"></script>
 </body>
 </html>
