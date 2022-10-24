@@ -9,11 +9,11 @@ const isAdmin = require('../auth/isAdmin');
 // Get profile.html
 router.get('/profile.html', verifyToken, async (req, res) => {
     res.sendFile('profile.html', {root: 'frontend'});
+});
 
 // GET message_board.js
 router.get('/message_board.js', async (req, res) => {
     res.sendFile('message_board.js', {root: 'server/auth'});
-
 });
 
 // GET devMessaging.js
