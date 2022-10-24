@@ -1,118 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="style.css">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>XpertGym - Profile</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>XpertGym - Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 <body>
 <!-- Navigation bar / Header -->
 <nav class="navbar">
-  <a href="index.html" class="logo"></a>
+    <a href="index.html" class="logo"></a>
 
-  <!-- Gym population text -->
-  <div class="population_navbar">
-    <p id="population_data_ID" class="glow"></p>
-    <script src="gym_pop_client.js"></script>
-  </div>
+    <!-- Gym population text -->
+    <div class="population_navbar">
+        <p id="population_data_ID" class="glow"></p>
+        <script src="gym_pop_client.js"></script>
+    </div>
 
-  <nav class="navigation">
-    <ul>
-      <li><a href="profile.html">Profile</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <script src="logout.js"></script>
-    </ul>
-  </nav>
+    <nav class="navigation">
+        <ul>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <script src="logout.js"></script>
+        </ul>
+    </nav>
 </nav>
 <!-- Banner intro with text -->
 
 <div class="banner">
-  <div class="about">
-    <h2 class="username">username</h2>
-    <p>Welcome to your personal page!</p>
-    <p>Here you can see and modify your schedules and change other settings concerning your profile</p>
-  </div>
+    <div class="about">
+        <h2 class="username">username</h2>
+        <p>Welcome to your personal page!</p>
+        <p>Here you can see and modify your schedules and change other settings concerning your profile</p>
+    </div>
 </div>
 <div class="profilePage">
-  <div class="row">
-    <div class="column side">
-      <div class="bar">
-        <button class="tabBtn" onclick="openTab('Profile')">Profile</button>
-        <button class="tabBtn" onclick="openTab('Schemes')">Schemes</button>
-        <button class="tabBtn" onclick="openTab('Settings')">Settings</button>
-      </div>
-    </div>
-    <div class="column center">
-      <div class="container">
-        <div class="p">
-          <div id="Profile" class="cont tab" style="display:none">
-            <div class="profile-section">
-              <div class="profile-section-row">
-                <div class="profile-section-col">
-                  <div class="profile-about">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut blanditiis eius harum iure nam nemo nihil quo sit vel veritatis.</p>
-                  </div>
-                </div>
-                <div class="profile-section-col">
-                  <div class="profile-achievements">
-                    <p>Your personal achievements:</p>
-                    <p id="GymDays_data_ID" class="glow">You have worked out "x" times!</p>
-                    <p id="Schedules_data_ID" class="glow">You have created "x" schedules!</p>
-                    <p id="BMI_data_ID" class="glow">your latest BMI calculated: </p>
-                  </div>
-                </div>
-              </div>
+    <div class="row">
+        <div class="column side">
+            <div class="bar">
+                <button class="tabBtn" onclick="openTab('Profile')">Profile</button>
+                <button class="tabBtn" onclick="openTab('Schemes')">Schemes</button>
+                <button class="tabBtn" onclick="openTab('Settings')">Settings</button>
             </div>
-          </div>
-          <div id="Schemes" class="cont tab" style="display:none">
-            <h2>Schemes</h2>
-            <p>Here are your previously saved workout schedules</p>
-            <div class="scheme">
-              <img src="/img/wp.webp" alt="">
-              <div class="scheme-s">
-                <a href="workout_planner.html">workout schedule #1</a>
-              </div>
-            </div>
-            <div class="scheme">
-              <img src="/img/contact.jpg" alt="">
-              <div class="scheme-s">
-                <a href="workout_planner.html">workout schedule #2</a>
-              </div>
-            </div>
-            <div class="scheme">
-              <img src="/img/banner.jpeg" alt="">
-              <div class="scheme-s">
-                <a href="workout_planner.html">workout schedule #3</a>
-              </div>
-            </div>
-          </div>
-
-          <div id="Settings" class="cont tab" style="display:none">
-            <h2>Settings</h2>
-            <button class="tabBtn" onclick="toggleBtn('changeUsernameID')">change username</button>
-            <button class="tabBtn" onclick="toggleBtn('changePasswordID')">change Password</button>
-            <div id="changeUsernameID" style="display:none">
-              <h4>change username</h4>
-              <input class="profileInputText" type="text" placeholder="enter username...">
-              <input class="tabBtn" type="submit" value="Change username">
-            </div>
-            <div id="changePasswordID" style="display:none">
-              <h4>change password</h4>
-              <input class="profileInputText" type="password" placeholder="enter old password...">
-              <input class="profileInputText" type="password" placeholder="enter new password...">
-              <input class="tabBtn" type="submit" value="Change password">
-            </div>
-          </div>
-
         </div>
-      </div>
+        <div class="column center">
+            <div class="container">
+                <div class="p">
+                    <div id="Profile" class="cont tab" style="display:none">
+                        <div class="profile-section">
+                            <div class="profile-section-row">
+                                <div class="profile-section-col">
+                                    <div class="profile-about">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut blanditiis eius
+                                            harum iure nam nemo nihil quo sit vel veritatis.</p>
+                                    </div>
+                                </div>
+                                <div class="profile-section-col">
+                                    <div class="profile-achievements">
+                                        <p>Your personal achievements:</p>
+                                        <p id="GymDays_data_ID" class="glow">You have worked out "x" times!</p>
+                                        <p id="Schedules_data_ID" class="glow">You have created "x" schedules!</p>
+                                        <p id="BMI_data_ID" class="glow">your latest BMI calculated: </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="Schemes" class="cont tab" style="display:none">
+                        <h2>Schemes</h2>
+                        <p>Here are your previously saved workout schedules</p>
+                    </div>
+
+                    <div id="Settings" class="cont tab" style="display:none">
+                        <h2>Settings</h2>
+                        <button class="tabBtn" onclick="toggleBtn('changeUsernameID')">change username</button>
+                        <button class="tabBtn" onclick="toggleBtn('changePasswordID')">change Password</button>
+                        <div id="changeUsernameID" style="display:none">
+                            <h4>change username</h4>
+                            <input class="profileInputText" type="text" placeholder="enter username...">
+                            <input class="tabBtn" type="submit" value="Change username">
+                        </div>
+                        <div id="changePasswordID" style="display:none">
+                            <h4>change password</h4>
+                            <input class="profileInputText" type="password" placeholder="enter old password...">
+                            <input class="profileInputText" type="password" placeholder="enter new password...">
+                            <input class="tabBtn" type="submit" value="Change password">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <!-- Footer -->
 <footer>
+
   <div class="contact">
     <h3>Contact information</h3>
     <h4>Phone: 070-000-010</h4>
@@ -126,7 +110,7 @@
     </div>
 
 
-  </div>
+    </div>
 </footer>
 
 
@@ -134,22 +118,71 @@
 </body>
 </html>
 <script>
-  function openTab(tabName) {
-    var i;
-    var x = document.getElementsByClassName("tab");
-    for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none";
+    function openTab(tabName) {
+        var i;
+        var x = document.getElementsByClassName("tab");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        document.getElementById(tabName).style.display = "block";
     }
-    document.getElementById(tabName).style.display = "block";
-  }
-  function toggleBtn(btnName){
-    var x = document.getElementById(btnName);
-    if(x.style.display === "none"){
-      x.style.display = "block";
-    }else{
-      x.style.display = "none";
+
+    function toggleBtn(btnName) {
+        var x = document.getElementById(btnName);
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
     }
-  }
+
+    window.onload = function () {
+        fetch('/api/login/status')
+            .then(res => res.json())
+            .then(res => {
+                document.querySelector('.username').innerHTML = res.data;
+                fetch('api/schedule/all')
+                    .then(res => res.json())
+                    .then(res => {
+                    if (res.data.length > 0) {
+                        res.data.forEach(schedule => {
+                            createScheduleDiv(schedule);
+                        })
+                    }
+                });
+
+
+            })
+    }
+
+    function createScheduleDiv(schedule) {
+        const divOuter = document.createElement('div');
+        const divInner = document.createElement('div');
+        const img = document.createElement('img');
+        const a = document.createElement('a');
+
+        divOuter.classList.add('scheme');
+        divInner.classList.add('scheme-s');
+        img.src = '/img/wp.webp';
+        //a.href = 'workout_planner.html';
+
+        divOuter.id = schedule._id;
+        a.innerHTML = schedule.name;
+
+        document.getElementById('Schemes').appendChild(divOuter);
+        divOuter.appendChild(img);
+        divOuter.appendChild(divInner);
+        divInner.appendChild(a);
+
+        divOuter.addEventListener('click', scheduleReadOnly);
+    }
+
+    // Event listener
+    function scheduleReadOnly(scheme) {
+        window.localStorage.setItem('scheduleID', JSON.stringify(scheme.currentTarget.id));
+        window.location.href = 'workout_planner.html';
+    }
+  
   const x = document.querySelectorAll('.scheme').length;
   var amountPlannerText = document.getElementById('Schedules_data_ID');
   amountPlannerText.innerText = "You have created " + x + " workout schedules!";
