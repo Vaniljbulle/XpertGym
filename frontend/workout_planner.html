@@ -8,28 +8,75 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
 </head>
-<body>
-
+<body id="planner-body">
 <div id="planner-modal-container">
     <button id="planner-modal-exit" onclick="exitCreateExercise()">X</button>
     <h1>Create your own exercise</h1>
-    <h2>Name <input id="name_value" value="Name" name="name"></h2>
-    <h2>Sets <input id="sets_value" value="Sets" name="sets"></h2>
-    <h2>Reps <input id="reps_value" value="Reps" name="reps"></h2>
-    <h2>Description <input id="desc_value" value="Description"></h2>
+    <div class="planner-modal-content">
+        <h2>Name</h2>
+        <input id="name_value" placeholder="Name" name="name">
+    </div>
+    <div class="planner-modal-content">
+        <h2>Sets</h2>
+        <input id="sets_value" placeholder="Sets" name="sets">
+    </div>
+    <div class="planner-modal-content">
+        <h2>Reps</h2>
+        <input id="reps_value" placeholder="Reps" name="reps">
+    </div>
+    <div class="planner-modal-content">
+        <h2>Description </h2>
+        <textarea id="desc_value" placeholder="Description"></textarea>
+    </div>
+
     <h2>Muscle group</h2>
-    <p>Chest<input type="radio" name="muscleGroup"></p>
-    <p>Arms<input type="radio" name="muscleGroup"></p>
-    <p>Legs<input type="radio" name="muscleGroup"></p>
-    <p>Back<input type="radio" name="muscleGroup"></p>
-    <p>Abs<input type="radio" name="muscleGroup"></p>
-    <p>Cardio<input type="radio" name="muscleGroup"></p>
-    <h2>Duration <input id="duration_value" value="Duration"></h2>
+    <div class="planner-modal-content">
+        <p>Chest </p>
+        <input type="radio" name="muscleGroup">
+    </div>
+    <div class="planner-modal-content">
+        <p>Arms </p>
+        <input type="radio" name="muscleGroup">
+    </div>
+    <div class="planner-modal-content">
+        <p>Legs </p>
+        <input type="radio" name="muscleGroup">
+    </div>
+    <div class="planner-modal-content">
+        <p>Back </p>
+        <input type="radio" name="muscleGroup">
+    </div>
+    <div class="planner-modal-content">
+        <p>Abs </p>
+        <input type="radio" name="muscleGroup">
+    </div>
+    <div class="planner-modal-content">
+        <p>Cardio </p>
+        <input type="radio" name="muscleGroup">
+    </div>
+
+    <div class="planner-modal-content">
+        <h2>Duration </h2>
+        <input id="duration_value" placeholder="Duration">
+    </div>
     <h2>Difficulty</h2>
-    <p>Beginner<input type="radio" name="difficulty"></p>
-    <p>Moderate<input type="radio" name="difficulty"></p>
-    <p>Advanced<input type="radio" name="difficulty"></p>
-    <button onclick="createExercise()">Create</button>
+    <div class="planner-modal-content">
+        <p>Beginner </p>
+        <input type="radio" name="difficulty">
+    </div>
+    <div class="planner-modal-content">
+        <p>Moderate </p>
+        <input type="radio" name="difficulty">
+    </div>
+    <div class="planner-modal-content">
+        <p>Advanced </p>
+        <input type="radio" name="difficulty">
+    </div>
+    <div class="planner-modal-content">
+
+    </div>
+
+    <button class="planner-modal-button" onclick="createExercise()">Create</button>
 </div>
 
 <!-- Load schedule modal -->
@@ -43,6 +90,13 @@
 <!-- Navigation bar / Header -->
 <nav class="navbar">
     <a href="index.html" class="logo"></a>
+
+    <!-- Gym population text -->
+    <div class="population_navbar">
+        <p id="population_data_ID" class="glow"></p>
+        <script src="gym_pop_client.js"></script>
+    </div>
+
     <nav class="navigation">
         <ul>
             <li><a href="profile.html">Profile</a></li>
@@ -53,32 +107,75 @@
 </nav>
 
 <!-- Banner intro with text -->
-<div class="banner">
+<div class="banner planner">
     <div class="about">
     </div>
 </div>
 
-<div class="row">
+<div class="row planner">
     <div class="column side">
-        <h4>Click an exercise to modify</h4>
+        <h1 id="planner-modify-header">Modify</h1>
+        <p>Click on an exercise to select it, then modify or delete it below.</p>
         <div class="modifyExerciseColumn">
             <div>
-                <h4>Name <input id="name_value_modified" placeholder="Name" name="name"></h4>
-                <h4>Sets <input id="sets_value_modified" placeholder="Sets" name="sets"></h4>
-                <h4>Reps <input id="reps_value_modified" placeholder="Reps" name="reps"></h4>
-                <h4>Description <input id="desc_value_modified" placeholder="Description"></h4>
+                <div class="planner-modify-content">
+                    <h4>Name </h4>
+                    <input id="name_value_modified" placeholder="Name" name="name">
+                </div>
+                <div class="planner-modify-content">
+                    <h4>Sets </h4>
+                    <input id="sets_value_modified" placeholder="Sets" name="sets">
+                </div>
+                <div class="planner-modify-content">
+                    <h4>Reps </h4>
+                    <input id="reps_value_modified" placeholder="Reps" name="reps">
+                </div>
+                <h4>Description </h4>
+                <div class="planner-modify-content">
+                    <textarea id="desc_value_modified" placeholder="Description"></textarea>
+                </div>
                 <h4>Muscle group</h4>
-                <p>Chest<input type="radio" id="muscle_group_modified_0" name="muscleGroup"></p>
-                <p>Arms<input type="radio" id="muscle_group_modified_1" name="muscleGroup"></p>
-                <p>Legs<input type="radio" id="muscle_group_modified_2" name="muscleGroup"></p>
-                <p>Back<input type="radio" id="muscle_group_modified_3" name="muscleGroup"></p>
-                <p>Abs<input type="radio" id="muscle_group_modified_4" name="muscleGroup"></p>
-                <p>Cardio<input type="radio" id="muscle_group_modified_5" name="muscleGroup"></p>
-                <h4>Duration <input id="duration_value_modified" placeholder="Duration"></h4>
+                <div class="planner-modify-content">
+                    <p>Chest </p>
+                    <input type="radio" id="muscle_group_modified_0" name="muscleGroup">
+                </div>
+                <div class="planner-modify-content">
+                    <p>Arms </p>
+                    <input type="radio" id="muscle_group_modified_1" name="muscleGroup">
+                </div>
+                <div class="planner-modify-content">
+                    <p>Legs </p>
+                    <input type="radio" id="muscle_group_modified_2" name="muscleGroup">
+                </div>
+                <div class="planner-modify-content">
+                    <p>Back </p>
+                    <input type="radio" id="muscle_group_modified_3" name="muscleGroup">
+                </div>
+                <div class="planner-modify-content">
+                    <p>Abs </p>
+                    <input type="radio" id="muscle_group_modified_4" name="muscleGroup">
+                </div>
+                <div class="planner-modify-content">
+                    <p>Cardio </p>
+                    <input type="radio" id="muscle_group_modified_5" name="muscleGroup">
+                </div>
+                <div class="planner-modify-content">
+                    <h4>Duration </h4>
+                    <input id="duration_value_modified" placeholder="Duration">
+                </div>
                 <h4>Difficulty</h4>
-                <p>Beginner<input type="radio" id="difficulty_value_modified_0" name="difficulty"></p>
-                <p>Moderate<input type="radio" id="difficulty_value_modified_1" name="difficulty"></p>
-                <p>Advanced<input type="radio" id="difficulty_value_modified_2" name="difficulty"></p>
+                <div class="planner-modify-content">
+                    <p>Beginner </p>
+                    <input type="radio" id="difficulty_value_modified_0" name="difficulty">
+                </div>
+                <div class="planner-modify-content">
+                    <p>Moderate </p>
+                    <input type="radio" id="difficulty_value_modified_1" name="difficulty">
+                </div>
+                <div class="planner-modify-content">
+                    <p>Advanced </p>
+                    <input type="radio" id="difficulty_value_modified_2" name="difficulty">
+                </div>
             </div>
             <div>
                 <button onclick="modifyExercise()">Modify</button>
@@ -86,13 +183,13 @@
             </div>
         </div>
     </div>
-    <div class="column center">
+    <div class="column center planner">
         <!-- Option bar schedule planner -->
         <div class="schedule_option_bar">
             <div class="schedule_option_bar_button" onclick="addRow()">Add row</div>
             <div class="schedule_option_bar_button" onclick="removeRow()">Remove row</div>
-            <div class="schedule_option_bar_button" id="loadSchedule">Load</div>
             <div class="schedule_option_bar_button" onclick="cleanSchedule()">Clean</div>
+            <div class="schedule_option_bar_button" id="loadSchedule">Load</div>
             <div class="schedule_option_bar_button" onclick="saveSchedule()">Save</div>
         </div>
 
@@ -112,9 +209,9 @@
 
     </div>
     <div class="column side planner">
-        <button class="planner-create-exercise" onclick="enterCreateExercise()">Create exercise</button>
         <h1>Exercises</h1>
         <p>Drag an exercise into a slot in the planner.</p>
+        <button class="planner-create-exercise" onclick="enterCreateExercise()">Create exercise</button>
         <button class="collapsible">Chest</button>
         <div class="Collaps_content">
             <div class="workout-container">
@@ -188,8 +285,9 @@
             this.classList.toggle("active");
             const Collaps_content = this.nextElementSibling;
             Collaps_content.style.maxHeight = Collaps_content.scrollHeight + "px";
-
         });
+
+        acc[i].nextElementSibling.style.maxHeight = "0";
     }
 </script>
 <script src="fetch_exercise.js"></script>
