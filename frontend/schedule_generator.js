@@ -601,6 +601,40 @@ function deleteExercise() {
     updateRow(clickedElement.parentElement);
 }
 
+function editExercise(){
+    const data = {
+        name: document.getElementById('name_value_modified').value,
+        image: "/img/wlogos.png",
+        sets: document.getElementById('sets_value_modified').value,
+        reps: document.getElementById('reps_value_modified').value,
+        description: document.getElementById('desc_value_modified').value,
+        muscleGroup: 1,
+        duration: document.getElementById('duration_value_modified').value,
+        difficulty: 1,
+        type: 1
+    }
+
+    fetch('/api/exercise/add', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(res => res.json())
+        .then(res => {
+            console.log(res);
+            if (res.status === 'ok') {
+                console.log(res.data);
+                clickedElement.id = res.data;
+                clickedElement.firstElementChild.id = res.data;
+                clickedElement.firstElementChild.firstElementChild.src = "/img/wlogos.png";
+                clickedElement.firstElementChild.lastElementChild.innerHTML = data.name;
+            } else {
+                alert("Failed to add exercise!");
+            }
+        }).catch(err => console.log(err));
+}
+
 function addRow() {
     console.log("add row");
     const column = document.getElementsByClassName("column center")[0];
