@@ -47,3 +47,12 @@ function dragDrop() {
     this.className = 'planner-card-empty';
     this.append(fill);
 }
+
+onload = function () {
+    let scheduleID = localStorage.getItem('scheduleID');
+    localStorage.clear();
+
+    if (scheduleID != null) {
+        console.log("READ ONLY REQUEST FROM PROFILE, SCHEDULE ID: " + scheduleID);
+    }
+}

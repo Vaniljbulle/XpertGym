@@ -162,14 +162,22 @@
         divOuter.classList.add('scheme');
         divInner.classList.add('scheme-s');
         img.src = '/img/wp.webp';
-        a.href = 'workout_planner.html';
+        //a.href = 'workout_planner.html';
 
-        divOuter.id = schedule.id;
+        divOuter.id = schedule._id;
         a.innerHTML = schedule.name;
 
         document.getElementById('Schemes').appendChild(divOuter);
         divOuter.appendChild(img);
         divOuter.appendChild(divInner);
         divInner.appendChild(a);
+
+        divOuter.addEventListener('click', scheduleReadOnly);
+    }
+
+    // Event listener
+    function scheduleReadOnly(scheme) {
+        window.localStorage.setItem('scheduleID', JSON.stringify(scheme.currentTarget.id));
+        window.location.href = 'workout_planner.html';
     }
 </script>
