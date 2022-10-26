@@ -1,3 +1,7 @@
+const navbarItem = Array.from(
+    document.getElementsByClassName('PSitem')
+);
+
 async function logout() {
     try {
         const result = await fetch('/api/logout', {
@@ -20,6 +24,11 @@ async function logout() {
 }
 
 window.onload = function () {
+    loadHeader();
+}
+
+function loadHeader() {
+    console.log("Fetching login status");
     fetch('/api/login/status')
         .then(res => res.json())
         .then(res => {
@@ -33,6 +42,16 @@ window.onload = function () {
                 li.appendChild(a);
 
                 document.getElementsByTagName('ul')[0].appendChild(li);
+
+                const landingText = document.getElementById('landingPageText');
+                const logBtn = document.getElementById('loginButton');
+
+                if (landingText !== null) {
+                    logBtn.style.visibility = 'hidden';
+                }
+                if (logBtn !== null) {
+                    landingText.innerText = "The gym that takes your training seriously.";
+                }
             }
         }).catch(err => {
         const li = document.createElement('li');
@@ -43,6 +62,9 @@ window.onload = function () {
         li.appendChild(a);
 
         document.getElementsByTagName('ul')[0].appendChild(li);
-    });
 
+        navbarItem.forEach(navbarItem => {
+            navbarItem.style.display = 'none';
+        });
+    });
 }
