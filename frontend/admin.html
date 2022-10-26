@@ -25,6 +25,8 @@
             <input id="membershipID" type="text">
             <button id="membershipIDSubmit">Add ID</button>
             <button id="membershipIDRemove">Remove ID</button>
+            Personal Trainer
+            <input id="membershipIDpersonalTrainer" type="checkbox">
         </div>
         <div class="devListContainer maxHeight" id="membershipList">
             <!-- List of memberships -->
@@ -76,8 +78,26 @@
                         let divElement = document.createElement("div");
                         let paragraphElement = document.createElement("p");
                         divElement.classList.add("devListItem");
+                        switch (res.data[i].user_level) {
+                            case 0:
+                                paragraphElement.innerHTML = res.data[i].membership_id + " (User) ";
+                                divElement.style.border = "teal solid 1px";
+                                divElement.style.backgroundColor = "teal";
+                                break;
+                            case 1:
+                                paragraphElement.innerHTML = res.data[i].membership_id + " (Personal Trainer) ";
+                                divElement.style.border = "orange solid 1px";
+                                divElement.style.backgroundColor = "orange";
 
-                        paragraphElement.innerText = res.data[i].membership_id;
+                                break;
+                            case 2:
+                                paragraphElement.innerHTML = res.data[i].membership_id + " (Admin) ";
+                                divElement.style.border = "salmon solid 1px";
+                                divElement.style.backgroundColor = "salmon";
+                                break;
+                        }
+
+                        //paragraphElement.innerText += res.data[i].membership_id;
 
                         divElement.addEventListener("click", membershipIdListener)
                         divElement.appendChild(paragraphElement);
@@ -91,7 +111,7 @@
     }
 
     // Membership id listener
-    function membershipIdListener(){
+    function membershipIdListener() {
         document.getElementById("membershipID").value = this.innerText;
     }
 </script>
