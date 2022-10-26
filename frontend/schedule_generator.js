@@ -260,7 +260,7 @@ function dragDrop() {
             draggedFrom.classList.add('planner-card-selected-hovered');
             draggedFrom.addEventListener('click', cardOnClick);
         }
-    }else {
+    } else {
         draggedFrom.removeEventListener('click', cardOnClick);
         draggedFrom.classList.remove('planner-card-selected');
         draggedFrom.classList.remove('planner-card-selected-hovered');
@@ -362,7 +362,52 @@ onload = function () {
     localStorage.clear();
 
     if (scheduleID != null) {
+        scheduleID = scheduleID.slice(1, -1);
         console.log("READ ONLY REQUEST FROM PROFILE, SCHEDULE ID: " + scheduleID);
+
+        // JSON post request
+        fetch('/api/schedule/getExercises', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({_id: scheduleID})
+        }).then(res => res.json())
+            .then(res => {
+                console.log(res);
+                if (res.status === 'ok') {
+                    console.log(res.data);
+                    cleanSchedule();
+                    for (const card of res.data) {
+                        loadCardToSchedule(card);
+                    }
+
+                    reloadMessageBoard(scheduleID);
+
+                    const exercises = document.getElementsByClassName("column side planner");
+                    for (const exercise of exercises) {
+                        exercise.style.display = "none";
+                    }
+                    const options = document.getElementsByClassName("schedule_option_bar");
+                    for (const option of options) {
+                        option.style.display = "none";
+                    }
+                    document.getElementById("planner-modify-header").innerHTML = "Exercise info";
+                    document.getElementById("planner-modify-description").innerHTML =
+                        "Click on an exercise to select it, then read the information below.";
+                    let toHide = document.getElementsByClassName("planner-modify-toHide");
+                    let toDisable = document.getElementsByClassName("planner-modify-toDisable");
+                    for (const toHideElement of toHide) {
+                        toHideElement.style.display = "none";
+                    }
+                    for (const toDisableElement of toDisable) {
+                        toDisableElement.style.pointerEvents = "none";
+                        toDisableElement.style.backgroundColor = "#9f9f9f"
+                    }
+                } else {
+                    console.log('Schedule failed to be fetched!');
+                }
+            }).catch(err => console.log(err));
     }
 }
 
@@ -611,7 +656,7 @@ function deleteExercise() {
     updateRow(clickedElement.parentElement);
 }
 
-function editExercise(){
+function editExercise() {
     const data = {
         name: document.getElementById('name_value_modified').value,
         image: "/img/wlogos.png",
@@ -667,7 +712,7 @@ function addRow() {
 function removeRow() {
     console.log("remove row");
     const column = document.getElementsByClassName("column center")[0];
-    if (column.children.length > 2){
+    if (column.children.length > 2) {
         // Remove second to last div
         column.removeChild(column.children[column.children.length - 2]);
         column.removeChild(column.children[column.children.length - 2]);
