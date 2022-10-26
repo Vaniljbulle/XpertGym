@@ -20,12 +20,11 @@
 
     <nav class="navigation">
         <ul>
-            <li class="PSitem" style="visibility: hidden"><a href="calcBMI.html">Calculate BMI</a></li>
-            <li class="PSitem" style="visibility: hidden"><a href="workout_planner.html">Workout planner</a></li>
-            <li class="PSitem" style="visibility: hidden"><a href="trainers.html">Personal trainers</a></li>
-            <li class="PSitem" style="visibility: hidden"><a href="profile.html">Profile</a></li>
+            <li class="PSitem"><a href="calcBMI.html">Calculate BMI</a></li>
+            <li class="PSitem"><a href="workout_planner.html">Workout planner</a></li>
+            <li class="PSitem"><a href="trainers.html">Personal trainers</a></li>
+            <li class="PSitem"><a href="profile.html">Profile</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <script src="logout.js"></script>
         </ul>
     </nav>
 </nav>
@@ -100,17 +99,17 @@
 <!-- Footer -->
 <footer>
 
-  <div class="contact">
-    <h3>Contact information</h3>
-    <h4>Phone: 070-000-010</h4>
-    <h4>Email: company@xpertgym.com</h4>
-    <!-- <img src="#" alt="logo2"/>  -->
-    <h5>Follow Us</h5>
-    <div class="social-icons">
-      <a href="#"><i class="fa-brands fa-facebook"></i></a>
-      <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-      <a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-    </div>
+    <div class="contact">
+        <h3>Contact information</h3>
+        <h4>Phone: 070-000-010</h4>
+        <h4>Email: company@xpertgym.com</h4>
+        <!-- <img src="#" alt="logo2"/>  -->
+        <h5>Follow Us</h5>
+        <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+            <a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        </div>
 
 
     </div>
@@ -122,8 +121,8 @@
 </html>
 <script>
     function openTab(tabName) {
-        var i;
-        var x = document.getElementsByClassName("tab");
+        let i;
+        let x = document.getElementsByClassName("tab");
         for (i = 0; i < x.length; i++) {
             x[i].style.display = "none";
         }
@@ -131,7 +130,7 @@
     }
 
     function toggleBtn(btnName) {
-        var x = document.getElementById(btnName);
+        let x = document.getElementById(btnName);
         if (x.style.display === "none") {
             x.style.display = "block";
         } else {
@@ -144,15 +143,23 @@
             .then(res => res.json())
             .then(res => {
                 document.querySelector('.username').innerHTML = res.data;
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.innerHTML = "Log out";
+                a.href = "javascript:logout()";
+
+                li.appendChild(a);
+
+                document.getElementsByTagName('ul')[0].appendChild(li);
                 fetch('api/schedule/all')
                     .then(res => res.json())
                     .then(res => {
-                    if (res.data.length > 0) {
-                        res.data.forEach(schedule => {
-                            createScheduleDiv(schedule);
-                        })
-                    }
-                });
+                        if (res.data.length > 0) {
+                            res.data.forEach(schedule => {
+                                createScheduleDiv(schedule);
+                            })
+                        }
+                    });
 
 
             })
@@ -185,34 +192,10 @@
         window.localStorage.setItem('scheduleID', JSON.stringify(scheme.currentTarget.id));
         window.location.href = 'workout_planner.html';
     }
-  
-  const x = document.querySelectorAll('.scheme').length;
-  var amountPlannerText = document.getElementById('Schedules_data_ID');
-  amountPlannerText.innerText = "You have created " + x + " workout schedules!";
-  console.log(x);
 
-    const navbarItem = Array.from(
-        document.getElementsByClassName('PSitem')
-    );
-    var landingText = document.getElementById('landingPageText');
-    const logBtn = document.getElementById('loginButton');
-    window.onload = function () {
-        fetch('/api/login/status')
-            .then(res => res.json())
-            .then(res => { // USER LOGGED IN, USERNAME IN res.data
-                console.log(res);
-                if (res.status === 'ok') {
-                    navbarItem.forEach(navbarItem => {
-                        navbarItem.style.visibility = 'visible';
-                    });
-                    logBtn.style.visibility = 'hidden';
-                    landingText.innerText = "The gym that takes your training seriously.";
-                } else {
-                    navbarItem.forEach(navbarItem => {
-                        navbarItem.style.visibility = 'hidden';
-                    });
-                    logBtn.style.visibility = 'visible';
-                }
-            }).catch(err => console.log(err))
-    }
+    const x = document.querySelectorAll('.scheme').length;
+    var amountPlannerText = document.getElementById('Schedules_data_ID');
+    amountPlannerText.innerText = "You have created " + x + " workout schedules!";
+    console.log(x);
+
 </script>
