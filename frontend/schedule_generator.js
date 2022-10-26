@@ -21,10 +21,6 @@ const duration = document.getElementById("duration_value");
 const muscle = document.getElementsByName("muscleGroup");
 const diff = document.getElementsByName("difficulty");
 
-let sortedExercises = new Array(6);
-for (let i = 0; i < sortedExercises.length; i++) {
-    sortedExercises[i] = new Array(0);
-}
 let exercises = [];
 loadAllExercises();
 
@@ -176,10 +172,7 @@ function fetchExercise(id) {
                     type: res.data.type,
                     exerciseID: id._id === undefined ? id : id._id
                 };
-                sortedExercises[res.data.muscleGroup].push(data);
-                const index = sortedExercises[res.data.muscleGroup].length - 1;
-                const element = sortedExercises[res.data.muscleGroup][index];
-                spawnExerciseCard(element);
+                spawnExerciseCard(data);
             } else {
                 console.log('Exercise failed to be fetched!');
             }
@@ -358,6 +351,7 @@ function cardOnClick() {
 
 
 onload = function () {
+    loadHeader();
     let scheduleID = localStorage.getItem('scheduleID');
     localStorage.clear();
 
