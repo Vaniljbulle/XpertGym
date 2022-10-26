@@ -26,13 +26,6 @@ router.get('/gym_pop_client.js', async (req, res) => {
     res.sendFile('gym_pop_client.js', {root: 'server/auth'});
 });
 
-// token test (private test page)
-const testPagePaths = ['/testpage_private.html', '/testpage_private'];
-router.get(testPagePaths, verifyToken, (req, res) => {
-    console.log("Private test page requested");
-    console.log("Username: " + req.user.id);
-    res.sendFile('testpage_private.html', {root: 'frontend'});
-})
 
 // Admin page
 router.get('/admin.html', verifyToken, async (req, res) => {
