@@ -8,6 +8,7 @@ const Exercise = require("../database/exercise");
 const UserExercise = require("../database/userExercise");
 const Schedule = require("../database/schedule");
 const ScheduleLink = require("../database/scheduleLink");
+const isPersonalTrainer = require("../auth/isPersonalTrainer");
 
 
 // All users fetch
@@ -46,7 +47,7 @@ router.post('/api/dev/schedule/get', verifyToken, async (req, res) => {
 router.post('/api/dev/schedule/log', verifyToken, async (req, res) => {
     console.log("Get message log for specific schedule ID");
 
-    if (await isAdmin(req.user)) {
+    if (await isAdmin(req.user) || await isPersonalTrainer(req.user)) {
         try {
             const schedule = await Schedule.findOne({_id: req.body.schedule_id}).lean();
 
