@@ -172,7 +172,8 @@ document.getElementById("fetch_users").addEventListener("click", function () {
 document.getElementById("membershipIDSubmit").addEventListener("click", function (e) {
     e.preventDefault();
 
-    const data = {MEMBERSHIP_ID: document.getElementById("membershipID").value};
+    const data = {MEMBERSHIP_ID: document.getElementById("membershipID").value,
+    USER_LEVEL: document.getElementById("membershipIDpersonalTrainer").checked ? 1 : 0}; // PT = 1, User = 0
 
     fetch('/api/membership/add', {
         method: 'POST',

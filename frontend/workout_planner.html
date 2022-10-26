@@ -118,69 +118,69 @@
 <div class="row planner">
     <div class="column side">
         <h1 id="planner-modify-header">Modify</h1>
-        <p>Click on an exercise to select it, then modify or delete it below.</p>
+        <p id="planner-modify-description">Click on an exercise to select it, then modify or delete it below.</p>
         <div class="modifyExerciseColumn">
             <div>
                 <div class="planner-modify-content">
                     <h4>Name </h4>
-                    <input id="name_value_modified" placeholder="Name" name="name">
+                    <input id="name_value_modified" class="planner-modify-toDisable" placeholder="Name" name="name">
                 </div>
                 <div class="planner-modify-content">
                     <h4>Sets </h4>
-                    <input id="sets_value_modified" placeholder="Sets" name="sets">
+                    <input id="sets_value_modified" class="planner-modify-toDisable" placeholder="Sets" name="sets">
                 </div>
                 <div class="planner-modify-content">
                     <h4>Reps </h4>
-                    <input id="reps_value_modified" placeholder="Reps" name="reps">
+                    <input id="reps_value_modified" class="planner-modify-toDisable" placeholder="Reps" name="reps">
                 </div>
                 <h4>Description </h4>
                 <div class="planner-modify-content">
-                    <textarea id="desc_value_modified" placeholder="Description"></textarea>
+                    <textarea id="desc_value_modified" class="planner-modify-toDisable" placeholder="Description"></textarea>
                 </div>
                 <h4>Muscle group</h4>
                 <div class="planner-modify-content">
                     <p>Chest </p>
-                    <input type="radio" id="muscle_group_modified_0" name="muscleGroup">
+                    <input type="radio" id="muscle_group_modified_0" class="planner-modify-toDisable" name="muscleGroup">
                 </div>
                 <div class="planner-modify-content">
                     <p>Arms </p>
-                    <input type="radio" id="muscle_group_modified_1" name="muscleGroup">
+                    <input type="radio" id="muscle_group_modified_1" class="planner-modify-toDisable" name="muscleGroup">
                 </div>
                 <div class="planner-modify-content">
                     <p>Legs </p>
-                    <input type="radio" id="muscle_group_modified_2" name="muscleGroup">
+                    <input type="radio" id="muscle_group_modified_2" class="planner-modify-toDisable" name="muscleGroup">
                 </div>
                 <div class="planner-modify-content">
                     <p>Back </p>
-                    <input type="radio" id="muscle_group_modified_3" name="muscleGroup">
+                    <input type="radio" id="muscle_group_modified_3" class="planner-modify-toDisable" name="muscleGroup">
                 </div>
                 <div class="planner-modify-content">
                     <p>Abs </p>
-                    <input type="radio" id="muscle_group_modified_4" name="muscleGroup">
+                    <input type="radio" id="muscle_group_modified_4" class="planner-modify-toDisable" name="muscleGroup">
                 </div>
                 <div class="planner-modify-content">
                     <p>Cardio </p>
-                    <input type="radio" id="muscle_group_modified_5" name="muscleGroup">
+                    <input type="radio" id="muscle_group_modified_5" class="planner-modify-toDisable" name="muscleGroup">
                 </div>
                 <div class="planner-modify-content">
                     <h4>Duration </h4>
-                    <input id="duration_value_modified" placeholder="Duration">
+                    <input id="duration_value_modified" class="planner-modify-toDisable" placeholder="Duration">
                 </div>
                 <h4>Difficulty</h4>
                 <div class="planner-modify-content">
                     <p>Beginner </p>
-                    <input type="radio" id="difficulty_value_modified_0" name="difficulty">
+                    <input type="radio" id="difficulty_value_modified_0" class="planner-modify-toDisable" name="difficulty">
                 </div>
                 <div class="planner-modify-content">
                     <p>Moderate </p>
-                    <input type="radio" id="difficulty_value_modified_1" name="difficulty">
+                    <input type="radio" id="difficulty_value_modified_1" class="planner-modify-toDisable" name="difficulty">
                 </div>
                 <div class="planner-modify-content">
                     <p>Advanced </p>
-                    <input type="radio" id="difficulty_value_modified_2" name="difficulty">
+                    <input type="radio" id="difficulty_value_modified_2" class="planner-modify-toDisable" name="difficulty">
                 </div>
             </div>
-            <div>
+            <div class="planner-modify-toHide">
                 <button onclick="editExercise()">Modify</button>
                 <button onclick="deleteExercise()">Delete</button>
             </div>

@@ -1699,3 +1699,6 @@ span {
     backdrop-filter: blur(6px);
 }
 
+#membershipIDpersonalTrainer {
+    margin-left: 5px;
+}

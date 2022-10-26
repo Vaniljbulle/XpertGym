@@ -9,9 +9,9 @@ router.post('/api/membership/add', verifyToken, async (req, res) => {
 
     if (await isAdmin(req.user)) {
         // Add membership to database
-        console.log("Adding membership " + req.body.MEMBERSHIP_ID + " to database");
+        console.log("Adding membership " + req.body.MEMBERSHIP_ID + " to database with user level " + req.body.USER_LEVEL);
         try {
-            await Membership.create({user_id: null, membership_id: req.body.MEMBERSHIP_ID, user_level: 0});
+            await Membership.create({user_id: null, membership_id: req.body.MEMBERSHIP_ID, user_level: req.body.USER_LEVEL});
             res.status(200).json({status: 'ok', data: 'Membership added'});
         } catch (err) {
             res.status(500).json({status: 'error', data: err});
