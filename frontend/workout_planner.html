@@ -99,7 +99,10 @@
 
     <nav class="navigation">
         <ul>
-            <li><a href="profile.html">Profile</a></li>
+            <li class="PSitem" style="visibility: hidden"><a href="calcBMI.html">Calculate BMI</a></li>
+            <li class="PSitem" style="visibility: hidden"><a href="workout_planner.html">Workout planner</a></li>
+            <li class="PSitem" style="visibility: hidden"><a href="trainers.html">Personal trainers</a></li>
+            <li class="PSitem" style="visibility: hidden"><a href="profile.html">Profile</a></li>
             <li><a href="contact.html">Contact</a></li>
             <script src="logout.js"></script>
         </ul>
@@ -288,6 +291,27 @@
         });
 
         acc[i].nextElementSibling.style.maxHeight = "0";
+    }
+    var landingText = document.getElementById('landingPageText');
+    const logBtn = document.getElementById('loginButton');
+    window.onload = function () {
+        fetch('/api/login/status')
+            .then(res => res.json())
+            .then(res => { // USER LOGGED IN, USERNAME IN res.data
+                console.log(res);
+                if (res.status === 'ok') {
+                    navbarItem.forEach(navbarItem => {
+                        navbarItem.style.visibility = 'visible';
+                    });
+                    logBtn.style.visibility = 'hidden';
+                    landingText.innerText = "The gym that takes your training seriously.";
+                } else {
+                    navbarItem.forEach(navbarItem => {
+                        navbarItem.style.visibility = 'hidden';
+                    });
+                    logBtn.style.visibility = 'visible';
+                }
+            }).catch(err => console.log(err))
     }
 </script>
 <script src="fetch_exercise.js"></script>

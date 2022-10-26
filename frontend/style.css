@@ -240,6 +240,11 @@ h5 {
 }
 
 /************* Personal Page **************/
+#profileBody{
+    background-color: #3e4042;
+    color: white;
+}
+
 .username {
     font-size: 30px;
     font-weight: 500;
@@ -253,8 +258,8 @@ h5 {
     margin: auto;
     padding: 10px 30px 30px 30px;
     border-radius: 5px;
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
+    background-color: rgba(56, 59, 60, 0.5);
 }
 
 .bar {
@@ -295,7 +300,7 @@ h5 {
 
 .tabBtn:hover {
     box-shadow: 0 0 12px rgb(53, 56, 59) inset;
-    border: 1px solid rgba(255, 255, 255, 1);
+    border: 2px solid rgb(211, 176, 131);
     color: rgba(255, 255, 255, 1);
 }
 
@@ -317,14 +322,14 @@ h5 {
     width: 100%;
     padding: 12px 20px;
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 1px solid #545a5d;
     box-sizing: border-box;
+    background-color: #3e4042;
 }
 
 /************* Profile **************/
 .profile-section {
     width: 100%;
-    background: #f1f1f1;
     padding: 40px 0px;
     overflow: hidden;
     margin: auto;
@@ -366,7 +371,7 @@ h5 {
 }
 
 .scheme:hover .scheme-s {
-    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
 }
 
 .scheme img {
@@ -376,9 +381,9 @@ h5 {
 }
 
 .scheme-s {
-    width: 0px;
+    width: 100%;
     height: 100px;
-    background: rgba(220, 183, 135, 0.7);
+    background: rgba(0, 0, 0, 0.4);
     position: absolute;
     top: 0;
     left: 0;
@@ -398,6 +403,7 @@ h5 {
     position: absolute;
     white-space: nowrap;
     cursor: pointer;
+    text-decoration: none;
 }
 
 /*************Log in **************/
@@ -1692,3 +1698,4 @@ span {
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(6px);
 }
+

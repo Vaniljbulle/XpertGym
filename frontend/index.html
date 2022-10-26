@@ -61,27 +61,27 @@
 </body>
 </html>
 <script>
-    const x = Array.from(
+    const navbarItem = Array.from(
         document.getElementsByClassName('PSitem')
     );
     var landingText = document.getElementById('landingPageText');
-    const y = document.getElementById('loginButton');
+    const logBtn = document.getElementById('loginButton');
     window.onload = function () {
         fetch('/api/login/status')
             .then(res => res.json())
             .then(res => { // USER LOGGED IN, USERNAME IN res.data
                 console.log(res);
                 if (res.status === 'ok') {
-                    x.forEach(x => {
-                        x.style.visibility = 'visible';
+                    navbarItem.forEach(navbarItem => {
+                        navbarItem.style.visibility = 'visible';
                     });
-                    y.style.visibility = 'hidden';
+                    logBtn.style.visibility = 'hidden';
                   landingText.innerText = "The gym that takes your training seriously.";
                 } else {
-                    x.forEach(x => {
-                        x.style.visibility = 'hidden';
+                    navbarItem.forEach(navbarItem => {
+                        navbarItem.style.visibility = 'hidden';
                     });
-                    y.style.visibility = 'visible';
+                    logBtn.style.visibility = 'visible';
                 }
             }).catch(err => console.log(err))
     }
