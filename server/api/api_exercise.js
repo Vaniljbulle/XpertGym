@@ -4,6 +4,7 @@ const Schedule = require("../database/schedule");
 const {verify} = require("jsonwebtoken");
 const {verifyToken} = require("../auth/token");
 const isAdmin = require("../auth/isAdmin");
+const isPersonalTrainer = require("../auth/isPersonalTrainer");
 const router = require('express').Router();
 
 // Add exercise post request
@@ -123,7 +124,7 @@ router.post('/api/exercise/getByID', verifyToken, async (req, res) => {
 router.post('/api/exercise/all', verifyToken, async (req, res) => {
     console.log("Send all get request");
 
-    if (await isAdmin(req.user)) {
+    if (await isAdmin(req.user)  || await isPersonalTrainer(req.user)) {
         try {
             const filter = {};
             const all = await Exercise.find(filter);

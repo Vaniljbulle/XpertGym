@@ -28,7 +28,7 @@ router.post('/api/login', async (req, res) => {
         res.cookie('accessToken', accessToken, {httpOnly: true});
         res.cookie('refreshToken', refreshToken, {httpOnly: true});
         
-        let page = 'testpage_private.html';
+        let page = 'index.html';
         let code = 301;
         const membership = await Membership.findOne({user_id: user._id}).lean();
         if (!membership) {

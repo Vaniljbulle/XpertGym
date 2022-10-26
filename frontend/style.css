@@ -1692,3 +1692,7 @@ span {
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(6px);
 }
+
+#membershipIDpersonalTrainer {
+    margin-left: 5px;
+}

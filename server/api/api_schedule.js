@@ -6,6 +6,7 @@ const e = require("express");
 const isAdmin = require("../auth/isAdmin");
 const Membership = require("../database/membership");
 const {verifyToken} = require("../auth/token");
+const isPersonalTrainer = require("../auth/isPersonalTrainer");
 const router = require('express').Router();
 
 // Add schedule post request
@@ -115,7 +116,7 @@ router.post('/api/schedule/getExercises', verifyToken, async (req, res) => {
 router.get('/api/schedule/all', verifyToken, async (req, res) => {
     console.log("Send all schedules get request");
 
-    if (await isAdmin(req.user)) {
+    if (await isAdmin(req.user)  || await isPersonalTrainer(req.user)) {
         try {
             const schedules = await Schedule.find({}).lean();
 
